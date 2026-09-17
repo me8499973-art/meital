@@ -54,6 +54,14 @@ section h2{font-size:clamp(28px,6vw,38px);margin-top:6px;line-height:1.15}
 .price b{font-family:'Heebo',Arial,sans-serif;font-size:28px;color:var(--green)}
 .price span{color:var(--muted);font-size:15px}
 .offer ul.detail{gap:12px}
+.ways{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
+@media (min-width:720px){.ways{grid-template-columns:repeat(3,1fr)}}
+.way{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px}
+.way .no{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-family:Heebo,Arial,sans-serif;font-weight:700}
+.way h3{font-size:22px;margin-top:10px}
+.way p{margin:6px 0 0;color:var(--muted);font-size:15.5px;line-height:1.55}
+.way a{display:inline-block;margin-top:10px;font-weight:700;text-decoration:none}
+.note{margin-top:14px;background:var(--gold-soft);border-radius:14px;padding:12px 16px;color:var(--ink);font-size:16px}
 .offer ul.detail li{display:grid;grid-template-columns:auto 1fr;column-gap:10px}
 .offer ul.detail li b{color:var(--ink);grid-column:2}
 .offer ul.detail li span{grid-column:2;color:var(--muted);font-size:15px;line-height:1.45}
@@ -118,17 +126,28 @@ blockquote footer span{color:var(--muted);font-size:14px}
   </div>
 </header>
 
+<section id="ways">
+  <div class="eyebrow">איך עובדים איתי</div>
+  <h2>שלוש דרכים, לפי מה שהעסק צריך</h2>
+  <div class="ways">
+    <div class="way"><span class="no">1</span><h3>מזכירה ועוזרת אישית</h3><p>אני לוקחת את העבודה המשרדית השוטפת ועושה אותה בשבילכם, מרחוק.</p><a href="#services">מה זה כולל ←</a></div>
+    <div class="way"><span class="no">2</span><h3>מערכת או אוטומציה בלבד</h3><p>אני בונה ומתקינה אצלכם, מלמדת, ואתם משתמשים בה לבד. בלי צורך להעסיק אותי.</p><a href="#videos">לראות איך זה נראה ←</a></div>
+    <div class="way"><span class="no">3</span><h3>שילוב של שניהם</h3><p>מערכת שעושה סדר, ואני מפעילה אותה בשבילכם: מעקב, תזכורות וסיכום חודשי.</p></div>
+  </div>
+  <div class="note">לא חייבים לקחת הכל. אפשר להתחיל מדבר אחד, ולהוסיף כשמתאים.</div>
+</section>
+
 <section id="services">
   <div class="eyebrow">מזכירות ועוזרת אישית</div>
   <h2>כל הצד המשרדי של העסק, בידיים אמינות</h2>
-  <p class="lead">אני לוקחת על עצמי את מה שמחזיק את העסק מאחורי הקלעים, כדי שאתם תתפנו לעבודה עצמה. 14 שנה באדמיניסטרציה, שירות לקוחות, גבייה והנהלת חשבונות, מתוכן 9 שנים במחלקת הכספים של מגדל. עובדת מרחוק, וזמינה בטלפון, בוואטסאפ ובמייל.</p>
+  <p class="lead">אני לוקחת על עצמי את מה שמחזיק את העסק מאחורי הקלעים, כדי שאתם תתפנו לעבודה עצמה. 14 שנה באדמיניסטרציה, שירות לקוחות, גבייה והנהלת חשבונות, מתוכן 9 שנים במחלקת הכספים של מגדל. עובדת מרחוק, וזמינה בטלפון, במייל ובוואטסאפ.</p>
   <div class="offers">
     <div class="offer main">
       <span class="tag">שוטף</span>
       <h3>מזכירה ועוזרת אישית</h3>
       <ul class="detail">
         <li><b>ניהול יומן ותיאום פגישות</b><span>קביעה, שינוי ותזכורות, כך שאף פגישה לא נופלת בין הכיסאות</span></li>
-        <li><b>מענה ללקוחות</b><span>בטלפון, בוואטסאפ ובמייל, באדיבות ובזמן</span></li>
+        <li><b>מענה ללקוחות</b><span>בטלפון, במייל ובוואטסאפ, באדיבות ובזמן</span></li>
         <li><b>חזרה לפניות ולקוחות פוטנציאליים</b><span>מעקב אחרי כל פנייה ותיאום שיחות, עד שהיא נסגרת</span></li>
         <li><b>מעקב תשלומים וגבייה</b><span>מי שילם, מי עוד לא, ותזכורות בנוסח נעים ומכבד</span></li>
         <li><b>הצעות מחיר, מכתבים ומסמכים</b><span>ניסוח, עריכה ושליחה, בעברית ברורה ומסודרת</span></li>
@@ -140,10 +159,11 @@ blockquote footer span{color:var(--muted);font-size:14px}
       <span class="tag">מה שמייחד אותי</span>
       <h3>אוטומציות לעסק</h3>
       <ul>
-        <li>תזכורות ללקוחות בוואטסאפ או במייל</li>
-        <li>מעקב גבייה ותזכורות תשלום, בוואטסאפ או במייל</li>
+        <li>תזכורות ללקוחות במייל או בוואטסאפ</li>
+        <li>מעקב גבייה ותזכורות תשלום, במייל או בוואטסאפ</li>
         <li>שעות ושכר מחושבים ישר מהיומן</li>
-        <li>פניות נכנסות לבד לרשימה, ותשובה ראשונה בוואטסאפ או במייל</li>
+        <li>פניות נכנסות לבד לרשימה, ותשובה ראשונה במייל או בוואטסאפ</li>
+        <li><b style="color:var(--ink)">עוזרת וירטואלית</b> שעונה בעברית על שאלות מתוך המערכת</li>
         <li>עובד מהטלפון ומהמחשב</li>
       </ul>
     </div>
@@ -157,11 +177,11 @@ blockquote footer span{color:var(--muted);font-size:14px}
   <div class="videos">
     <figure>
       <video controls playsinline preload="none" poster="poster-office.jpg" src="video-office.mp4"></video>
-      <figcaption>מה אני עושה<small>מערכת שבניתי לעסק עם עובדים · חצי דקה</small></figcaption>
+      <figcaption>מערכת ניהול לעסק עם עובדים<small>לוח, עוזרת וירטואלית, פניות, גבייה במייל ושכר מהיומן · דקה</small></figcaption>
     </figure>
     <figure>
-      <video controls playsinline preload="metadata" src="video-reuven.mp4#t=0.6"></video>
-      <figcaption>המלצה מלקוח<small>ראובן ל., מרכז חינוכי באונליין</small></figcaption>
+      <video controls playsinline preload="none" poster="poster-small.jpg" src="video-small.mp4"></video>
+      <figcaption>מערכת לעסק קטן<small>תזכורות במייל או בוואטסאפ, לקוחות שלא חזרו ומי שילם · חצי דקה</small></figcaption>
     </figure>
   </div>
 </section>
