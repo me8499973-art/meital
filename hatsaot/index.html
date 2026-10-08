@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מחולל הצעות מחיר · סדר בעסק</title>
+<meta name="description" content="יוצרים הצעת מחיר מעוצבת עם השם והלוגו שלכם, בחינם, תוך דקה.">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+:root{--deep:#17301E;--green:#2E6B4E;--gold:#8F6F2E;--gold2:#C9A24E;--bg:#F1F4EF;--line:#E3D7BC;--accent:#2E6B4E}
+*{box-sizing:border-box;min-width:0}
+html,body{overflow-x:hidden}
+body{margin:0;font-family:Heebo,Arial,sans-serif;background:var(--bg);color:var(--deep)}
+.top{background:var(--deep);color:#F3EADA;padding:22px 16px 26px;text-align:center}
+.top .b{color:var(--gold2);font-size:13px;text-align:right;max-width:640px;margin:0 auto}
+.top h1{font-family:"Frank Ruhl Libre",serif;font-size:30px;margin:6px 0 6px}
+.top p{margin:0;font-size:15px;opacity:.9}
+.wrap{max-width:640px;margin:0 auto;padding:16px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;box-shadow:0 10px 24px -18px rgba(23,48,30,.5)}
+.card h2{font-size:17px;margin:0 0 12px;display:flex;gap:8px;align-items:center}
+.card h2 span{background:var(--deep);color:#E9D3A0;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+label{display:block;font-size:13px;color:#5B5349;margin:10px 0 4px}
+input,textarea,select{width:100%;max-width:100%;font:inherit;font-size:16px;padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;background:#FCFBF8;color:var(--deep)}
+input:focus,textarea:focus{outline:none;border-color:var(--green)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.item{display:grid;grid-template-columns:1fr 64px 92px 34px;gap:6px;margin-bottom:8px;align-items:center}
+.item input{padding:10px 8px;font-size:15px}
+.x{border:0;background:#F4E7E5;color:#A83226;border-radius:10px;height:42px;font-size:18px;cursor:pointer}
+.add{border:1.5px dashed var(--green);background:#F3F8F4;color:var(--green);border-radius:12px;padding:10px;width:100%;font:inherit;font-weight:700;cursor:pointer}
+.logo{display:flex;align-items:center;gap:12px}
+.logo img{height:52px;max-width:120px;object-fit:contain;border:1px solid var(--line);border-radius:8px;background:#fff;display:none}
+.logo label.btn{margin:0;display:inline-block;background:#F3F8F4;border:1.5px solid var(--green);color:var(--green);border-radius:12px;padding:9px 14px;font-weight:700;cursor:pointer}
+.logo input{display:none}
+.sw{display:flex;gap:10px;margin-top:6px}
+.sw button{width:38px;height:38px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer}
+.sw button.on{box-shadow:0 0 0 3px var(--deep)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips button{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:14px;cursor:pointer}
+.chips button.on{background:var(--deep);color:#fff;border-color:var(--deep)}
+.go{display:block;width:100%;border:0;border-radius:16px;padding:16px;font:inherit;font-size:19px;font-weight:800;color:#fff;background:linear-gradient(135deg,#2E6B4E,#17301E);cursor:pointer;box-shadow:0 14px 30px -16px rgba(23,48,30,.8)}
+.out{display:none}
+.acts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0}
+.acts button{border:0;border-radius:14px;padding:13px;font:inherit;font-size:16px;font-weight:700;cursor:pointer}
+.wa{background:#25D366;color:#fff}.mail{background:#1F5FA8;color:#fff}.pdf{background:var(--deep);color:#fff}.edit{background:#fff;color:var(--deep);border:1.5px solid var(--line)!important}
+#msg{margin:-4px 0 14px}
+.q.cap{box-shadow:none!important;border-radius:0!important}
+.hint{font-size:13px;color:#6B6459;text-align:center}
+/* ---- the quote ---- */
+.q{background:#fff;width:100%;max-width:640px;margin:0 auto;border-radius:10px;overflow:hidden;box-shadow:0 20px 50px -30px rgba(0,0,0,.6);font-size:14px;color:#1C1A17}
+.qh{background:var(--accent);color:#fff;padding:22px 22px 18px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.qh .t{font-family:"Frank Ruhl Libre",serif;font-size:28px;font-weight:900;line-height:1}
+.qh .s{font-size:12px;opacity:.85;margin-top:6px}
+.qh .biz{text-align:left}
+.qh .biz b{font-size:17px;display:block}
+.qh .biz small{font-size:12px;opacity:.9}
+.qh img{height:54px;max-width:120px;object-fit:contain;background:#fff;border-radius:8px;padding:4px;margin-bottom:6px}
+.qb{padding:18px 22px}
+.to{display:flex;justify-content:space-between;font-size:13px;color:#5B5349;border-bottom:1px solid #EEE6D6;padding-bottom:12px;margin-bottom:12px}
+.to b{color:#1C1A17;font-size:15px}
+table{width:100%;border-collapse:collapse}
+th{font-size:12px;color:#6B6459;text-align:right;padding:8px 6px;border-bottom:2px solid var(--accent)}
+td{padding:10px 6px;border-bottom:1px solid #F0EADF;vertical-align:top}
+td.n,th.n{text-align:left;white-space:nowrap}
+.tot{margin-top:12px;margin-right:auto;width:62%;min-width:220px}
+.tot div{display:flex;justify-content:space-between;padding:5px 0;font-size:14px}
+.tot .big{border-top:2px solid var(--accent);margin-top:6px;padding-top:10px;font-size:19px;font-weight:800;color:var(--accent)}
+.notes{margin-top:16px;background:#FAF8F2;border-radius:10px;padding:12px 14px;font-size:13px;color:#3A342C;white-space:pre-wrap}
+.sig{margin-top:18px;display:flex;justify-content:space-between;align-items:flex-end;font-size:13px;color:#5B5349}
+.sig .line{border-top:1px solid #9E968A;width:150px;text-align:center;padding-top:4px}
+.qf{background:#F4F1EA;color:#8A8274;font-size:10.5px;text-align:center;padding:7px}
+.ft{text-align:center;font-size:13px;color:#6B6459;padding:18px 16px 30px}
+.ft a{color:var(--green);font-weight:700}
+@media print{
+ body{background:#fff}
+ .top,.wrap>.card,.go,.acts,.hint,.ft,.formonly{display:none!important}
+ .out{display:block!important}
+ .q{box-shadow:none;border-radius:0;max-width:none}
+ @page{size:A4;margin:12mm}
+}
+</style>
+</head>
+<body>
+<div class="top">
+ <div class="b">בס"ד</div>
+ <h1>מחולל הצעות מחיר ✨</h1>
+ <p>ממלאים, לוחצים, ומקבלים הצעת מחיר מעוצבת עם השם והלוגו שלכם</p>
+</div>
+
+<div class="wrap">
+ <div class="card formonly">
+  <h2><span>1</span>העסק שלכם</h2>
+  <label>שם העסק</label><input id="biz" placeholder="למשל: דפוס כהן">
+  <div class="row2">
+   <div><label>טלפון</label><input id="phone" inputmode="tel" placeholder="050-0000000"></div>
+   <div><label>סוג עוסק</label><select id="vat"><option value="0">עוסק פטור (בלי מע״מ)</option><option value="18">עוסק מורשה (+18% מע״מ)</option></select></div>
+  </div>
+  <label>לוגו (לא חובה)</label>
+  <div class="logo"><label class="btn" for="logoIn">📷 להעלות לוגו</label><input type="file" id="logoIn" accept="image/*"><img id="logoPrev" alt="לוגו"></div>
+  <label>צבע ההצעה</label>
+  <div class="sw" id="sw"></div>
+ </div>
+
+ <div class="card formonly">
+  <h2><span>2</span>ההצעה</h2>
+  <div class="row2">
+   <div><label>עבור (שם הלקוח)</label><input id="client" placeholder="למשל: משפחת לוי"></div>
+   <div><label>נושא</label><input id="subject" placeholder="למשל: הדפסת הזמנות"></div>
+  </div>
+  <label>מה כלול (תיאור · כמות · מחיר ליחידה)</label>
+  <div id="items"></div>
+  <button class="add" id="addItem">+ להוסיף שורה</button>
+  <label>הערות ותנאים</label>
+  <textarea id="notes" rows="3"></textarea>
+  <label>ההצעה בתוקף ל-</label>
+  <div class="chips" id="valid"></div>
+ </div>
+
+ <button class="go" id="make">✨ צור הצעת מחיר</button>
+
+ <div class="out" id="out">
+  <div class="acts">
+   <button class="pdf" id="pdf">📄 הורדת PDF</button>
+   <button class="edit" id="edit">✏️ לחזור ולערוך</button>
+  </div>
+  <p class="hint" id="msg">הקובץ יורד לטלפון או למחשב, ומשם שולחים אותו ללקוח בוואטסאפ או במייל 🙂</p>
+  <div class="q" id="q"></div>
+  <p class="hint">ההצעה נוצרת רק אצלכם בטלפון. שום דבר לא נשמר אצלנו.</p>
+ </div>
+</div>
+
+<div class="ft">מתנה מ<b>סדר בעסק</b> · מיטל עסיסי · מזכירה מרחוק ומערכות שעושות את העבודה לבד<br>
+<a href="https://wa.me/972548499973?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%9E%D7%97%D7%95%D7%9C%D7%9C%20%D7%94%D7%A6%D7%A2%D7%95%D7%AA%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%20%F0%9F%99%82">רוצים שגם הניירת תעשה את עצמה? דברו איתי 💬</a></div>
+
+<script>
+var THEMES=['#2E6B4E','#1F3A5F','#7A2E4A','#8F6F2E','#2B2620'];
+var accent=THEMES[0], valid=30, logo='';
+var $=function(id){return document.getElementById(id)};
+function store(k,v){try{localStorage.setItem('sq_'+k,v)}catch(e){}}
+function load(k){try{return localStorage.getItem('sq_'+k)||''}catch(e){return ''}}
+function money(n){var d=Math.round(n*100)%100?2:0;return n.toLocaleString('he-IL',{minimumFractionDigits:d,maximumFractionDigits:d})+' ₪'}
+function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+/* swatches */
+THEMES.forEach(function(c,i){var b=document.createElement('button');b.style.background=c;b.type='button';if(i===0)b.className='on';
+ b.onclick=function(){accent=c;[].forEach.call($('sw').children,function(x){x.className=''});b.className='on';store('accent',c)};$('sw').appendChild(b)});
+/* validity chips */
+[7,14,30].forEach(function(d){var b=document.createElement('button');b.type='button';b.textContent=d+' יום';if(d===30)b.className='on';
+ b.onclick=function(){valid=d;[].forEach.call($('valid').children,function(x){x.className=''});b.className='on'};$('valid').appendChild(b)});
+/* items */
+function addItem(desc,qty,price){var r=document.createElement('div');r.className='item';
+ r.innerHTML='<input placeholder="תיאור" value="'+esc(desc||'')+'"><input inputmode="decimal" placeholder="כמות" value="'+(qty||1)+'"><input inputmode="decimal" placeholder="מחיר" value="'+(price||'')+'"><button class="x" type="button">×</button>';
+ r.querySelector('.x').onclick=function(){if($('items').children.length>1)r.remove()};$('items').appendChild(r)}
+addItem('');
+$('addItem').onclick=function(){addItem('')};
+/* logo */
+$('logoIn').onchange=function(e){var f=e.target.files[0];if(!f)return;var rd=new FileReader();rd.onload=function(){logo=rd.result;$('logoPrev').src=logo;$('logoPrev').style.display='block';store('logo',logo)};rd.readAsDataURL(f)};
+/* remember business details */
+['biz','phone','vat','notes'].forEach(function(k){var v=load(k);if(v)$(k).value=v;$(k).addEventListener('change',function(){store(k,$(k).value)})});
+if(!$('notes').value)$('notes').value='התשלום עם סיום העבודה.\nנשמח לענות על כל שאלה 🙂';
+logo=load('logo');if(logo){$('logoPrev').src=logo;$('logoPrev').style.display='block'}
+var a=load('accent');if(a&&THEMES.indexOf(a)>-1){accent=a;[].forEach.call($('sw').children,function(x,i){x.className=THEMES[i]===a?'on':''})}
+
+function build(){
+ var rows=[].map.call($('items').children,function(r){var i=r.querySelectorAll('input');return{d:i[0].value.trim(),q:parseFloat(i[1].value)||0,p:parseFloat(String(i[2].value).replace(/[^\d.]/g,''))||0}}).filter(function(x){return x.d||x.p});
+ if(!$('biz').value.trim()){alert('נא למלא את שם העסק');$('biz').focus();return false}
+ if(!rows.length){alert('נא להוסיף לפחות שורה אחת עם מחיר');return false}
+ var sub=rows.reduce(function(s,x){return s+x.q*x.p},0), vat=+$('vat').value, v=sub*vat/100;
+ var today=new Date(), num=today.getFullYear()+''+String(today.getMonth()+1).padStart(2,'0')+'-'+String(Math.floor(Math.random()*900)+100);
+ var dt=today.toLocaleDateString('he-IL'); var until=new Date(today.getTime()+valid*86400000).toLocaleDateString('he-IL');
+ document.documentElement.style.setProperty('--accent',accent);
+ $('q').innerHTML=
+  '<div class="qh"><div><div class="t">הצעת מחיר</div><div class="s">מס׳ '+num+' · '+dt+'</div></div>'+
+  '<div class="biz">'+(logo?'<img src="'+logo+'"><br>':'')+'<b>'+esc($('biz').value)+'</b><small>'+esc($('phone').value)+'</small></div></div>'+
+  '<div class="qb"><div class="to"><div>עבור<br><b>'+esc($('client').value||'—')+'</b></div><div style="text-align:left">'+(esc($('subject').value)||'')+'<br>בתוקף עד '+until+'</div></div>'+
+  '<table><thead><tr><th>תיאור</th><th class="n">כמות</th><th class="n">מחיר</th><th class="n">סה״כ</th></tr></thead><tbody>'+
+  rows.map(function(x){return '<tr><td>'+esc(x.d)+'</td><td class="n">'+x.q+'</td><td class="n">'+money(x.p)+'</td><td class="n"><b>'+money(x.q*x.p)+'</b></td></tr>'}).join('')+
+  '</tbody></table><div class="tot">'+(vat?'<div><span>לפני מע״מ</span><span>'+money(sub)+'</span></div><div><span>מע״מ '+vat+'%</span><span>'+money(v)+'</span></div>':'')+
+  '<div class="big"><span>סה״כ לתשלום</span><span>'+money(sub+v)+'</span></div>'+(vat?'':'<div style="font-size:11px;color:#8A8274;justify-content:flex-end">עוסק פטור · ללא מע״מ</div>')+'</div>'+
+  ($('notes').value.trim()?'<div class="notes">'+esc($('notes').value)+'</div>':'')+
+  '<div class="sig"><div>בברכה,<br><b>'+esc($('biz').value)+'</b></div><div class="line">אישור הלקוח</div></div></div>'+
+  '<div class="qf">נוצר בחינם במחולל של סדר בעסק · מיטל עסיסי · 054-8499973</div>';
+ return true}
+
+$('make').onclick=function(){if(!build())return;$('out').style.display='block';$('make').style.display='none';[].forEach.call(document.querySelectorAll('.formonly'),function(c){c.style.display='none'});window.scrollTo({top:0,behavior:'smooth'})};
+$('edit').onclick=function(){$('out').style.display='none';$('make').style.display='block';[].forEach.call(document.querySelectorAll('.formonly'),function(c){c.style.display='block'})};
+$('pdf').onclick=function(){
+ var btn=$('pdf'); var name='הצעת מחיר - '+($('client').value.trim()||$('biz').value.trim()||'לקוח')+'.pdf';
+ if(typeof html2canvas!=='function'||!window.jspdf){window.print();return}
+ btn.disabled=true; btn.textContent='⏳ מכין את הקובץ...'; $('q').classList.add('cap');
+ html2canvas($('q'),{scale:2,backgroundColor:'#ffffff',useCORS:true}).then(function(cv){
+  var pdf=new window.jspdf.jsPDF({unit:'mm',format:'a4'});
+  var w=190, h=cv.height*w/cv.width, maxH=277;
+  if(h>maxH){w=w*maxH/h;h=maxH}
+  pdf.addImage(cv.toDataURL('image/jpeg',0.92),'JPEG',(210-w)/2,10,w,h);
+  pdf.save(name);
+ }).catch(function(){window.print()}).then(function(){$('q').classList.remove('cap');btn.disabled=false;btn.textContent='📄 הורדת PDF'})};
+</script>
+</body>
+</html>
