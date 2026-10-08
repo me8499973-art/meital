@@ -80,6 +80,7 @@ td.n,th.n{text-align:left;white-space:nowrap}
  @page{size:A4;margin:12mm}
 }
 </style>
+<script data-goatcounter="https://sederbaesek.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <div class="top">
@@ -131,7 +132,7 @@ td.n,th.n{text-align:left;white-space:nowrap}
 </div>
 
 <div class="ft">מתנה מ<b>סדר בעסק</b> · מיטל עסיסי · מזכירה מרחוק ומערכות שעושות את העבודה לבד<br>
-<a href="https://wa.me/972548499973?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%9E%D7%97%D7%95%D7%9C%D7%9C%20%D7%94%D7%A6%D7%A2%D7%95%D7%AA%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%20%F0%9F%99%82">רוצים שגם הניירת תעשה את עצמה? דברו איתי 💬</a></div>
+<a onclick="track('לחיצה-וואטסאפ')" href="https://wa.me/972548499973?text=%D7%94%D7%99%D7%99%2C%20%D7%94%D7%92%D7%A2%D7%AA%D7%99%20%D7%93%D7%A8%D7%9A%20%D7%9E%D7%97%D7%95%D7%9C%D7%9C%20%D7%94%D7%A6%D7%A2%D7%95%D7%AA%20%D7%94%D7%9E%D7%97%D7%99%D7%A8%20%F0%9F%99%82">רוצים שגם הניירת תעשה את עצמה? דברו איתי 💬</a></div>
 
 <script>
 var THEMES=['#2E6B4E','#1F3A5F','#7A2E4A','#8F6F2E','#2B2620'];
@@ -140,6 +141,7 @@ var $=function(id){return document.getElementById(id)};
 function store(k,v){try{localStorage.setItem('sq_'+k,v)}catch(e){}}
 function load(k){try{return localStorage.getItem('sq_'+k)||''}catch(e){return ''}}
 function money(n){var d=Math.round(n*100)%100?2:0;return n.toLocaleString('he-IL',{minimumFractionDigits:d,maximumFractionDigits:d})+' ₪'}
+function track(n){try{window.goatcounter&&window.goatcounter.count&&window.goatcounter.count({path:n,title:n,event:true})}catch(e){}}
 function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 
 /* swatches */
@@ -183,10 +185,10 @@ function build(){
   '<div class="qf">נוצר בחינם במחולל של סדר בעסק · מיטל עסיסי · 054-8499973</div>';
  return true}
 
-$('make').onclick=function(){if(!build())return;$('out').style.display='block';$('make').style.display='none';[].forEach.call(document.querySelectorAll('.formonly'),function(c){c.style.display='none'});window.scrollTo({top:0,behavior:'smooth'})};
+$('make').onclick=function(){if(!build())return;track('הצעה-נוצרה');$('out').style.display='block';$('make').style.display='none';[].forEach.call(document.querySelectorAll('.formonly'),function(c){c.style.display='none'});window.scrollTo({top:0,behavior:'smooth'})};
 $('edit').onclick=function(){$('out').style.display='none';$('make').style.display='block';[].forEach.call(document.querySelectorAll('.formonly'),function(c){c.style.display='block'})};
 $('pdf').onclick=function(){
- var btn=$('pdf'); var name='הצעת מחיר - '+($('client').value.trim()||$('biz').value.trim()||'לקוח')+'.pdf';
+ track('PDF-הורד'); var btn=$('pdf'); var name='הצעת מחיר - '+($('client').value.trim()||$('biz').value.trim()||'לקוח')+'.pdf';
  if(typeof html2canvas!=='function'||!window.jspdf){window.print();return}
  btn.disabled=true; btn.textContent='⏳ מכין את הקובץ...'; $('q').classList.add('cap');
  html2canvas($('q'),{scale:2,backgroundColor:'#ffffff',useCORS:true}).then(function(cv){
