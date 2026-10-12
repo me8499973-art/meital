@@ -47,6 +47,16 @@ section{margin:34px 0}
 .videos video{width:100%;display:block;background:#000;aspect-ratio:9/16;max-height:520px}
 .videos figcaption{padding:10px 12px 12px;font-weight:800;font-size:15.5px}
 .videos small{display:block;font-weight:500;color:var(--muted);font-size:14px;margin-top:2px}
+.timeline{display:grid;gap:12px}
+.timeline>div{display:flex;gap:12px;align-items:flex-start;font-size:16.5px;line-height:1.5}
+.timeline .dot{flex:0 0 32px;height:32px;border-radius:16px;background:var(--soft);color:var(--green);font-weight:800;display:flex;align-items:center;justify-content:center}
+.faq{display:grid;gap:10px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 18px}
+.faq summary{font-weight:800;font-size:17px;cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"◂";display:inline-block;width:22px;color:var(--green);font-weight:800;transition:transform .2s}
+.faq details[open] summary::before{transform:rotate(-90deg)}
+.faq p{margin:8px 22px 0 0;color:var(--muted);line-height:1.55;font-size:16px}
 .recs{display:grid;gap:12px}
 .rec{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px;position:relative}
 .rec q{font-family:"Frank Ruhl Libre",serif;font-weight:700;font-size:20px;line-height:1.45;quotes:"״" "״"}
@@ -105,6 +115,28 @@ footer a{color:var(--green);font-weight:700;text-decoration:none}
     <div class="card facts" style="margin-top:12px">
       <div>💰 <span><b>מחיר חודשי קבוע, לפי היקף העבודה.</b> יודעים מראש כמה משלמים, בלי הפתעות.</span></div>
       <div>🔓 <span><b>אפשר להפסיק בסוף כל חודש,</b> בלי התחייבות.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>מה קורה בחודש הראשון</h2>
+    <div class="card timeline">
+      <div><span class="dot">1</span><span><b>שיחת היכרות של 10 דקות.</b> אני שואלת 3 שאלות על העסק. בלי תשלום ובלי התחייבות.</span></div>
+      <div><span class="dot">2</span><span><b>הצעה כתובה.</b> מה בדיוק אני עושה, ובאיזה מחיר חודשי קבוע.</span></div>
+      <div><span class="dot">3</span><span><b>שבוע ראשון:</b> אני לומדת איך העסק עובד ומסדרת את כל המידע במקום אחד.</span></div>
+      <div><span class="dot">4</span><span><b>שבוע שני:</b> התזכורות ומעקב התשלומים כבר עובדים.</span></div>
+      <div><span class="dot">5</span><span><b>סוף החודש:</b> סיכום מצב ראשון. ממשיכים, או עוצרים בלי התחייבות.</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>שאלות שכולם שואלים</h2>
+    <div class="faq">
+      <details><summary>אני אתחייב לתקופה ארוכה?</summary><p>לא. אפשר להפסיק בסוף כל חודש, בלי התחייבות.</p></details>
+      <details><summary>יישלח משהו ללקוחות שלי בלי שאדע?</summary><p>לא. שום הודעה לא יוצאת ללקוח בלי האישור שלכם.</p></details>
+      <details><summary>אני לא טכנולוגי/ת. אסתדר?</summary><p>כן. אני מקימה הכל, מלמדת, ונשארת זמינה בוואטסאפ. לא צריך לדעת כלום מראש.</p></details>
+      <details><summary>איך אדע שזה באמת עובד?</summary><p>במרכז חינוכי שעבדתי איתו, סגירת החודש ירדה מ-6 שעות ללחיצה אחת. ובסוף כל חודש מקבלים סיכום מצב.</p></details>
+      <details><summary>כמה זה עולה?</summary><p>מחיר חודשי קבוע, לפי היקף העבודה. יודעים אותו מראש, בהצעה הכתובה, לפני שמתחילים.</p></details>
     </div>
   </section>
 
