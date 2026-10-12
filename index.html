@@ -2,231 +2,239 @@
 <html lang="he" dir="rtl">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>מיטל עסיסי · עושה לך סדר</title>
-<meta name="description" content="מזכירה ועוזרת אישית מרחוק, עם 14 שנות ניסיון, ואוטומציות לעסקים קטנים. סרטונים והמלצות.">
-<meta property="og:title" content="מיטל עסיסי · עושה לך סדר">
-<meta property="og:description" content="מזכירה ועוזרת אישית מרחוק, ואוטומציות שעושות סדר בעסק.">
-<meta property="og:image" content="poster-office.jpg">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700&family=Assistant:wght@300;400;600;700&family=Heebo:wght@500;700&display=swap">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מיטל עסיסי · סדר בעסק</title>
+<meta name="description" content="2 דקות של שאלות על העסק שלכם, ואני חוזרת אליכם עם הצעה מותאמת. מיטל עסיסי · סדר בעסק">
+<meta property="og:title" content="מיטל עסיסי · סדר בעסק">
+<meta property="og:image" content="poster-help.jpg">
+<meta property="og:description" content="ספרו לי בכתב מה מעמיס עליכם בעסק, ואחזור אליכם עם הצעה מותאמת">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --ground:#F4F2EA; --paper:#FFFDF7; --line:#E3DFD2; --ink:#17301E; --text:#33443A; --muted:#667068;
-  --green:#2E6B4E; --green-soft:#E6EFE8; --gold:#B08832; --gold-deep:#8F6F2E; --gold-soft:#F5EDDA;
-}
+:root{--ink:#17301E;--green:#2E6B4E;--ok:#2E8B57;--gold:#8F6F2E;--gold2:#A8822F;--bg:#F6F4EE;--card:#FFFFFF;--muted:#5E6A61;--line:#E3E0D6;--soft:#EEF4EF;--sand:#FFF6E3}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--ground);color:var(--text);font-family:'Assistant',system-ui,Arial,sans-serif;font-size:17px;line-height:1.65;padding-inline:18px;padding-block:0 60px}
-.wrap{max-width:760px;margin:0 auto}
-h1,h2,h3{font-family:'Frank Ruhl Libre',Georgia,serif;color:var(--ink);font-weight:700;text-wrap:balance;margin:0}
-.num{font-family:'Heebo',Arial,sans-serif;font-variant-numeric:tabular-nums}
-a{color:var(--green)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-
-/* hero */
-.hero{padding-block:48px 34px;text-align:center}
-.hero svg{display:block;margin:0 auto 14px}
-.hero .kick{font-size:14px;letter-spacing:.22em;color:var(--gold);font-weight:700}
-.hero h1{font-size:clamp(40px,10vw,64px);line-height:1.05;margin-top:8px}
-.hero h1 em{font-style:normal;color:var(--green)}
-.hero p{max-width:34ch;margin:14px auto 0;font-size:19px;color:var(--text)}
-.cta-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;border-radius:14px;padding:12px 22px;font-size:17px}
-.btn.wa{background:var(--green);color:#fff}
-.btn.ghost{background:var(--paper);color:var(--ink);border:1px solid var(--line)}
-
-section{margin-top:56px}
-.eyebrow{font-size:13px;letter-spacing:.2em;color:var(--gold);font-weight:700}
-section h2{font-size:clamp(28px,6vw,38px);margin-top:6px;line-height:1.15}
-.lead{color:var(--muted);margin:8px 0 22px;max-width:52ch}
-
-/* offers */
-.offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-.offer{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px}
-.offer.main{border:2px solid var(--gold)}
-.offer .tag{display:inline-block;font-size:13px;font-weight:700;color:var(--gold-deep);background:var(--gold-soft);border-radius:999px;padding:2px 12px}
-.offer h3{font-size:25px;margin-top:10px}
-.offer .for{color:var(--muted);font-size:15px;margin-top:2px}
-.offer ul{list-style:none;padding:0;margin:14px 0 16px;display:grid;gap:6px}
-.offer li{display:flex;gap:10px;align-items:baseline}
-.offer li::before{content:"✓";color:var(--green);font-weight:700;flex:none}
-.price{border-top:1px solid var(--line);padding-top:12px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;color:var(--ink)}
-.price b{font-family:'Heebo',Arial,sans-serif;font-size:28px;color:var(--green)}
-.price span{color:var(--muted);font-size:15px}
-.offer ul.detail{gap:12px}
-.ways{display:grid;grid-template-columns:1fr;gap:12px;margin-top:20px}
-@media (min-width:720px){.ways{grid-template-columns:repeat(3,1fr)}}
-.way{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px}
-.way .no{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--green);color:#fff;font-family:Heebo,Arial,sans-serif;font-weight:700}
-.way h3{font-size:22px;margin-top:10px}
-.way p{margin:6px 0 0;color:var(--muted);font-size:15.5px;line-height:1.55}
-.way a{display:inline-block;margin-top:10px;font-weight:700;text-decoration:none}
-.note{margin-top:14px;background:var(--gold-soft);border-radius:14px;padding:12px 16px;color:var(--ink);font-size:16px}
-.offer ul.detail li{display:grid;grid-template-columns:auto 1fr;column-gap:10px}
-.offer ul.detail li b{color:var(--ink);grid-column:2}
-.offer ul.detail li span{grid-column:2;color:var(--muted);font-size:15px;line-height:1.45}
-.offer ul.detail li::before{grid-row:1 / span 2}
-
-/* videos */
-.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-figure{margin:0}
-video{display:block;width:100%;max-width:100%;aspect-ratio:9/16;border-radius:16px;background:#17301E;box-shadow:0 18px 36px -24px rgba(23,48,30,.6)}
-figcaption{font-weight:700;color:var(--ink);margin-top:8px;font-size:16px}
-figcaption small{display:block;font-weight:400;color:var(--muted);font-size:14px}
-
-/* demo */
-.demo{background:var(--green);color:#EDF3EE;border-radius:20px;padding:26px 22px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.demo h2{color:#fff;font-size:28px}
-.demo p{margin:6px 0 0;color:#CFE3D6;max-width:40ch}
-.demo a{background:#F5EDDA;color:var(--ink);text-decoration:none;font-weight:700;border-radius:14px;padding:12px 22px;white-space:nowrap}
-
-/* story */
-.story{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px}
-.story .from,.story .to{text-align:center}
-.story .big{font-family:'Frank Ruhl Libre',Georgia,serif;font-weight:700;font-size:clamp(30px,7vw,44px);line-height:1.1}
-.story .from .big{color:var(--muted);text-decoration:line-through;text-decoration-color:var(--gold);text-decoration-thickness:3px}
-.story .to .big{color:var(--green)}
-.story small{display:block;color:var(--muted);font-size:14px;margin-top:4px}
-.story .arrow{color:var(--gold);font-size:30px}
-@media (max-width:480px){.story{grid-template-columns:1fr}.story .arrow{transform:rotate(-90deg);justify-self:center}}
-
-/* quotes */
-.quotes{display:grid;gap:16px}
-blockquote{margin:0;background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:24px 24px 20px;position:relative}
-blockquote::before{content:"”";position:absolute;top:-6px;inset-inline-start:18px;font-family:'Frank Ruhl Libre',Georgia,serif;font-size:80px;line-height:1;color:var(--gold)}
-blockquote .pull{font-family:'Frank Ruhl Libre',Georgia,serif;font-size:24px;font-weight:700;color:var(--ink);line-height:1.3;margin:18px 0 10px}
-blockquote p{margin:0 0 10px}
-blockquote footer{border-top:1px solid var(--line);padding-top:10px;margin-top:6px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
-blockquote footer b{color:var(--ink)}
-blockquote footer span{color:var(--muted);font-size:14px}
-.stars{color:var(--gold);letter-spacing:2px}
-.verified{margin-top:14px;font-size:15px;color:var(--muted)}
-
-/* closing */
-.close{margin-top:60px;text-align:center;background:var(--ink);color:#EDF3EE;border-radius:22px;padding:34px 20px}
-.close h2{color:#fff;font-size:clamp(28px,6vw,36px)}
-.close p{color:#B9CBBE;margin:8px auto 20px;max-width:40ch}
-.close .btn.wa{background:#D8B570;color:var(--ink)}
-.close .btn.ghost{background:transparent;color:#EDF3EE;border-color:#3E5A48}
-.sign{margin-top:18px;font-size:14px;color:#93AA9B}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Heebo,Arial,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0 6px}
+.bsd{color:var(--gold2);font-weight:700;font-size:14px}
+.mark{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:22px}
+.mark .a{color:var(--green)}.mark .b{color:var(--gold)}
+h1{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:clamp(32px,8vw,46px);line-height:1.15;margin:18px 0 10px}
+h1 em{font-style:normal;color:var(--ok)}
+h2{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:28px;margin:0 0 14px}
+.lead{font-size:18px;line-height:1.6;color:var(--muted);margin:0 0 18px}
+.cta{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;font-weight:800;font-size:18px;padding:14px 26px;border-radius:999px}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}
+.steps span{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:700}
+section{margin:34px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px}
+.facts{display:grid;gap:10px}
+.facts div{display:flex;gap:10px;align-items:flex-start;font-size:16.5px;line-height:1.5}
+.facts b{color:var(--gold)}
+.ways{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.way{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}
+.way .n{width:34px;height:34px;border-radius:17px;background:var(--soft);color:var(--green);font-weight:800;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
+.way h3{margin:0 0 4px;font-size:18px}.way p{margin:0;color:var(--muted);font-size:15px;line-height:1.5}
+.note{margin-top:10px;font-weight:700;color:var(--green)}
+.works{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.work{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.work img{width:100%;height:190px;object-fit:cover;object-position:50% 70%;display:block;background:#eee}
+.work div{padding:10px 12px 12px;font-size:14.5px;line-height:1.45}
+.work b{display:block;font-size:15.5px;margin-bottom:2px}
+.work a{color:var(--green);font-weight:700}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.videos figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.videos video{width:100%;display:block;background:#000;aspect-ratio:9/16;max-height:520px}
+.videos figcaption{padding:10px 12px 12px;font-weight:800;font-size:15.5px}
+.videos small{display:block;font-weight:500;color:var(--muted);font-size:14px;margin-top:2px}
+.recs{display:grid;gap:12px}
+.rec{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px;position:relative}
+.rec q{font-family:"Frank Ruhl Libre",serif;font-weight:700;font-size:20px;line-height:1.45;quotes:"״" "״"}
+.rec .who{margin-top:8px;font-weight:800;color:var(--gold);font-size:14.5px}
+.rec .who span{color:var(--muted);font-weight:500}
+/* form */
+form .q{margin:0 0 22px}
+form label.t{display:block;font-weight:800;font-size:17px;margin-bottom:8px}
+form .hint{font-weight:500;color:var(--muted);font-size:14px}
+input[type=text],input[type=tel],input[type=email],textarea{width:100%;font:inherit;font-size:16px;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--green)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{cursor:pointer}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips span{display:inline-block;padding:9px 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-size:15.5px;font-weight:600;user-select:none}
+.chips input:checked+span{background:var(--green);border-color:var(--green);color:#fff}
+.chips input:focus-visible+span{outline:2px solid var(--gold2)}
+.err{color:#B23B3B;font-weight:700;font-size:14.5px;min-height:20px;margin:4px 0 10px}
+.send{display:grid;gap:10px}
+.send button{font:inherit;font-weight:800;font-size:18px;border:0;border-radius:999px;padding:15px 20px;cursor:pointer}
+.wa{background:#25D366;color:#073B22}
+.mail{background:#fff;color:var(--ink);border:1.5px solid var(--line)!important}
+.small{font-size:13.5px;color:var(--muted);line-height:1.5;margin-top:10px}
+footer{padding:24px 0 40px;color:var(--muted);font-size:14px;text-align:center;line-height:1.8}
+footer a{color:var(--green);font-weight:700;text-decoration:none}
 </style>
 </head>
 <body>
 <div class="wrap">
+  <div class="top"><div class="mark"><span class="a">סדר</span> <span class="b">בעסק</span></div><div class="bsd">בס"ד</div></div>
 
-<header class="hero">
-  <svg width="120" height="46" viewBox="0 0 240 90" fill="none" aria-hidden="true"><path d="M20 74H220" stroke="#B08832" stroke-width="6" stroke-linecap="round"/><path d="M120 74V24" stroke="#B08832" stroke-width="6" stroke-linecap="round"/><path d="M120 46C104 46 94 38 92 26C106 24 117 32 120 46Z" fill="#2E6B4E"/><path d="M120 38C136 38 146 30 148 18C134 16 123 24 120 38Z" fill="#2E6B4E" opacity=".7"/></svg>
-  <div class="kick">מיטל עסיסי</div>
-  <h1>עושה לך <em>סדר.</em></h1>
-  <p>מזכירה ועוזרת אישית מרחוק, עם 14 שנות ניסיון. ובונה אוטומציות שעושות את העבודה החוזרת לבד.</p>
-  <div class="cta-row">
-    <a class="btn wa" href="https://wa.me/972548499973?text=%D7%94%D7%99%D7%99%20%D7%9E%D7%99%D7%98%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA%20%D7%A9%D7%9C%D7%9A%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener">כתבו לי בוואטסאפ</a>
-    <a class="btn ghost" href="tel:+972548499973">או להתקשר: <span dir="ltr" class="num">054-8499973</span></a>
-  </div>
-</header>
+  <h1>ספרו לי על העסק,<br>ואחזור אליכם עם <em>הצעה מותאמת</em></h1>
+  <p class="lead">אני מיטל עסיסי, סדר בעסק. אני עוזרת לבעלי עסקים לנהל את השוטף, כדי שיוכלו להתפנות להגדלת העסק.
+  לא נוח לכם לדבר בטלפון? כאן אפשר לספר לי הכל בכתב, בזמן שלכם.</p>
+  <a class="cta" href="#form">לשאלון (2 דקות) ↓</a>
+  <div class="steps"><span>1. ממלאים שאלון קצר</span><span>2. אני לומדת את העסק</span><span>3. חוזרת אליכם עם הצעה</span></div>
 
-<section id="ways">
-  <div class="eyebrow">איך עובדים איתי</div>
-  <h2>שלוש דרכים, לפי מה שהעסק צריך</h2>
-  <div class="ways">
-    <div class="way"><span class="no">1</span><h3>מזכירה ועוזרת אישית</h3><p>אני לוקחת את העבודה המשרדית השוטפת ועושה אותה בשבילכם, מרחוק.</p><a href="#services">מה זה כולל ←</a></div>
-    <div class="way"><span class="no">2</span><h3>מערכת או אוטומציה בלבד</h3><p>אני בונה ומתקינה אצלכם, מלמדת, ואתם משתמשים בה לבד. בלי צורך להעסיק אותי.</p><a href="#videos">לראות איך זה נראה ←</a></div>
-    <div class="way"><span class="no">3</span><h3>שילוב של שניהם</h3><p>מערכת שעושה סדר, ואני מפעילה אותה בשבילכם: מעקב, תזכורות וסיכום חודשי.</p></div>
-  </div>
-  <div class="note">לא חייבים לקחת הכל. אפשר להתחיל מדבר אחד, ולהוסיף כשמתאים.</div>
-</section>
-
-<section id="services">
-  <div class="eyebrow">מזכירות ועוזרת אישית</div>
-  <h2>כל הצד המשרדי של העסק, בידיים אמינות</h2>
-  <p class="lead">אני לוקחת על עצמי את מה שמחזיק את העסק מאחורי הקלעים, כדי שאתם תתפנו לעבודה עצמה. 14 שנה באדמיניסטרציה, שירות לקוחות, גבייה והנהלת חשבונות, מתוכן 9 שנים במחלקת הכספים של מגדל. עובדת מרחוק, וזמינה בטלפון, במייל ובוואטסאפ.</p>
-  <div class="offers">
-    <div class="offer main">
-      <span class="tag">שוטף</span>
-      <h3>מזכירה ועוזרת אישית</h3>
-      <ul class="detail">
-        <li><b>ניהול יומן ותיאום פגישות</b><span>קביעה, שינוי ותזכורות, כך שאף פגישה לא נופלת בין הכיסאות</span></li>
-        <li><b>מענה ללקוחות</b><span>בטלפון, במייל ובוואטסאפ, באדיבות ובזמן</span></li>
-        <li><b>חזרה לפניות ולקוחות פוטנציאליים</b><span>מעקב אחרי כל פנייה ותיאום שיחות, עד שהיא נסגרת</span></li>
-        <li><b>מעקב תשלומים וגבייה</b><span>מי שילם, מי עוד לא, ותזכורות בנוסח נעים ומכבד</span></li>
-        <li><b>הצעות מחיר, מכתבים ומסמכים</b><span>ניסוח, עריכה ושליחה, בעברית ברורה ומסודרת</span></li>
-        <li><b>הזנת נתונים וסדר בקבצים</b><span>אקסל, גוגל שיטס ו-SAP, כולל בדיקה שהכל נכון</span></li>
-        <li><b>הכנת חומר לרואה החשבון</b><span>ניסיון של מנהלת חשבונות סוג 1 והתאמות בנקים</span></li>
-      </ul>
+  <section>
+    <h2>מי אני</h2>
+    <div class="card facts">
+      <div>✓ <span><b>14 שנה בתחום</b>, ניהלתי צוות שירות לקוחות של 8 עובדים</span></div>
+      <div>✓ <span>הנהלת חשבונות סוג 1, מחלקת כספים בחברת ביטוח מגדל, ביקורת שכר וגבייה</span></div>
+      <div>✓ <span>בונה לעסקים קטנים מערכות שעושות חלק מהעבודה לבד: תזכורות, גבייה, לידים, סגירת חודש</span></div>
     </div>
-    <div class="offer">
-      <span class="tag">מה שמייחד אותי</span>
-      <h3>אוטומציות לעסק</h3>
-      <ul>
-        <li>תזכורות ללקוחות במייל או בוואטסאפ</li>
-        <li>מעקב גבייה ותזכורות תשלום, במייל או בוואטסאפ</li>
-        <li>שעות ושכר מחושבים ישר מהיומן</li>
-        <li>פניות נכנסות לבד לרשימה, ותשובה ראשונה במייל או בוואטסאפ</li>
-        <li><b style="color:var(--ink)">עוזרת וירטואלית</b> שעונה בעברית על שאלות מתוך המערכת</li>
-        <li>עובד מהטלפון ומהמחשב</li>
-      </ul>
+  </section>
+
+  <section>
+    <h2>3 דרכים לעבוד איתי</h2>
+    <div class="ways">
+      <div class="way"><div class="n">1</div><h3>מזכירה מרחוק</h3><p>אני עושה בשבילכם את השוטף: מעקבים, תזכורות, גבייה ותיאומים.</p></div>
+      <div class="way"><div class="n">2</div><h3>מערכת שעושה את זה לבד</h3><p>בונה לכם מערכת לפי איך שהעסק שלכם עובד, בלי צורך להעסיק אותי.</p></div>
+      <div class="way"><div class="n">3</div><h3>גם וגם</h3><p>מערכת שעובדת, ואני מלווה אותה בכל חודש.</p></div>
     </div>
-  </div>
-</section>
+    <div class="note">לא חייבים לקחת הכל. בוחרים מה שמתאים לכם.</div>
+    <div class="card facts" style="margin-top:12px">
+      <div>💰 <span><b>מחיר חודשי קבוע, לפי היקף העבודה.</b> יודעים מראש כמה משלמים, בלי הפתעות.</span></div>
+      <div>🔓 <span><b>אפשר להפסיק בסוף כל חודש,</b> בלי התחייבות.</span></div>
+    </div>
+  </section>
 
-<section id="videos">
-  <div class="eyebrow">בסרטונים</div>
-  <h2>ככה זה נראה בפועל</h2>
-  <p class="lead">בלי מצגות ובלי הבטחות. אלה המסכים עצמם, עם נתונים לדוגמה.</p>
-  <div class="videos">
-    <figure>
-      <video controls playsinline preload="none" poster="poster-office.jpg" src="video-office.mp4"></video>
-      <figcaption>מערכת ניהול לעסק עם עובדים<small>לוח, עוזרת וירטואלית, פניות, גבייה במייל ושכר מהיומן · דקה</small></figcaption>
-    </figure>
-    <figure>
-      <video controls playsinline preload="none" poster="poster-small.jpg" src="video-small.mp4"></video>
-      <figcaption>מערכת לעסק קטן<small>תזכורות במייל או בוואטסאפ, לקוחות שלא חזרו ומי שילם · חצי דקה</small></figcaption>
-    </figure>
-  </div>
-</section>
+  <section>
+    <h2>מה בניתי</h2>
+    <div class="works">
+      <div class="work"><img src="afyun/dash.png" alt="מרכז הבקרה של העסק" loading="lazy"><div><b>מרכז הבקרה של העסק</b>לקוחות, גבייה, לידים ומשימות במסך אחד.</div></div>
+      <div class="work"><img src="afyun/assist.png" alt="עוזרת שעונה על שאלות" loading="lazy"><div><b>עוזרת שעונה על שאלות</b>שואלים "כמה חייבים לי?" ומקבלים תשובה מהמערכת.</div></div>
+      <div class="work"><img src="afyun/ladder.png" alt="מסלול גבייה" loading="lazy" style="object-position:50% 0"><div><b>מסלול גבייה חכם</b>תזכורות תשלום מנומסות, מוכנות לשליחה בזמן.</div></div>
+      <div class="work"><img src="afyun/bouquet.png" alt="בונה הזר" loading="lazy" style="object-position:50% 40%"><div><b>בונה הזר</b>הלקוח בונה את המוצר בעצמו ושולח לאישור לפני תשלום.</div></div>
+    </div>
+    <p class="small">ועוד: <a href="hatsaot/">מחולל הצעות מחיר חינמי</a> שכל עסק יכול להשתמש בו כבר עכשיו. (התמונות מנתוני דוגמה, לא של לקוחות אמיתיים.)</p>
+  </section>
 
-<section>
-  <div class="eyebrow">מקרה אמיתי</div>
-  <h2>מה זה עשה במרכז חינוכי</h2>
-  <p class="lead">בכל סוף חודש ספרו ידנית, מתוך היומן וקבוצות הוואטסאפ, כמה שעות לימד כל מורה. היום המורים ממשיכים לקבוע ביומן כרגיל, והמערכת מחשבת לבד.</p>
-  <div class="story">
-    <div class="from"><div class="big">6 שעות</div><small>כל סוף חודש</small></div>
-    <div class="arrow" aria-hidden="true">←</div>
-    <div class="to"><div class="big">לחיצה אחת</div><small>והשכר מחושב לכל מורה</small></div>
-  </div>
-</section>
+  <section>
+    <h2>ככה זה נראה בפועל</h2>
+    <p class="lead" style="margin-bottom:14px">המסכים עצמם, עם נתונים לדוגמה.</p>
+    <div class="videos">
+      <figure><video controls playsinline preload="none" poster="poster-help.jpg" src="video-help.mp4"></video><figcaption>איך זה עוזר לבעלי עסקים<small>כולל העוזרת שעונה על שאלות: כמה חייבים לי, מה יש מחר · דקה</small></figcaption></figure>
+      <figure><video controls playsinline preload="none" poster="poster-small.jpg" src="video-small.mp4"></video><figcaption>מערכת לעסק קטן<small>תזכורות, לקוחות שלא חזרו ומי שילם · חצי דקה</small></figcaption></figure>
+    </div>
+  </section>
 
-<section>
-  <div class="eyebrow">המלצות</div>
-  <h2>מה אומרים מי שעבדו איתי</h2>
-  <div class="quotes" style="margin-top:22px">
-    <blockquote>
-      <div class="pull">"מקצוענית אמיתית עם אחריות כוללת וכישרון מיוחד."</div>
-      <p>"בחרתי לעבוד עם מיטל בגלל המקצועיות, הכישרון, הניסיון, יכולת ההובלה, התקשורתיות, האהבה לתפקיד, והיכולת להיות שותפה בהקמה של עסק מסודר."</p>
-      <p>"זה מדהים לעבוד עם מיטל ואני אמשיך לעבוד איתה."</p>
-      <footer><div><b>ראובן ל.</b><br><span>מהנדס תוכנה לשעבר, וכיום בעלים של מרכז חינוכי באונליין</span></div><span class="stars" aria-label="5 כוכבים">★★★★★</span></footer>
-    </blockquote>
-    <blockquote>
-      <div class="pull">"מוסר עבודה יוצא דופן ויכולת ניהול משימות ביעילות מרשימה."</div>
-      <p>"מיטל עבדה בחברתנו במשך 3 שנים בתפקיד מנהלת צוות של שירות לקוחות והפגינה לאורך כל דרכה מסירות, מקצועיות וסטנדרט עבודה גבוה במיוחד."</p>
-      <p>"מדובר בעובדת יסודית מאוד, אשר יורדת לפרטים הקטנים ביותר ואינה מתפשרת על איכות השירות."</p>
-      <footer><div><b>מנהלת שירות לקוחות</b><br><span>דאטהצ'ק</span></div><span class="stars" aria-label="5 כוכבים">★★★★★</span></footer>
-    </blockquote>
-  </div>
-  <p class="verified">שתי ההמלצות פורסמו גם בפרופיל שלי באקספלייס: <a href="https://www.xplace.com/u/me8499973" target="_blank" rel="noopener">לצפייה בהמלצות המאומתות</a></p>
-</section>
+  <section>
+    <h2>מה אומרים עליי</h2>
+    <div class="recs">
+      <div class="rec"><q>מקצוענית אמיתית עם אחריות כוללת וכישרון מיוחד.</q><div class="who">ראובן ל. · <span>בעלים של מרכז חינוכי אונליין</span></div></div>
+      <div class="rec"><q>מוסר עבודה יוצא דופן, ויכולת ניהול משימות ביעילות מרשימה.</q><div class="who">מנהלת שירות לקוחות · <span>דאטהצ'ק</span></div></div>
+      <div class="rec"><q>ממש עכשיו עשיתי, זה מהמם. אלופה את</q><div class="who">ריקי אדלר · <span>מאמנת קשב, על מחולל הצעות המחיר</span></div></div>
+    </div>
+  </section>
 
-<section class="close">
-  <h2>רוצים לשמוע איך זה יעבוד אצלכם?</h2>
-  <p>שיחה קצרה, בלי התחייבות. ספרו לי מה הכי מציק לכם בעסק, ואגיד לכם בכנות אם אני יכולה לעזור.</p>
-  <div class="cta-row">
-    <a class="btn wa" href="https://wa.me/972548499973?text=%D7%94%D7%99%D7%99%20%D7%9E%D7%99%D7%98%D7%9C%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%A2%D7%91%D7%95%D7%93%D7%95%D7%AA%20%D7%A9%D7%9C%D7%9A%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93" target="_blank" rel="noopener">כתבו לי בוואטסאפ</a>
-    <a class="btn ghost" href="tel:+972548499973">או להתקשר: <span dir="ltr" class="num">054-8499973</span></a>
-  </div>
-  <div class="sign">מיטל עסיסי · עושה לך סדר</div>
-</section>
+  <section id="form">
+    <h2>שאלון היכרות</h2>
+    <p class="lead" style="margin-bottom:22px">כמה שאלות קצרות, רובן בלחיצה. התשובות נשלחות אליי בוואטסאפ או במייל, ושום דבר לא נשמר באתר.</p>
+    <form class="card" id="f" novalidate>
+      <div class="q"><label class="t" for="name">איך קוראים לכם?</label><input type="text" id="name" autocomplete="name"></div>
+      <div class="q"><label class="t" for="biz">מה העסק עושה? <span class="hint">(משפט אחד מספיק)</span></label><input type="text" id="biz" placeholder="למשל: סטודיו לפילאטיס, חנות פרחים, משרד רואה חשבון"></div>
 
+      <div class="q"><div class="t" style="font-weight:800;font-size:17px;margin-bottom:8px">מה הכי גוזל לכם זמן? <span class="hint">(אפשר לבחור כמה)</span></div>
+        <div class="chips" data-name="pain" data-multi="1">
+          <label><input type="checkbox" value="תזכורות ומעקבים"><span>תזכורות ומעקבים</span></label>
+          <label><input type="checkbox" value="גבייה ותשלומים"><span>גבייה ותשלומים</span></label>
+          <label><input type="checkbox" value="לידים ופניות"><span>לידים ופניות</span></label>
+          <label><input type="checkbox" value="יומן ותיאום פגישות"><span>יומן ותיאום פגישות</span></label>
+          <label><input type="checkbox" value="שעות ושכר עובדים"><span>שעות ושכר עובדים</span></label>
+          <label><input type="checkbox" value="סגירת חודש לרואה החשבון"><span>סגירת חודש לרואה החשבון</span></label>
+          <label><input type="checkbox" value="הצעות מחיר"><span>הצעות מחיר</span></label>
+          <label><input type="checkbox" value="מענה ללקוחות"><span>מענה ללקוחות</span></label>
+          <label><input type="checkbox" value="אחר"><span>אחר</span></label>
+        </div></div>
+
+      <div class="q"><div class="t" style="font-weight:800;font-size:17px;margin-bottom:8px">איך מנהלים את זה היום?</div>
+        <div class="chips" data-name="now">
+          <label><input type="radio" name="now" value="בראש ובפתקים"><span>בראש ובפתקים</span></label>
+          <label><input type="radio" name="now" value="אקסל / טבלאות"><span>אקסל / טבלאות</span></label>
+          <label><input type="radio" name="now" value="תוכנה או מערכת"><span>תוכנה או מערכת</span></label>
+          <label><input type="radio" name="now" value="מזכירה או עובד/ת"><span>מזכירה או עובד/ת</span></label>
+        </div></div>
+
+      <div class="q"><div class="t" style="font-weight:800;font-size:17px;margin-bottom:8px">כמה לקוחות או הזמנות בחודש, בערך?</div>
+        <div class="chips" data-name="size">
+          <label><input type="radio" name="size" value="עד 20"><span>עד 20</span></label>
+          <label><input type="radio" name="size" value="20–50"><span>20–50</span></label>
+          <label><input type="radio" name="size" value="50–150"><span>50–150</span></label>
+          <label><input type="radio" name="size" value="יותר מ-150"><span>יותר מ-150</span></label>
+        </div></div>
+
+      <div class="q"><div class="t" style="font-weight:800;font-size:17px;margin-bottom:8px">מה מעניין אתכם?</div>
+        <div class="chips" data-name="way">
+          <label><input type="radio" name="way" value="מזכירה מרחוק"><span>מזכירה מרחוק</span></label>
+          <label><input type="radio" name="way" value="מערכת שעושה את זה לבד"><span>מערכת שעושה את זה לבד</span></label>
+          <label><input type="radio" name="way" value="גם וגם"><span>גם וגם</span></label>
+          <label><input type="radio" name="way" value="עוד לא יודע/ת"><span>עוד לא יודע/ת</span></label>
+        </div></div>
+
+      <div class="q"><label class="t" for="more">משהו שחשוב לכם שאדע? <span class="hint">(לא חובה)</span></label><textarea id="more" placeholder="מה הכי מעצבן אתכם בשוטף? מה הייתם רוצים שיקרה לבד?"></textarea></div>
+
+      <div class="q"><div class="t" style="font-weight:800;font-size:17px;margin-bottom:8px">איך הכי נוח שאחזור אליכם?</div>
+        <div class="chips" data-name="back">
+          <label><input type="radio" name="back" value="וואטסאפ"><span>וואטסאפ</span></label>
+          <label><input type="radio" name="back" value="שיחת טלפון"><span>שיחת טלפון</span></label>
+          <label><input type="radio" name="back" value="מייל"><span>מייל</span></label>
+        </div>
+        <input type="tel" id="phone" placeholder="טלפון או מייל לחזרה" style="margin-top:10px" autocomplete="tel"></div>
+
+      <div class="err" id="err" role="alert"></div>
+      <div class="send">
+        <button type="button" class="wa" id="sendWa">שליחה בוואטסאפ ✓</button>
+        <button type="button" class="mail" id="sendMail">או שליחה במייל</button>
+      </div>
+      <p class="small">הכפתור פותח וואטסאפ (או מייל) עם התשובות כבר כתובות, ונשאר רק ללחוץ "שלח". אחזור אליכם תוך יום עסקים.</p>
+    </form>
+  </section>
+
+  <footer>
+    מיטל עסיסי · סדר בעסק<br>
+    <a href="https://wa.me/972548499973">וואטסאפ</a> · <a href="tel:0548499973">054-8499973</a> · <a href="mailto:me8499973@gmail.com">me8499973@gmail.com</a>
+  </footer>
 </div>
+
+<script data-goatcounter="https://sederbaesek.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+function track(n){try{window.goatcounter&&window.goatcounter.count&&window.goatcounter.count({path:n,title:n,event:true})}catch(e){}}
+var $=function(id){return document.getElementById(id)};
+function picked(name){return Array.prototype.slice.call(document.querySelectorAll('[data-name="'+name+'"] input:checked')).map(function(i){return i.value})}
+function build(){
+  var name=$('name').value.trim(), biz=$('biz').value.trim(), pain=picked('pain');
+  if(!name){return {err:'רק השם חסר 🙂'}}
+  if(!pain.length&&!$('more').value.trim()){return {err:'בחרו לפחות דבר אחד שגוזל לכם זמן, או כתבו בתיבה למטה'}}
+  var L=['היי מיטל, מילאתי את שאלון ההיכרות 🙂','',
+    'שם: '+name];
+  if(biz)L.push('העסק: '+biz);
+  if(pain.length)L.push('מה גוזל זמן: '+pain.join(', '));
+  var now=picked('now')[0], size=picked('size')[0], way=picked('way')[0], back=picked('back')[0];
+  if(now)L.push('איך זה מנוהל היום: '+now);
+  if(size)L.push('לקוחות/הזמנות בחודש: '+size);
+  if(way)L.push('מה מעניין אותי: '+way);
+  var more=$('more').value.trim(); if(more)L.push('','עוד: '+more);
+  var ph=$('phone').value.trim();
+  if(back||ph)L.push('','לחזור אליי: '+[back,ph].filter(Boolean).join(' · '));
+  return {text:L.join('\n')};
+}
+function go(kind){
+  var r=build(); $('err').textContent=r.err||''; if(r.err)return;
+  if(kind==='wa'){track('שאלון-נשלח-וואטסאפ');location.href='https://wa.me/972548499973?text='+encodeURIComponent(r.text);}
+  else{track('שאלון-נשלח-מייל');location.href='mailto:me8499973@gmail.com?subject='+encodeURIComponent('שאלון היכרות · סדר בעסק')+'&body='+encodeURIComponent(r.text);}
+}
+$('sendWa').addEventListener('click',function(){go('wa')});
+$('sendMail').addEventListener('click',function(){go('mail')});
+</script>
 </body>
 </html>
