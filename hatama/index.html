@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מה מתאים לעסק שלי? · סדר בעסק</title>
+<meta name="description" content="ספרו מה הכי מעיק עליכם בעסק, ענו על כמה שאלות קצרות, וגלו איזו עזרה הכי מתאימה לכם. מיטל עסיסי · סדר בעסק">
+<meta property="og:title" content="מה מתאים לעסק שלי? · סדר בעסק">
+<meta property="og:description" content="2 דקות, ותדעו איזו עזרה הכי מתאימה לעסק שלכם">
+<meta property="og:image" content="../poster-main.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@700;900&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#17301E;--green:#2E6B4E;--ok:#2E8B57;--gold:#8F6F2E;--gold2:#A8822F;--bg:#F6F4EE;--card:#FFFFFF;--muted:#5E6A61;--line:#E3E0D6;--soft:#EEF4EF;--sand:#FFF6E3;--coral:#E0645A}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Heebo,Arial,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:640px;margin:0 auto;padding:0 16px 40px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 0 6px}
+.bsd{color:var(--gold2);font-weight:700;font-size:14px}
+.mark{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:22px;text-decoration:none}
+.mark .a{color:var(--green)}.mark .b{color:var(--gold)}
+h1{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:clamp(30px,8vw,42px);line-height:1.15;margin:18px 0 8px}
+h1 em{font-style:normal;color:var(--ok)}
+h2{font-family:"Frank Ruhl Libre",serif;font-weight:900;font-size:clamp(24px,6.4vw,30px);line-height:1.25;margin:0 0 6px}
+.lead{font-size:17.5px;line-height:1.6;color:var(--muted);margin:0 0 18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:22px 20px}
+.bar{height:6px;background:var(--line);border-radius:3px;margin:8px 0 18px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--green);transition:width .35s}
+.stepnum{font-size:14px;font-weight:700;color:var(--gold)}
+.hint{font-size:15px;color:var(--muted);margin:0 0 14px;line-height:1.5}
+textarea,input[type=text],input[type=tel]{width:100%;font:inherit;font-size:16.5px;padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;background:#fff;color:var(--ink)}
+textarea{min-height:120px;resize:vertical;line-height:1.5}
+textarea:focus,input:focus{outline:none;border-color:var(--green)}
+.ideas{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.ideas button{font:inherit;font-size:14.5px;font-weight:600;padding:7px 12px;border-radius:999px;border:1.5px dashed var(--line);background:#fff;color:var(--muted);cursor:pointer}
+.ideas button:hover{border-color:var(--green);color:var(--green)}
+.opts{display:grid;gap:10px}
+.opt{font:inherit;text-align:right;display:flex;align-items:center;gap:12px;width:100%;padding:15px 16px;border-radius:16px;border:1.5px solid var(--line);background:#fff;color:var(--ink);font-size:17px;font-weight:600;cursor:pointer}
+.opt .e{font-size:22px;flex:0 0 28px;text-align:center}
+.opt:hover{border-color:var(--green)}
+.opt.on{background:var(--soft);border-color:var(--green)}
+.multi .opt::after{content:"";margin-right:auto;width:22px;height:22px;border-radius:6px;border:1.5px solid var(--line);flex:0 0 22px}
+.multi .opt.on::after{background:var(--green);border-color:var(--green);content:"✓";color:#fff;font-size:15px;display:flex;align-items:center;justify-content:center}
+.nav{display:flex;gap:10px;margin-top:20px;align-items:center}
+.btn{font:inherit;font-weight:800;font-size:17.5px;border:0;border-radius:999px;padding:14px 26px;cursor:pointer;background:var(--ink);color:#fff}
+.btn:disabled{opacity:.35;cursor:default}
+.back{font:inherit;background:none;border:0;color:var(--muted);font-weight:700;font-size:15.5px;cursor:pointer;padding:10px}
+.got{background:var(--sand);border-radius:16px;padding:14px 16px;margin:0 0 16px;font-size:16px;line-height:1.55}
+.got b{color:var(--gold)}
+.res{display:grid;gap:12px;margin:6px 0 18px}
+.door{border:1.5px solid var(--line);border-radius:20px;padding:16px 16px 14px;background:#fff}
+.door.top1{border-color:var(--green);box-shadow:0 10px 30px -18px rgba(23,48,30,.5)}
+.door .hd{display:flex;align-items:center;gap:10px;justify-content:space-between}
+.door h3{margin:0;font-size:19px}
+.door .pct{font-weight:800;font-size:22px}
+.door .meter{height:10px;border-radius:5px;background:var(--line);overflow:hidden;margin:10px 0}
+.door .meter i{display:block;height:100%;width:0;border-radius:5px;transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.door p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.55}
+.badge{display:inline-block;background:var(--green);color:#fff;font-size:12.5px;font-weight:800;padding:3px 10px;border-radius:999px;margin-right:6px;vertical-align:middle}
+.talk{background:var(--soft);border-radius:20px;padding:18px}
+.talk h3{margin:0 0 8px;font-size:19px}
+.talk ol{margin:0 0 14px;padding-right:20px;line-height:1.7;font-size:16px}
+.send{display:grid;gap:10px;margin-top:12px}
+.send button{font:inherit;font-weight:800;font-size:18px;border:0;border-radius:999px;padding:15px 20px;cursor:pointer}
+.wa{background:#25D366;color:#073B22}
+.mail{background:#fff;color:var(--ink);border:1.5px solid var(--line)!important}
+.small{font-size:13.5px;color:var(--muted);line-height:1.5;margin-top:10px}
+.err{color:#B23B3B;font-weight:700;font-size:14.5px;min-height:20px;margin:8px 0 0}
+.hide{display:none}
+footer{padding:24px 0 10px;color:var(--muted);font-size:14px;text-align:center;line-height:1.8}
+footer a{color:var(--green);font-weight:700;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a class="mark" href="../"><span class="a">סדר</span> <span class="b">בעסק</span></a><div class="bsd">בס"ד</div></div>
+
+  <div id="intro">
+    <h1>מה <em>באמת</em> מתאים<br>לעסק שלכם?</h1>
+    <p class="lead">ספרו במילים שלכם מה הכי מעיק עליכם, ענו על כמה שאלות קצרות, ותראו איזו עזרה הכי מתאימה לכם. 2 דקות, בלי להשאיר פרטים עד הסוף.</p>
+  </div>
+
+  <div class="card" id="box">
+    <div class="stepnum" id="stepnum"></div>
+    <div class="bar"><i id="prog"></i></div>
+    <div id="stage"></div>
+  </div>
+
+  <footer>
+    מיטל עסיסי · סדר בעסק · 14 שנה בתחום<br>
+    <a href="https://wa.me/972548499973">וואטסאפ</a> · <a href="tel:0548499973">054-8499973</a> · <a href="mailto:me8499973@gmail.com">me8499973@gmail.com</a><br>
+    שום דבר לא נשמר באתר. התשובות נשלחות רק אם תבחרו לשלוח.
+  </footer>
+</div>
+
+<script data-goatcounter="https://sederbaesek.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+function track(n){try{window.goatcounter&&window.goatcounter.count&&window.goatcounter.count({path:n,title:n,event:true})}catch(e){}}
+
+/* ---- what we listen for in the free text ---- */
+var TOPICS={
+  admin:{name:'השוטף והמענה',words:['טלפון','שיחות','הודעות','וואטסאפ','ווטסאפ','מייל','מיילים','לענות','מענה','יומן','תור','תורים','פגישה','פגישות','תיאום','לקבוע','ביטול','ביטולים','ניירת','מסמכים','טפסים','סידורים','בלגן','מבולגן','לבד','עומס','אין זמן','זמן','שוטף','משימות','שוכח','שוכחת','נשכח','מזכירה']},
+  money:{name:'הכסף והתשלומים',words:['תשלום','תשלומים','לשלם','שילם','שילמו','גבייה','לגבות','חוב','חובות','חייבים','חשבונית','חשבוניות','קבלה','קבלות','רואה חשבון','רו"ח','רוח','סגירת חודש','הוצאות','הכנסות','כסף','מחיר','הצעת מחיר','הצעות מחיר','שכר','שעות']},
+  clients:{name:'הלקוחות והפניות',words:['לקוח','לקוחות','לקוחה','לקוחות','ליד','לידים','פניות','פנייה','מתעניינים','חוזרים','לא חוזרים','חוזרות','מעקב','לחזור','תזכורת','תזכורות','נעלמים','שימור']},
+  growth:{name:'השיווק והחשיפה',words:['שיווק','לשווק','פרסום','לפרסם','מודעה','מודעות','סטטוס','סטטוסים','סרטון','סרטונים','טיקטוק','אינסטגרם','פייסבוק','רשתות','חשיפה','לקוחות חדשים','מכירות','למכור','מתחרים','לוגו','תוכן']}
+};
+var IDEAS=['אין לי זמן לענות לכל ההודעות','לקוחות שוכחים לשלם','לא מספיקה לחזור לכל הפניות','סוף החודש מול רואה החשבון','צריכה יותר לקוחות','הכל אצלי בראש'];
+
+function detect(t){
+  t=(t||'').replace(/[״"׳']/g,'"');
+  var hit={};
+  for(var k in TOPICS){var n=0;TOPICS[k].words.forEach(function(w){if(t.indexOf(w)>-1)n++});if(n)hit[k]=n}
+  return hit;
+}
+
+/* ---- answers ---- */
+var A={pain:'',topics:{},hours:'',who:'',where:'',size:'',extra:[],name:'',back:''};
+
+/* ---- steps; some appear only when relevant ---- */
+var STEPS=[
+ {id:'pain',type:'text'},
+ {id:'focus',type:'multi',
+  q:'כדי לוודא שהבנתי: מה מזה נוגע לכם?',sub:'אפשר לבחור כמה. סימנתי מראש לפי מה שכתבתם.',
+  opts:[['admin','📞','מענה לפניות, יומן ותיאומים'],['money','💰','תשלומים, חשבוניות וסגירת חודש'],['clients','🔔','מעקב אחרי לקוחות ופניות'],['growth','📣','שיווק, סטטוסים ולקוחות חדשים']]},
+ {id:'hours',type:'one',q:'כמה זמן בשבוע זה לוקח לכם, בערך?',
+  opts:[['1','⏱️','פחות משעתיים'],['2','⌛','2–5 שעות'],['3','😮‍💨','5–10 שעות'],['4','😵','יותר מ-10 שעות']]},
+ {id:'who',type:'one',q:'מה הייתם מעדיפים?',sub:'אין תשובה נכונה. זה רק עוזר להבין איזה סוג עזרה מתאים.',
+  show:function(){return A.topics.admin||A.topics.money||A.topics.clients},
+  opts:[['person','🙋‍♀️','שמישהי תעשה את זה בשבילי'],['auto','⚙️','שזה יקרה לבד, בלי שאצטרך לזכור'],['both','🤝','קצת מזה וקצת מזה'],['dunno','🤔','עוד לא יודע/ת']]},
+ {id:'where',type:'one',q:'איפה הלקוחות והמידע שמורים היום?',
+  show:function(){return A.topics.admin||A.topics.money||A.topics.clients},
+  opts:[['head','🧠','בראש, במחברת או בפתקים'],['wa','💬','בוואטסאפ ובטלפון'],['excel','📊','באקסל או בטבלאות'],['soft','💻','בתוכנה או במערכת']]},
+ {id:'size',type:'one',q:'כמה לקוחות או הזמנות יש לכם בחודש, בערך?',
+  opts:[['s','🌱','עד 20'],['m','🌿','20–50'],['l','🌳','50–150'],['xl','🏢','יותר מ-150']]},
+ {id:'mkt',type:'one',q:'ומה לגבי שיווק, איך זה היום?',
+  show:function(){return A.topics.growth},
+  opts:[['none','🙈','כמעט לא משווק/ת'],['self','📱','מעלה סטטוסים ופוסטים בעצמי'],['nores','📉','משווק/ת, אבל זה לא מביא פניות'],['nottime','⏳','אין לי זמן לזה']]},
+ {id:'result',type:'result'}
+];
+function live(){return STEPS.filter(function(s){return !s.show||s.show()})}
+var cur=0;
+
+function $(id){return document.getElementById(id)}
+function el(h){var d=document.createElement('div');d.innerHTML=h;return d}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+function render(){
+  var L=live(), s=L[cur], st=$('stage');
+  $('intro').classList.toggle('hide',cur>0);
+  var total=L.length-1;
+  $('stepnum').textContent= s.type==='result' ? 'התוצאה שלכם' : ('שאלה '+(cur+1)+' מתוך '+total);
+  $('prog').style.width= (s.type==='result'?100:Math.round(cur/total*100))+'%';
+  st.innerHTML='';
+  if(s.type==='text')return renderText(st);
+  if(s.type==='result')return renderResult(st);
+  var h='';
+  if(s.id==='focus'){
+    var names=Object.keys(A.topics).map(function(k){return '<b>'+TOPICS[k].name+'</b>'});
+    h+= names.length ? '<div class="got">הבנתי 🙂 נשמע שהכי מעיק עליכם '+(names.length>1?names.slice(0,-1).join(', ')+' ו'+names[names.length-1]:names[0])+'.</div>' : '<div class="got">תודה ששיתפתם 🙂 בואו נדייק.</div>';
+  }
+  h+='<h2>'+s.q+'</h2>'+(s.sub?'<p class="hint">'+s.sub+'</p>':'');
+  h+='<div class="opts '+(s.type==='multi'?'multi':'')+'">';
+  s.opts.forEach(function(o){
+    var on= s.type==='multi' ? !!A.topics[o[0]] : A[s.id]===o[0];
+    h+='<button type="button" class="opt'+(on?' on':'')+'" data-v="'+o[0]+'"><span class="e">'+o[1]+'</span><span>'+o[2]+'</span></button>';
+  });
+  h+='</div><div class="nav">'+(s.type==='multi'?'<button class="btn" id="next">המשך</button>':'')+'<button class="back" id="prev">→ חזרה</button></div>';
+  st.appendChild(el(h));
+  st.querySelectorAll('.opt').forEach(function(b){
+    b.onclick=function(){
+      var v=b.getAttribute('data-v');
+      if(s.type==='multi'){ if(A.topics[v])delete A.topics[v]; else A.topics[v]=1; b.classList.toggle('on'); $('next').disabled=!Object.keys(A.topics).length; }
+      else { A[s.id]=v; track('התאמה-'+s.id); setTimeout(function(){cur++;render();window.scrollTo(0,0)},180); }
+    };
+  });
+  if($('next')){$('next').disabled=!Object.keys(A.topics).length;$('next').onclick=function(){cur++;render();window.scrollTo(0,0)}}
+  $('prev').onclick=function(){cur=Math.max(0,cur-1);render()};
+}
+
+function renderText(st){
+  var h='<h2>מה הכי מעיק עליכם בעסק עכשיו?</h2><p class="hint">כתבו בחופשיות, כמו שהייתם מספרים לחברה. משפט אחד מספיק.</p>'+
+    '<textarea id="painT" placeholder="למשל: אני כל הערב עונה להודעות, ולקוחות שוכחים לשלם לי…">'+esc(A.pain)+'</textarea>'+
+    '<div class="ideas">'+IDEAS.map(function(i){return '<button type="button">'+i+'</button>'}).join('')+'</div>'+
+    '<div class="nav"><button class="btn" id="next">המשך</button></div><div class="err" id="err"></div>';
+  st.appendChild(el(h));
+  st.querySelectorAll('.ideas button').forEach(function(b){b.onclick=function(){var t=$('painT');t.value=(t.value?t.value.replace(/\s*$/,'')+'. ':'')+b.textContent;t.focus()}});
+  $('next').onclick=function(){
+    var t=$('painT').value.trim();
+    if(t.length<3){$('err').textContent='כתבו כמה מילים, או לחצו על אחת הדוגמאות 🙂';return}
+    A.pain=t; A.topics=detect(t); track('התאמה-כתב');
+    cur++;render();window.scrollTo(0,0);
+  };
+}
+
+/* ---- scoring: three doors ---- */
+function score(){
+  var T=A.topics, sec=0, sys=0, vid=0;
+  if(T.admin){sec+=3;sys+=1}
+  if(T.money){sec+=2;sys+=2}
+  if(T.clients){sec+=1;sys+=3}
+  if(T.growth){vid+=5}
+  ({person:function(){sec+=4},auto:function(){sys+=4},both:function(){sec+=2;sys+=2}}[A.who]||function(){})();
+  ({head:function(){sec+=1;sys+=2},wa:function(){sec+=1;sys+=2},excel:function(){sys+=2},soft:function(){sec+=2}}[A.where]||function(){})();
+  if(A.hours==='3'||A.hours==='4')sec+=2;
+  if(A.size==='l'||A.size==='xl')sys+=2;
+  ({none:function(){vid+=2},self:function(){vid+=1},nores:function(){vid+=3},nottime:function(){vid+=3}}[A.mkt]||function(){})();
+  var raw=[['sec',sec],['sys',sys],['vid',vid]], max=Math.max(sec,sys,vid,1);
+  return raw.map(function(r){return [r[0], r[1]? Math.round(38+ (r[1]/max)*56) : 12]}).sort(function(a,b){return b[1]-a[1]});
+}
+var DOORS={
+  sec:{t:'מזכירה מרחוק',c:'#A8822F',why:function(){return 'מישהי שמטפלת בשוטף בשבילכם: מענה, יומן, מעקב תשלומים ותזכורות'+(A.hours==='3'||A.hours==='4'?'. עם כמה שעות שזה לוקח לכם בשבוע, זה בדיוק המקום להוריד מכם.':'.')}},
+  sys:{t:'המשרד האוטומטי',c:'#2E6B4E',why:function(){return 'מערכת שעושה את העבודה החוזרת לבד: לקוחות ופניות במקום אחד, תזכורות במייל או בוואטסאפ, ומי לא שילם'+(A.where==='head'||A.where==='wa'?'. במקום שהכל יישב בראש ובטלפון.':'.')}},
+  vid:{t:'סרטונים וסטטוסים לעסק',c:'#E0645A',why:function(){return 'סרטונים וסטטוסים שעוצרים את האצבע ומביאים פניות, בלי שתצטרכו לשבת על זה בעצמכם.'}}
+};
+
+function summary(){
+  var o=function(id){var s=STEPS.filter(function(x){return x.id===id})[0];var f=s&&s.opts.filter(function(p){return p[0]===A[id]})[0];return f?f[2]:''};
+  var L=['היי מיטל, מילאתי את "מה מתאים לעסק שלי" 🙂','',
+    'מה הכי מעיק עליי: '+A.pain,
+    'נוגע לי: '+Object.keys(A.topics).map(function(k){return TOPICS[k].name}).join(', ')];
+  if(A.hours)L.push('זמן בשבוע: '+o('hours'));
+  if(A.who)L.push('מעדיף/ה: '+o('who'));
+  if(A.where)L.push('המידע היום: '+o('where'));
+  if(A.size)L.push('לקוחות בחודש: '+o('size'));
+  if(A.mkt)L.push('שיווק היום: '+o('mkt'));
+  L.push('','ההתאמה שיצאה לי: '+score().map(function(r){return DOORS[r[0]].t+' '+r[1]+'%'}).join(' · '));
+  if(A.name)L.push('','שם: '+A.name);
+  if(A.back)L.push('לחזור אליי: '+A.back);
+  return L.join('\n');
+}
+
+function renderResult(st){
+  var R=score();
+  var h='<h2>זה מה שהכי מתאים לכם</h2><p class="hint">לפי מה שסיפרתם. בשיחה קצרה נדייק את זה בדיוק לעסק שלכם.</p><div class="res">';
+  R.forEach(function(r,i){var d=DOORS[r[0]];
+    h+='<div class="door'+(i===0?' top1':'')+'"><div class="hd"><h3>'+d.t+(i===0?' <span class="badge">הכי מתאים</span>':'')+'</h3><span class="pct" style="color:'+d.c+'">'+r[1]+'%</span></div>'+
+       '<div class="meter"><i data-w="'+r[1]+'" style="background:'+d.c+'"></i></div><p>'+d.why()+'</p></div>';
+  });
+  h+='</div><div class="talk"><h3>ומה עכשיו? שיחה של 10 דקות</h3><ol><li>תספרו לי קצת יותר על העסק</li><li>אגיד לכם בדיוק מה אפשר להוריד מכם, גם אם בסוף לא נעבוד יחד</li><li>ואפשר להפסיק בסוף כל חודש, בלי התחייבות</li></ol>'+
+     '<input type="text" id="nm" placeholder="איך קוראים לכם?" value="'+esc(A.name)+'" autocomplete="name">'+
+     '<input type="tel" id="bk" placeholder="טלפון או מייל לחזרה (לא חובה)" style="margin-top:10px" value="'+esc(A.back)+'" autocomplete="tel">'+
+     '<div class="err" id="err"></div><div class="send"><button class="wa" id="sWa">שליחת התוצאה בוואטסאפ ✓</button><button class="mail" id="sMail">או שליחה במייל</button></div>'+
+     '<p class="small">הכפתור פותח וואטסאפ או מייל עם התשובות כבר כתובות, ונשאר רק ללחוץ "שלח". אחזור אליכם תוך יום עסקים.</p></div>'+
+     '<div class="nav"><button class="back" id="prev">→ חזרה</button><button class="back" id="again">להתחיל מחדש</button></div>';
+  st.appendChild(el(h));
+  track('התאמה-תוצאה');
+  setTimeout(function(){st.querySelectorAll('.meter i').forEach(function(i){i.style.width=i.getAttribute('data-w')+'%'})},60);
+  function go(kind){
+    A.name=$('nm').value.trim(); A.back=$('bk').value.trim();
+    if(!A.name){$('err').textContent='רק השם חסר 🙂';return}
+    var t=summary();
+    if(kind==='wa'){track('התאמה-נשלח-וואטסאפ');location.href='https://wa.me/972548499973?text='+encodeURIComponent(t)}
+    else{track('התאמה-נשלח-מייל');location.href='mailto:me8499973@gmail.com?subject='+encodeURIComponent('מה מתאים לעסק שלי · סדר בעסק')+'&body='+encodeURIComponent(t)}
+  }
+  $('sWa').onclick=function(){go('wa')};
+  $('sMail').onclick=function(){go('mail')};
+  $('prev').onclick=function(){cur--;render()};
+  $('again').onclick=function(){A={pain:'',topics:{},hours:'',who:'',where:'',size:'',extra:[],name:'',back:''};cur=0;render()};
+}
+render();
+</script>
+</body>
+</html>
