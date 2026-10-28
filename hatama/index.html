@@ -8,110 +8,123 @@
 <meta property="og:title" content="מה מתאים לעסק שלי? · סדר בעסק">
 <meta property="og:description" content="2 דקות, ותדעו איזו עזרה הכי מתאימה לעסק שלכם">
 <meta property="og:image" content="../poster-main.jpg">
+<meta name="theme-color" content="#0E1F15">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&family=Heebo:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#17301E; --green:#2E6B4E; --gold:#8F6F2E;
-  --sage:#F1F4EF; --paper:#FFFDF6; --line:#D8E1D9; --muted:#56655A; --rule:#C9D6CB;
+  --night:#0E1F15; --ink:#17301E; --green:#2E6B4E; --leaf:#5FB585; --gold:#C9A24E; --gold2:#E7C77A;
+  --text:#F2F5EF; --soft:#B8C9BC; --glass:rgba(255,255,255,.06); --edge:rgba(231,199,122,.28); --line:rgba(255,255,255,.12);
   --serif:"Frank Ruhl Libre",Georgia,serif; --sans:Heebo,Arial,sans-serif;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--sage);color:var(--ink);font-family:var(--sans);-webkit-text-size-adjust:100%}
+html,body{margin:0;color:var(--text);font-family:var(--sans);-webkit-text-size-adjust:100%;min-height:100%}
+body{background:var(--night);
+  background-image:radial-gradient(900px 600px at 85% -10%,rgba(201,162,78,.22),transparent 60%),
+                   radial-gradient(700px 700px at 0% 30%,rgba(46,107,78,.45),transparent 65%),
+                   linear-gradient(180deg,#0E1F15 0%,#132A1C 100%);background-attachment:fixed}
 .wrap{max-width:560px;margin:0 auto;padding:0 20px 48px}
-.top{display:flex;justify-content:space-between;align-items:baseline;padding:18px 0 0}
-.mark{font-family:var(--serif);font-weight:900;font-size:21px;color:var(--ink);text-decoration:none}
-.mark span{color:var(--gold)}
-.bsd{color:var(--gold);font-weight:700;font-size:13px}
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0 0}
+.mark{font-family:var(--serif);font-weight:900;font-size:21px;color:var(--text);text-decoration:none}
+.mark span{color:var(--gold2)}
+.bsd{color:var(--gold2);font-weight:700;font-size:13px}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--edge);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:700;color:var(--gold2);background:rgba(201,162,78,.08);margin:28px 0 14px}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--leaf);box-shadow:0 0 10px var(--leaf)}
 
-/* progress: a single thin line, no labels */
-.prog{height:3px;background:var(--line);margin:18px 0 30px;border-radius:2px;overflow:hidden}
-.prog i{display:block;height:100%;width:0;background:var(--green);transition:width .4s ease}
-
-h1{font-family:var(--serif);font-weight:900;font-size:clamp(34px,9vw,46px);line-height:1.08;letter-spacing:-.5px;margin:0 0 14px}
+h1{font-family:var(--serif);font-weight:900;font-size:clamp(38px,10.5vw,54px);line-height:1.04;letter-spacing:-.5px;margin:0 0 14px}
+h1 u{text-decoration:none;background:linear-gradient(90deg,var(--gold2),var(--gold)) 0 92%/100% 6px no-repeat;padding-bottom:2px}
 h2{font-family:var(--serif);font-weight:700;font-size:clamp(26px,7vw,32px);line-height:1.2;margin:0 0 8px}
-.lead{font-size:17px;line-height:1.65;color:var(--muted);margin:0 0 26px;max-width:34em}
-.sub{font-size:15.5px;line-height:1.6;color:var(--muted);margin:0 0 20px}
+.lead{font-size:17px;line-height:1.65;color:var(--soft);margin:0 0 24px}
+.sub{font-size:15.5px;line-height:1.6;color:var(--soft);margin:0 0 18px}
 
-/* the notepad — the one bold element */
-.pad{display:block;position:relative;background-color:var(--paper);border-radius:4px 4px 14px 14px;
-  box-shadow:0 1px 0 var(--rule),0 18px 40px -26px rgba(23,48,30,.55);
-  padding:30px 52px 18px 18px;
-  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 43px,var(--rule) 43px,var(--rule) 44px);
-  background-position:0 30px}
-.pad::before{content:"";position:absolute;top:0;bottom:0;right:38px;width:1.5px;background:var(--gold);opacity:.55}
-.pad::after{content:"";position:absolute;top:-9px;right:0;left:0;height:18px;
-  background:radial-gradient(circle at 50% 50%,var(--sage) 4px,transparent 5px) 0 0/34px 18px repeat-x}
-.pad textarea{display:block;width:100%;min-height:176px;border:0;background:transparent;resize:none;outline:none;
-  font-family:var(--serif);font-weight:500;font-size:22px;line-height:44px;color:var(--ink);padding:0;margin-top:-8px}
-.pad textarea::placeholder{color:#9AA79C}
-.pad:focus-within{box-shadow:0 1px 0 var(--rule),0 18px 40px -26px rgba(23,48,30,.55),0 0 0 2px var(--green)}
+/* the glowing card */
+.panel{position:relative;border-radius:22px;padding:22px 20px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.03));
+  border:1px solid var(--edge);box-shadow:0 0 0 1px rgba(255,255,255,.03) inset,0 30px 70px -30px rgba(0,0,0,.8),0 0 60px -20px rgba(201,162,78,.35);backdrop-filter:blur(6px)}
+.panel .tag{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:800;color:var(--gold2);margin:0 0 10px}
+.prog{height:4px;background:var(--line);border-radius:2px;overflow:hidden;margin:0 0 22px}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--leaf),var(--gold2));transition:width .45s ease}
 
-.ideas{margin:18px 0 0;font-size:15px;color:var(--muted);line-height:2}
-.ideas button{font:inherit;color:var(--green);font-weight:700;background:none;border:0;padding:0;cursor:pointer;
-  text-decoration:underline;text-decoration-color:var(--rule);text-underline-offset:4px}
-.ideas button:hover,.ideas button:focus-visible{text-decoration-color:var(--green)}
+/* preview bars on the first screen */
+.preview{display:grid;gap:10px;margin:0 0 22px}
+.pv{background:rgba(0,0,0,.18);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.pv div{display:flex;justify-content:space-between;font-weight:700;font-size:15px}
+.pv b{color:var(--gold2);font-weight:800}
+.pv .bar{height:6px;border-radius:3px;background:rgba(255,255,255,.08);margin-top:9px;overflow:hidden;position:relative}
+.pv .bar i{position:absolute;inset:0;width:40%;border-radius:3px;background:linear-gradient(90deg,transparent,rgba(231,199,122,.75),transparent);animation:scan 2.6s ease-in-out infinite}
+.pv:nth-child(2) .bar i{animation-delay:.4s}.pv:nth-child(3) .bar i{animation-delay:.8s}
+@keyframes scan{0%{transform:translateX(160%)}100%{transform:translateX(-260%)}}
 
-/* answers: rows on the page, not boxed cards */
-.rows{border-top:1px solid var(--line)}
-.row{font:inherit;display:flex;align-items:center;gap:14px;width:100%;text-align:right;background:none;border:0;
-  border-bottom:1px solid var(--line);padding:18px 4px;font-size:18px;font-weight:500;color:var(--ink);cursor:pointer}
+textarea,.panel input{width:100%;font:inherit;color:var(--text);background:rgba(0,0,0,.25);border:1.5px solid var(--line);border-radius:14px;outline:none}
+textarea{min-height:130px;resize:vertical;padding:14px 16px;font-family:var(--serif);font-size:20px;line-height:1.6}
+textarea::placeholder,.panel input::placeholder{color:#7F978A}
+textarea:focus,.panel input:focus{border-color:var(--gold2);box-shadow:0 0 0 4px rgba(231,199,122,.12)}
+.ideas{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 0}
+.ideas button{font:inherit;font-size:14px;font-weight:600;color:var(--soft);background:transparent;border:1px solid var(--line);border-radius:999px;padding:7px 12px;cursor:pointer}
+.ideas button:hover,.ideas button:focus-visible{border-color:var(--gold2);color:var(--text)}
+
+/* answers */
+.rows{display:grid;gap:10px}
+.row{font:inherit;display:flex;align-items:center;gap:14px;width:100%;text-align:right;background:rgba(0,0,0,.18);border:1px solid var(--line);border-radius:14px;
+  padding:16px;font-size:17.5px;font-weight:600;color:var(--text);cursor:pointer;transition:border-color .15s,background .15s}
 .row .e{font-size:22px;width:28px;text-align:center;flex:0 0 28px}
 .row .t{flex:1}
-.row .c{flex:0 0 22px;height:22px;border-radius:50%;border:1.5px solid var(--rule)}
+.row .c{flex:0 0 22px;height:22px;border-radius:50%;border:1.5px solid rgba(255,255,255,.3)}
 .multi .row .c{border-radius:6px}
-.row.on{font-weight:700}
-.row.on .c{background:var(--green);border-color:var(--green);box-shadow:inset 0 0 0 4px var(--sage)}
-.multi .row.on .c{box-shadow:none;background:var(--green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
-.row:focus-visible{outline:2px solid var(--green);outline-offset:-2px}
+.row:hover{border-color:rgba(231,199,122,.5)}
+.row.on{border-color:var(--gold2);background:rgba(201,162,78,.12)}
+.row.on .c{border-color:var(--gold2);background:var(--gold2);box-shadow:inset 0 0 0 4px #1d2f22}
+.multi .row.on .c{box-shadow:none;background:var(--gold2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%2317301E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.row:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+.heard{font-family:var(--serif);font-size:19px;line-height:1.55;margin:0 0 20px;padding-right:14px;border-right:3px solid var(--gold2)}
 
-.heard{font-family:var(--serif);font-size:19px;line-height:1.55;margin:0 0 22px;padding-right:14px;border-right:3px solid var(--gold)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:22px}
+.btn{font:inherit;font-weight:900;font-size:17.5px;border:0;border-radius:14px;padding:15px 30px;cursor:pointer;color:#17301E;
+  background:linear-gradient(180deg,#F1D58E,#C9A24E);box-shadow:0 10px 30px -10px rgba(201,162,78,.7)}
+.btn:disabled{opacity:.35;cursor:default;box-shadow:none}
+.btn:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.link{font:inherit;background:none;border:0;color:var(--soft);font-weight:700;font-size:15.5px;cursor:pointer;padding:8px 0}
+.err{color:#F3C9A5;font-weight:700;font-size:15px;min-height:20px;margin:10px 0 0}
 
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:26px}
-.btn{font:inherit;font-weight:800;font-size:17.5px;border:0;border-radius:12px;padding:15px 30px;cursor:pointer;background:var(--ink);color:#fff}
-.btn:disabled{opacity:.3;cursor:default}
-.btn:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-.link{font:inherit;background:none;border:0;color:var(--muted);font-weight:700;font-size:15.5px;cursor:pointer;padding:8px 0}
-.err{color:#A33A2E;font-weight:700;font-size:15px;min-height:22px;margin:12px 0 0}
+/* analysing moment */
+.think{text-align:center;padding:26px 0 8px}
+.think .ring{width:74px;height:74px;margin:0 auto 18px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--gold2);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.think p{font-family:var(--serif);font-size:21px;margin:0 0 6px}
+.think small{color:var(--soft);font-size:15px}
 
 /* result */
-.best{margin:6px 0 30px}
-.best .who{font-size:15px;color:var(--muted);margin:0 0 4px}
-.best .name{font-family:var(--serif);font-weight:900;font-size:clamp(38px,10vw,50px);line-height:1.05;margin:0 0 14px;color:var(--green)}
-.best p{font-size:17px;line-height:1.65;margin:0;max-width:32em}
-.meter{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin:16px 0 4px}
-.meter i{display:block;height:100%;width:0;border-radius:4px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
-.pct{font-size:14px;color:var(--muted);font-weight:700}
-.also{border-top:1px solid var(--line);margin:0 0 34px}
-.also div{display:grid;grid-template-columns:1fr auto;align-items:center;gap:4px 14px;padding:16px 0;border-bottom:1px solid var(--line)}
-.also b{font-size:17px}
-.also .pct{text-align:left}
-.also .meter{grid-column:1/-1;height:5px;margin:4px 0 0}
-.also p{grid-column:1/-1;margin:6px 0 0;color:var(--muted);font-size:15px;line-height:1.55}
+.best{text-align:center;margin:4px 0 22px}
+.best .who{font-size:15px;color:var(--soft);margin:0 0 6px}
+.best .num{font-family:var(--sans);font-weight:900;font-size:clamp(64px,18vw,88px);line-height:1;background:linear-gradient(180deg,#F6E2AE,#C9A24E);-webkit-background-clip:text;background-clip:text;color:transparent}
+.best .name{font-family:var(--serif);font-weight:900;font-size:clamp(30px,8vw,38px);margin:6px 0 10px}
+.best p{font-size:16.5px;line-height:1.65;margin:0;color:var(--soft)}
+.meter{height:8px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden}
+.meter i{display:block;height:100%;width:0;border-radius:4px;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.also{display:grid;gap:10px;margin:0 0 24px}
+.also div{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;background:rgba(0,0,0,.18);border:1px solid var(--line);border-radius:14px;padding:14px}
+.also b{font-size:16.5px}
+.also .pct{font-weight:800;color:var(--soft)}
+.also .meter{grid-column:1/-1;height:5px}
+.also p{grid-column:1/-1;margin:0;color:var(--soft);font-size:14.5px;line-height:1.55}
 
-.talk{background:var(--ink);color:#fff;border-radius:18px;padding:26px 22px}
-.talk h3{font-family:var(--serif);font-weight:700;font-size:26px;margin:0 0 10px}
-.talk ol{margin:0 0 20px;padding-right:20px;line-height:1.75;font-size:16px;color:#D9E5DB}
-.talk input{width:100%;font:inherit;font-size:16.5px;padding:14px;border:0;border-radius:10px;background:#fff;color:var(--ink);margin-bottom:10px}
-.talk input:focus{outline:3px solid var(--gold)}
-.talk .err{color:#F3C9A5}
+.talk h3{font-family:var(--serif);font-weight:700;font-size:25px;margin:0 0 10px}
+.talk ol{margin:0 0 18px;padding-right:20px;line-height:1.75;font-size:16px;color:var(--soft)}
+.talk input{padding:14px;font-size:16.5px;margin-bottom:10px}
 .send{display:grid;gap:10px;margin-top:6px}
-.send button{font:inherit;font-weight:800;font-size:18px;border:0;border-radius:12px;padding:16px;cursor:pointer}
-.wa{background:#25D366;color:#073B22}
-.mail{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.35)!important}
-.send button:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
-.fine{font-size:13.5px;color:#B9C9BC;line-height:1.55;margin:14px 0 0}
+.send button{font:inherit;font-weight:900;font-size:18px;border:0;border-radius:14px;padding:16px;cursor:pointer}
+.wa{background:#25D366;color:#063A20;box-shadow:0 12px 30px -12px rgba(37,211,102,.6)}
+.mail{background:transparent;color:var(--text);border:1.5px solid var(--line)!important}
+.send button:focus-visible{outline:3px solid #fff;outline-offset:2px}
+.fine{font-size:13.5px;color:#93A99B;line-height:1.55;margin:14px 0 0}
 
-footer{padding:34px 0 0;color:var(--muted);font-size:14px;line-height:1.8}
-footer a{color:var(--green);font-weight:700;text-decoration:none}
-.hide{display:none}
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+footer{padding:30px 0 0;color:#93A99B;font-size:14px;line-height:1.8}
+footer a{color:var(--gold2);font-weight:700;text-decoration:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top"><a class="mark" href="../">סדר <span>בעסק</span></a><div class="bsd">בס"ד</div></div>
-  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
   <main id="stage" aria-live="polite"></main>
   <footer>
     מיטל עסיסי, סדר בעסק. 14 שנה בעבודת משרד וכספים.<br>
@@ -124,7 +137,6 @@ footer a{color:var(--green);font-weight:700;text-decoration:none}
 <script>
 function track(n){try{window.goatcounter&&window.goatcounter.count&&window.goatcounter.count({path:n,title:n,event:true})}catch(e){}}
 
-/* what we listen for in the free text */
 var TOPICS={
   admin:{name:'השוטף והמענה',words:['טלפון','שיחות','הודעות','וואטסאפ','ווטסאפ','מייל','מיילים','לענות','מענה','יומן','תור','תורים','פגישה','פגישות','תיאום','לקבוע','ביטול','ביטולים','ניירת','מסמכים','טפסים','סידורים','בלגן','מבולגן','לבד','עומס','אין זמן','זמן','שוטף','משימות','שוכח','שוכחת','נשכח','מזכירה','בראש']},
   money:{name:'הכסף והתשלומים',words:['תשלום','תשלומים','לשלם','שילם','שילמו','גבייה','לגבות','חוב','חובות','חייבים','חשבונית','חשבוניות','קבלה','קבלות','רואה חשבון','רו"ח','סגירת חודש','סוף החודש','הוצאות','הכנסות','כסף','הצעת מחיר','הצעות מחיר','שכר','שעות']},
@@ -167,12 +179,18 @@ var cur=0;
 function $(id){return document.getElementById(id)}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 function go(n){cur=n;render();window.scrollTo(0,0)}
+function panel(inner,pct){return '<div class="panel"><div class="prog"><i style="width:'+pct+'%"></i></div>'+inner+'</div>'}
+
+var DOORS={
+  sec:{t:'מזכירה מרחוק',c:'linear-gradient(90deg,#E7C77A,#C9A24E)',why:function(){return 'מישהי שמטפלת בשוטף בשבילכם: מענה, יומן, מעקב תשלומים ותזכורות'+(A.hours==='3'||A.hours==='4'?'. עם כמה שעות שזה לוקח לכם בשבוע, זה בדיוק המקום להוריד מכם.':'.')}},
+  sys:{t:'המשרד האוטומטי',c:'linear-gradient(90deg,#7FD1A3,#2E8B57)',why:function(){return 'מערכת שעושה את העבודה החוזרת לבד: לקוחות ופניות במקום אחד, תזכורות במייל או בוואטסאפ, ומי עוד לא שילם'+(A.where==='head'||A.where==='wa'?'. במקום שהכל יישב בראש ובטלפון.':'.')}},
+  vid:{t:'סרטונים וסטטוסים',c:'linear-gradient(90deg,#F2A58F,#D0654C)',why:function(){return 'סרטונים וסטטוסים שעוצרים את האצבע ומביאים פניות, בלי שתצטרכו לשבת על זה בעצמכם.'}}
+};
 
 function render(){
-  var L=live(), s=L[cur], st=$('stage'), total=L.length-1;
-  $('prog').style.width=(s.type==='result'?100:Math.round(cur/total*100))+'%';
+  var L=live(), s=L[cur], st=$('stage'), total=L.length-1, pct=Math.round(cur/total*100);
   if(s.type==='text')return renderText(st);
-  if(s.type==='result')return renderResult(st);
+  if(s.type==='result')return renderThinking(st);
   var h='';
   if(s.id==='focus'){
     var n=Object.keys(A.topics).map(function(k){return TOPICS[k].name});
@@ -180,13 +198,13 @@ function render(){
                  : '<p class="heard">תודה ששיתפתם. בואו נדייק.</p>';
   }
   h+='<h2>'+s.q+'</h2>'+(s.sub?'<p class="sub">'+s.sub+'</p>':'');
-  h+='<div class="rows '+(s.type==='multi'?'multi':'')+'" role="'+(s.type==='multi'?'group':'radiogroup')+'">';
+  h+='<div class="rows '+(s.type==='multi'?'multi':'')+'">';
   s.opts.forEach(function(o){
     var on= s.type==='multi' ? !!A.topics[o[0]] : A[s.id]===o[0];
     h+='<button type="button" class="row'+(on?' on':'')+'" data-v="'+o[0]+'" aria-pressed="'+on+'"><span class="e" aria-hidden="true">'+o[1]+'</span><span class="t">'+o[2]+'</span><span class="c" aria-hidden="true"></span></button>';
   });
   h+='</div><div class="nav">'+(s.type==='multi'?'<button class="btn" id="next">המשך</button>':'<span></span>')+'<button class="link" id="prev">חזרה</button></div>';
-  st.innerHTML=h;
+  st.innerHTML='<div style="height:26px"></div>'+panel(h,pct);
   st.querySelectorAll('.row').forEach(function(b){
     b.onclick=function(){
       var v=b.getAttribute('data-v');
@@ -206,12 +224,16 @@ function render(){
 }
 
 function renderText(st){
-  st.innerHTML='<h1>מה העסק שלכם צריך באמת?</h1>'+
-    '<p class="lead">כתבו מה הכי מעיק עליכם, כמו שהייתם מספרים לחברה. אחרי כמה שאלות קצרות תראו איזו עזרה הכי מתאימה לכם.</p>'+
-    '<label class="pad" for="painT"><textarea id="painT" placeholder="אני כל הערב עונה להודעות, ולקוחות שוכחים לשלם לי…">'+esc(A.pain)+'</textarea></label>'+
-    '<p class="ideas">או בחרו משפט: '+IDEAS.map(function(i){return '<button type="button">'+i+'</button>'}).join(' · ')+'</p>'+
-    '<div class="err" id="err" role="alert"></div>'+
-    '<div class="nav"><button class="btn" id="next">המשך</button><span></span></div>';
+  st.innerHTML='<div class="pill"><i></i>2 דקות · בלי להשאיר פרטים עד הסוף</div>'+
+    '<h1>מה העסק שלכם <u>צריך באמת</u>?</h1>'+
+    '<p class="lead">כתבו מה הכי מעיק עליכם. השאלון ישאל כמה שאלות המשך, ויחזיר לכם אחוז התאמה לכל אחת משלוש הדרכים שלי.</p>'+
+    panel('<div class="preview">'+
+      ['המשרד האוטומטי','מזכירה מרחוק','סרטונים וסטטוסים'].map(function(t){return '<div class="pv"><div><span>'+t+'</span><b>?%</b></div><div class="bar"><i></i></div></div>'}).join('')+
+      '</div><label class="tag" for="painT">✍️ מה הכי מעיק עליכם בעסק עכשיו?</label>'+
+      '<textarea id="painT" placeholder="אני כל הערב עונה להודעות, ולקוחות שוכחים לשלם לי…">'+esc(A.pain)+'</textarea>'+
+      '<div class="ideas">'+IDEAS.map(function(i){return '<button type="button">'+i+'</button>'}).join('')+'</div>'+
+      '<div class="err" id="err" role="alert"></div>'+
+      '<div class="nav"><button class="btn" id="next">לגלות מה מתאים לי</button><span></span></div>',0);
   st.querySelectorAll('.ideas button').forEach(function(b){b.onclick=function(){var t=$('painT');t.value=(t.value?t.value.replace(/\s*$/,'')+'. ':'')+b.textContent;t.focus()}});
   $('next').onclick=function(){
     var t=$('painT').value.trim();
@@ -220,7 +242,6 @@ function renderText(st){
   };
 }
 
-/* scoring: three doors */
 function score(){
   var T=A.topics, sec=0, sys=0, vid=0;
   if(T.admin){sec+=3;sys+=1}
@@ -235,11 +256,6 @@ function score(){
   var raw=[['sec',sec],['sys',sys],['vid',vid]], max=Math.max(sec,sys,vid,1);
   return raw.map(function(r){return [r[0], r[1]? Math.round(38+(r[1]/max)*56) : 12]}).sort(function(a,b){return b[1]-a[1]});
 }
-var DOORS={
-  sec:{t:'מזכירה מרחוק',c:'#8F6F2E',why:function(){return 'מישהי שמטפלת בשוטף בשבילכם: מענה, יומן, מעקב תשלומים ותזכורות'+(A.hours==='3'||A.hours==='4'?'. עם כמה שעות שזה לוקח לכם בשבוע, זה בדיוק המקום להוריד מכם.':'.')}},
-  sys:{t:'המשרד האוטומטי',c:'#2E6B4E',why:function(){return 'מערכת שעושה את העבודה החוזרת לבד: לקוחות ופניות במקום אחד, תזכורות במייל או בוואטסאפ, ומי עוד לא שילם'+(A.where==='head'||A.where==='wa'?'. במקום שהכל יישב בראש ובטלפון.':'.')}},
-  vid:{t:'סרטונים וסטטוסים',c:'#B4553F',why:function(){return 'סרטונים וסטטוסים שעוצרים את האצבע ומביאים פניות, בלי שתצטרכו לשבת על זה בעצמכם.'}}
-};
 
 function summary(){
   var o=function(id){var s=STEPS.filter(function(x){return x.id===id})[0];var f=s&&s.opts.filter(function(p){return p[0]===A[id]})[0];return f?f[2]:''};
@@ -257,24 +273,33 @@ function summary(){
   return L.join('\n');
 }
 
+/* the one orchestrated moment: a short "putting it together" beat, then the reveal */
+function renderThinking(st){
+  st.innerHTML='<div style="height:26px"></div>'+panel('<div class="think"><div class="ring"></div><p>מחברת את כל התשובות שלכם…</p><small>עוד רגע תראו מה הכי מתאים לעסק שלכם</small></div>',100);
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  setTimeout(function(){renderResult(st)},reduce?0:1700);
+}
+
 function renderResult(st){
   var R=score(), b=DOORS[R[0][0]];
   var h='<div class="best"><p class="who">לפי מה שסיפרתם, הכי מתאים לכם</p>'+
-    '<div class="name">'+b.t+'</div><p>'+b.why()+'</p>'+
-    '<div class="meter"><i data-w="'+R[0][1]+'" style="background:'+b.c+'"></i></div><span class="pct">התאמה של '+R[0][1]+'%</span></div>'+
+    '<div class="num" id="num">0%</div><div class="name">'+b.t+'</div>'+
+    '<div class="meter" style="margin:0 0 14px"><i data-w="'+R[0][1]+'" style="background:'+b.c+'"></i></div><p>'+b.why()+'</p></div>'+
     '<div class="also">';
   R.slice(1).forEach(function(r){var d=DOORS[r[0]];
     h+='<div><b>'+d.t+'</b><span class="pct">'+r[1]+'%</span><span class="meter"><i data-w="'+r[1]+'" style="background:'+d.c+'"></i></span><p>'+d.why()+'</p></div>';
   });
-  h+='</div><section class="talk"><h3>ומה עכשיו? שיחה של 10 דקות</h3><ol><li>תספרו לי קצת יותר על העסק.</li><li>אגיד לכם בדיוק מה אפשר להוריד מכם, גם אם בסוף לא נעבוד יחד.</li><li>ואפשר להפסיק בסוף כל חודש, בלי התחייבות.</li></ol>'+
+  h+='</div><div class="talk"><h3>ומה עכשיו? שיחה של 10 דקות</h3><ol><li>תספרו לי קצת יותר על העסק.</li><li>אגיד לכם בדיוק מה אפשר להוריד מכם, גם אם בסוף לא נעבוד יחד.</li><li>ואפשר להפסיק בסוף כל חודש, בלי התחייבות.</li></ol>'+
      '<input type="text" id="nm" placeholder="איך קוראים לכם?" value="'+esc(A.name)+'" autocomplete="name" aria-label="שם">'+
      '<input type="tel" id="bk" placeholder="טלפון או מייל לחזרה (לא חובה)" value="'+esc(A.back)+'" autocomplete="tel" aria-label="טלפון או מייל">'+
-     '<div class="err" id="err" role="alert"></div><div class="send"><button class="wa" id="sWa">שליחה בוואטסאפ</button><button class="mail" id="sMail">שליחה במייל</button></div>'+
-     '<p class="fine">נפתח וואטסאפ או מייל עם התשובות כבר כתובות. נשאר רק ללחוץ "שלח", ואחזור אליכם תוך יום עסקים.</p></section>'+
+     '<div class="err" id="err" role="alert"></div><div class="send"><button class="wa" id="sWa">שליחת התוצאה בוואטסאפ</button><button class="mail" id="sMail">שליחה במייל</button></div>'+
+     '<p class="fine">נפתח וואטסאפ או מייל עם התשובות כבר כתובות. נשאר רק ללחוץ "שלח", ואחזור אליכם תוך יום עסקים.</p></div>'+
      '<div class="nav"><button class="link" id="again">להתחיל מחדש</button><button class="link" id="prev">חזרה</button></div>';
-  st.innerHTML=h;
+  st.innerHTML='<div style="height:26px"></div>'+panel(h,100);
   track('התאמה-תוצאה');
   setTimeout(function(){st.querySelectorAll('.meter i').forEach(function(i){i.style.width=i.getAttribute('data-w')+'%'})},80);
+  var target=R[0][1], n=0, el=$('num'), t0=null;
+  (function tick(ts){if(!t0)t0=ts;var p=Math.min(1,(ts-t0)/1100);n=Math.round(target*(1-Math.pow(1-p,3)));el.textContent=n+'%';if(p<1)requestAnimationFrame(tick)})(performance.now());
   function send(kind){
     A.name=$('nm').value.trim(); A.back=$('bk').value.trim();
     if(!A.name){$('err').textContent='רק השם חסר.';$('nm').focus();return}
