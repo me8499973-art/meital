@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>שאלה בקול · סדר בעסק</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1F1A14;--ink:#F7EEDC;--muted:#CDBB9A;--gold:#E6C87A;--cu:217,182,92}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:radial-gradient(ellipse 80% 60% at 50% 30%,#3a2d1d,var(--bg) 70%);color:var(--ink);font-family:Heebo,system-ui,sans-serif;display:grid;place-items:center;text-align:center;padding:24px}
+.mic{width:120px;height:120px;border-radius:50%;border:1.5px solid rgba(var(--cu),.7);background:rgba(var(--cu),.12);display:grid;place-items:center;margin:0 auto 22px;cursor:pointer;color:var(--gold);position:relative}
+.mic svg{width:46px;height:46px}
+.mic.on::before,.mic.on::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1.5px solid rgba(var(--cu),.5);animation:ring 1.6s infinite}
+.mic.on::after{animation-delay:.8s}
+@keyframes ring{from{transform:scale(.9);opacity:1}to{transform:scale(1.35);opacity:0}}
+h1{font-weight:400;font-size:24px;margin:0 0 8px}
+p{color:var(--muted);margin:0;font-size:16px;line-height:1.5;min-height:48px}
+.heard{color:var(--gold);font-size:20px;margin-top:10px}
+small{display:block;margin-top:26px;color:#8E7D60;font-size:12px}
+</style>
+</head>
+<body>
+<main>
+  <button class="mic" id="mic" aria-label="להתחיל להקשיב"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+  <h1 id="t">מקשיבה…</h1>
+  <p id="m">שאלו למשל: ממי עוד צריך לגבות? · מה יש לי מחר?</p>
+  <div class="heard" id="h"></div>
+  <small>סדר בעסק · החלון ייסגר לבד אחרי השאלה</small>
+</main>
+<script>
+/* דף המיקרופון של המערכת. המערכת רצה בתוך מסגרת של גוגל שלא מרשה מיקרופון,
+   ולכן היא פותחת את החלון הזה, שמקשיב, מחזיר את השאלה למערכת ונסגר. */
+var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+var mic = document.getElementById('mic'), t = document.getElementById('t'), m = document.getElementById('m'), h = document.getElementById('h');
+var rec = null, fin = '', tmp = '', err = '';
+var ERR = {
+  'not-allowed': 'צריך לאשר מיקרופון: בחלון של כרום לוחצים "אישור", ואז על המיקרופון כאן.',
+  'audio-capture': 'לא מצאתי מיקרופון במכשיר.',
+  'no-speech': 'לא שמעתי כלום. לוחצים על המיקרופון ומדברים.',
+  'network': 'זיהוי הדיבור צריך אינטרנט. אפשר לנסות שוב.'
+};
+function send(text) {
+  try { if (window.opener) window.opener.postMessage({ type: 'seder-voice', text: text }, '*'); } catch (e) {}
+}
+function start() {
+  if (!SR) { t.textContent = 'הדפדפן לא תומך'; m.textContent = 'כדאי לפתוח בכרום, או להקליד את השאלה במערכת.'; return; }
+  fin = ''; tmp = ''; err = ''; h.textContent = '';
+  rec = new SR(); rec.lang = 'he-IL'; rec.interimResults = true; rec.continuous = false;
+  rec.onresult = function (e) {
+    fin = ''; tmp = '';
+    for (var i = 0; i < e.results.length; i++) { var r = e.results[i]; if (r.isFinal) fin += r[0].transcript; else tmp += r[0].transcript; }
+    h.textContent = (fin + tmp).trim();
+  };
+  rec.onerror = function (e) { err = (e && e.error) || 'unknown'; };
+  rec.onend = function () {
+    mic.classList.remove('on'); rec = null;
+    var heard = (fin || tmp).trim();
+    if (heard) {
+      t.textContent = 'שמעתי ✓'; m.textContent = 'מעבירה למערכת…';
+      send(heard);
+      setTimeout(function () { window.close(); }, 700);
+      return;
+    }
+    t.textContent = 'לא הצלחתי'; m.textContent = ERR[err] || ERR['no-speech'];
+  };
+  mic.classList.add('on'); t.textContent = 'מקשיבה…';
+  try { rec.start(); } catch (e) { mic.classList.remove('on'); }
+}
+mic.addEventListener('click', function () { if (rec) { try { rec.stop(); } catch (e) {} } else start(); });
+start();
+</script>
+</body>
+</html>
