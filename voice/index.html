@@ -48,12 +48,16 @@ function send(text) {
 function start() {
   if (!SR) { t.textContent = 'הדפדפן לא תומך'; m.textContent = 'כדאי לפתוח בכרום, או להקליד את השאלה במערכת.'; return; }
   fin = ''; tmp = ''; err = ''; h.textContent = '';
-  rec = new SR(); rec.lang = 'he-IL'; rec.interimResults = true; rec.continuous = false;
+  /* continuous: לא לעצור בהפסקה הראשונה ("ממי צריך…" נקטע, 4.11). עוצרים אחרי שתי שניות של שקט, ולכל היותר אחרי 15 שניות */
+  rec = new SR(); rec.lang = 'he-IL'; rec.interimResults = true; rec.continuous = true;
+  var quiet = null, cap = setTimeout(function () { try { rec && rec.stop(); } catch (e) {} }, 15000);
   rec.onresult = function (e) {
     fin = ''; tmp = '';
     for (var i = 0; i < e.results.length; i++) { var r = e.results[i]; if (r.isFinal) fin += r[0].transcript; else tmp += r[0].transcript; }
     h.textContent = (fin + tmp).trim();
+    clearTimeout(quiet); quiet = setTimeout(function () { try { rec && rec.stop(); } catch (e) {} }, 2000);
   };
+  rec.onaudioend = function () { clearTimeout(cap); };
   rec.onerror = function (e) { err = (e && e.error) || 'unknown'; };
   rec.onend = function () {
     mic.classList.remove('on'); rec = null;
