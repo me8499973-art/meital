@@ -131,6 +131,10 @@ h2{font-family:Bellefair,serif;font-weight:400;font-size:clamp(34px,6vw,54px);li
 .gal a.hide{display:none}
 .gal .open{position:absolute;top:10px;left:10px;width:30px;height:30px;border-radius:50%;background:rgba(255,253,248,.9);display:grid;place-items:center;color:var(--gold-d);font-size:15px}
 
+.lb{position:fixed;inset:0;z-index:50;background:rgba(15,11,7,.92);display:none;place-items:center;padding:20px}
+.lb.on{display:grid}
+.lb video{max-height:86vh;max-width:100%;aspect-ratio:9/16;border-radius:22px;box-shadow:0 0 0 1.5px rgba(201,162,79,.6),0 30px 80px rgba(0,0,0,.6);background:#000}
+.lb .x{position:absolute;top:18px;left:18px;width:46px;height:46px;border-radius:50%;border:1px solid rgba(230,200,122,.6);background:transparent;color:#E6C87A;font-size:20px;cursor:pointer}
 /* process */
 .steps{list-style:none;padding:0;margin:46px auto 0;max-width:760px;position:relative}
 .steps::before{content:"";position:absolute;top:8px;bottom:8px;right:23px;width:1px;background:linear-gradient(var(--gold),rgba(184,145,58,.15))}
@@ -303,13 +307,19 @@ footer a{color:#B8A07A;text-decoration:none}
     </div>
     <div class="gal" id="gal" style="text-align:right">
       <a class="wide rv" data-c="deck" href="https://gamma.app/docs/-whc6iu3ysd9e04o" target="_blank" rel="noopener"><img src="a/deck-bell.jpg" alt="" loading="lazy"><span class="open">↗</span><span class="cap"><b>שירות שלא שוכחים</b>מצגת תדמית · לצפייה</span></a>
-      <a class="tall rv" data-c="video" href="#top" onclick="playFilm(event)"><img src="a/brand-poster.jpg" alt="" loading="lazy"><span class="open">▶</span><span class="cap"><b>סדר בעסק בפנים חדשות</b>סרטון מיתוג</span></a>
-      <a class="tall rv" data-c="video"><img src="a/v62b.jpg" alt="" loading="lazy"><span class="cap"><b>האוטומציה חוסכת זמן</b>סרטון הסבר</span></a>
+      <a class="tall rv vid" data-c="video" href="a/brand.mp4" data-v="a/brand.mp4"><img src="a/brand-poster.jpg" alt="" loading="lazy"><span class="open">▶</span><span class="cap"><b>סדר בעסק בפנים חדשות</b>סרטון מיתוג</span></a>
+      <a class="tall rv vid" data-c="video" href="a/v60.mp4" data-v="a/v60.mp4"><img src="a/v60.jpg" alt="" loading="lazy"><span class="open">▶</span><span class="cap"><b>שאלתם אותי על המערכת</b>סרטון הסבר</span></a>
       <a class="rv" data-c="logo"><img src="a/logo-choco.jpg" alt="" loading="lazy"><span class="cap"><b>שוקולד</b>לוגו לקונדיטוריה</span></a>
       <a class="rv" data-c="logo"><img src="a/logo-road.jpg" alt="" loading="lazy"><span class="cap"><b>על הכביש</b>לוגו למורה נהיגה</span></a>
+      <a class="tall rv vid" data-c="video" href="a/v61.mp4" data-v="a/v61.mp4"><img src="a/v61.jpg" alt="" loading="lazy"><span class="open">▶</span><span class="cap"><b>יום עבודה עם המערכת</b>סרטון סטטוס</span></a>
+      <a class="tall rv vid" data-c="video" href="a/v62.mp4" data-v="a/v62.mp4"><img src="a/v62.jpg" alt="" loading="lazy"><span class="open">▶</span><span class="cap"><b>האוטומציה חוסכת זמן</b>סרטון הסבר</span></a>
       <a class="wide rv" data-c="deck" href="https://gamma.app/docs/-imeqrbkdj252u4x" target="_blank" rel="noopener"><img src="a/deck-pen.jpg" alt="" loading="lazy"><span class="open">↗</span><span class="cap"><b>שעה אחת ביום</b>מצגת מכירה · לצפייה</span></a>
       <a class="rv" data-c="logo"><img src="a/logo-art.jpg" alt="" loading="lazy"><span class="cap"><b>צבעים</b>לוגו לסטודיו</span></a>
       <a class="rv" data-c="inv"><img src="a/inv-card.jpg" alt="" loading="lazy"><span class="cap"><b>הזמנה לחתונה</b>הזמנה מונפשת</span></a>
+      <a class="tall rv vid" data-c="video" href="a/v51.mp4" data-v="a/v51.mp4"><img src="a/v51.jpg" alt="" loading="lazy"><span class="open">▶</span><span class="cap"><b>העוזרת השקופה</b>סרטון תדמית</span></a>
+      <a class="tall rv vid" data-c="video" href="a/v59.mp4" data-v="a/v59.mp4"><img src="a/v59.jpg" alt="" loading="lazy"><span class="open">▶</span><span class="cap"><b>הפתק שנפל</b>סרטון סטטוס</span></a>
+      <a class="tall rv vid" data-c="video inv" href="a/v42.mp4" data-v="a/v42.mp4"><img src="a/v42.jpg" alt="" loading="lazy"><span class="open">▶</span><span class="cap"><b>יש לכם שמחה בקרוב?</b>הזמנות מונפשות</span></a>
+      <a class="tall rv vid" data-c="video inv" href="a/v47.mp4" data-v="a/v47.mp4"><img src="a/v47.jpg" alt="" loading="lazy"><span class="open">▶</span><span class="cap"><b>הזמנה אישית לכל שמחה</b>סרטון לשמחות ולילדים</span></a>
       <a class="wide rv" data-c="inv"><img src="a/inv-rings.jpg" alt="" loading="lazy"><span class="cap"><b>טבעות ופרחים</b>הזמנה מונפשת</span></a>
     </div>
   </div>
@@ -360,6 +370,7 @@ footer a{color:#B8A07A;text-decoration:none}
 
 <footer>בס״ד · סדר בעסק · משרד אנושי, מערכת חכמה<br><a href="https://wa.me/972548499973">וואטסאפ</a> · <a href="tel:0548499973">054-8499973</a> · <a href="mailto:me8499973@gmail.com">me8499973@gmail.com</a></footer>
 
+<div class="lb" id="lb" onclick="if(event.target===this)closeLb()"><button class="x" onclick="closeLb()" aria-label="סגירה">✕</button><video controls playsinline></video></div>
 <a class="fab" id="fab" href="https://wa.me/972548499973" aria-label="וואטסאפ" onclick="track('אתר-וואטסאפ-צף')"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.2z"/></svg></a>
 
 <script data-goatcounter="https://sederbaesek.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -373,7 +384,10 @@ var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es
 document.querySelectorAll('.rv').forEach(function(el,i){if(io)io.observe(el);else el.classList.add('in')});
 document.getElementById('tabs').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
   this.querySelectorAll('button').forEach(function(x){x.classList.toggle('on',x===b)});
-  var f=b.dataset.f;document.querySelectorAll('#gal a').forEach(function(a){a.classList.toggle('hide',f!=='all'&&a.dataset.c!==f);a.classList.add('in')})});
+  var f=b.dataset.f;document.querySelectorAll('#gal a').forEach(function(a){a.classList.toggle('hide',f!=='all'&&a.dataset.c.split(' ').indexOf(f)<0);a.classList.add('in')})});
+document.getElementById('gal').addEventListener('click',function(e){var a=e.target.closest('a.vid');if(!a)return;e.preventDefault();var lb=document.getElementById('lb'),v=lb.querySelector('video');v.src=a.dataset.v;lb.classList.add('on');try{v.play()}catch(x){};track('אתר-סרטון-'+a.dataset.v)});
+function closeLb(){var lb=document.getElementById('lb'),v=lb.querySelector('video');v.pause();v.removeAttribute('src');v.load();lb.classList.remove('on')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb()});
 function playFilm(e){e.preventDefault();var v=document.querySelector('.film video');v.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(function(){try{v.play()}catch(x){}},700)}
 </script>
 </body>
