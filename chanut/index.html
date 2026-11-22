@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>פרחי שירה · נכנסים לחנות</title>
+<link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Heebo:wght@300;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --cream:#F8F2E7; --gold:#B8913A; --gold2:#E6C87A; --ink:#3E2C1C; --rose:#B03A7A; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html { scroll-behavior:smooth; }
+  body { background:#120E0B; color:var(--cream); font-family:Heebo, sans-serif; }
+  .bsd { position:fixed; top:14px; right:18px; z-index:20; font-weight:700; font-size:15px; color:var(--gold2); text-shadow:0 1px 6px rgba(0,0,0,.6); }
+  .brand { position:fixed; top:12px; left:50%; transform:translateX(-50%); z-index:20; font-family:Bellefair, serif; font-size:26px; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.6); letter-spacing:.5px; }
+  #scrolly { position:relative; height:520vh; }
+  .stage { position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; }
+  video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 32%, rgba(0,0,0,0) 65%, rgba(0,0,0,.55) 100%); }
+  .line { position:absolute; left:0; right:0; top:18%; text-align:center; padding:0 22px; opacity:0; transform:translateY(20px); transition:opacity .5s, transform .5s; pointer-events:none; }
+  .line.on { opacity:1; transform:none; }
+  .line h2 { font-family:Bellefair, serif; font-weight:400; font-size:clamp(38px, 9vw, 76px); line-height:1.1; color:#fff; text-shadow:0 4px 24px rgba(0,0,0,.7); }
+  .line p { margin-top:10px; font-weight:300; font-size:clamp(18px, 4.4vw, 28px); color:var(--cream); text-shadow:0 2px 12px rgba(0,0,0,.8); }
+  .hint { position:absolute; bottom:26px; left:0; right:0; text-align:center; font-size:15px; color:#fff; opacity:.9; animation:bob 1.6s ease-in-out infinite; text-shadow:0 2px 8px rgba(0,0,0,.7); }
+  @keyframes bob { 50% { transform:translateY(8px); } }
+  .bar { position:absolute; bottom:0; right:0; height:4px; background:linear-gradient(90deg, #8C6A22, var(--gold2)); width:0; }
+  .loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#120E0B; color:var(--gold2); font-size:18px; transition:opacity .6s; z-index:5; }
+  .order { background:var(--cream); color:var(--ink); padding:70px 22px 90px; text-align:center; }
+  .order h3 { font-family:Bellefair, serif; font-weight:400; font-size:clamp(34px, 7vw, 54px); }
+  .order .sub { margin-top:8px; color:#7A6347; font-size:18px; font-weight:300; }
+  .cards { margin:34px auto 0; max-width:760px; display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:16px; }
+  .card { background:#fff; border:2px solid #EADDC4; border-radius:22px; padding:22px 16px; box-shadow:0 12px 30px rgba(62,44,28,.08); }
+  .card .em { font-size:46px; }
+  .card b { display:block; margin-top:6px; font-size:20px; }
+  .card .pr { margin-top:4px; color:var(--rose); font-weight:800; font-size:26px; }
+  .btn { display:inline-block; margin-top:34px; background:linear-gradient(135deg, #8C6A22, var(--gold2)); color:#2A1F12; font-weight:800; font-size:20px; text-decoration:none; padding:16px 38px; border-radius:40px; box-shadow:0 10px 24px rgba(140,106,34,.35); }
+  .demo { margin-top:40px; font-size:14px; color:#9A8A75; }
+</style>
+</head>
+<body>
+  <div class="bsd">בס״ד</div>
+  <div class="brand">פרחי שירה</div>
+
+  <section id="scrolly">
+    <div class="stage">
+      <video id="v" src="shop.mp4" muted playsinline preload="auto"></video>
+      <div class="shade"></div>
+      <div class="loading" id="loading">טוען את החנות…</div>
+      <div class="line" data-from="0" data-to="0.16"><h2>ברוכים הבאים</h2><p>גללו למטה ונכנסים פנימה</p></div>
+      <div class="line" data-from="0.2" data-to="0.45"><h2>פרחים טריים מהבוקר</h2><p>ורדים, צבעונים ואקליפטוס</p></div>
+      <div class="line" data-from="0.5" data-to="0.72"><h2>כל זר נקשר ביד</h2><p>בדיוק כמו שאתם רוצים</p></div>
+      <div class="line" data-from="0.78" data-to="1.01"><h2>מוכנים לזר שלכם?</h2><p>עוד קצת למטה</p></div>
+      <div class="hint" id="hint">⬇ גללו כדי להיכנס</div>
+      <div class="bar" id="bar"></div>
+    </div>
+  </section>
+
+  <section class="order">
+    <h3>הזרים של השבוע</h3>
+    <div class="sub">משלוח עד הבית, הזמנה בוואטסאפ</div>
+    <div class="cards">
+      <div class="card"><div class="em">💐</div><b>זר שבת קלאסי</b><div class="pr">59 ₪</div></div>
+      <div class="card"><div class="em">🌹</div><b>10 ורדים אדומים</b><div class="pr">89 ₪</div></div>
+      <div class="card"><div class="em">🎁</div><b>זר + שוקולד</b><div class="pr">119 ₪</div></div>
+    </div>
+    <a class="btn" href="#" onclick="return false">הזמנה בוואטסאפ 💬</a>
+    <div class="demo">דף הדגמה של <a href="https://me8499973-art.github.io/meital/boutique" style="color:inherit">סדר בעסק</a> · עסק לדוגמה</div>
+  </section>
+
+<script>
+(() => {
+  const v = document.getElementById('v');
+  const sec = document.getElementById('scrolly');
+  const lines = [...document.querySelectorAll('.line')];
+  const bar = document.getElementById('bar');
+  const hint = document.getElementById('hint');
+  const loading = document.getElementById('loading');
+  let target = 0, shown = 0, ready = false;
+
+  // טוענים את כל הסרטון לזיכרון, כדי שהגלילה תהיה חלקה
+  fetch('shop.mp4').then(r => r.blob()).then(b => { v.src = URL.createObjectURL(b); }).catch(() => {});
+  v.addEventListener('loadeddata', () => { ready = true; loading.style.opacity = 0; setTimeout(() => loading.remove(), 700); });
+
+  function progress() {
+    const r = sec.getBoundingClientRect();
+    const total = sec.offsetHeight - innerHeight;
+    return Math.min(1, Math.max(0, -r.top / total));
+  }
+  function tick() {
+    target = progress();
+    shown += (target - shown) * 0.12;
+    if (ready && v.duration) {
+      const t = shown * (v.duration - 0.05);
+      if (Math.abs(v.currentTime - t) > 0.01) v.currentTime = t;
+    }
+    bar.style.width = (shown * 100) + '%';
+    hint.style.opacity = shown < 0.03 ? 0.9 : 0;
+    lines.forEach(l => l.classList.toggle('on', shown >= +l.dataset.from && shown < +l.dataset.to));
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+<script data-goatcounter="https://sederbaesek.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
