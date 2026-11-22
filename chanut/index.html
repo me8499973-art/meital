@@ -31,7 +31,7 @@
   body.past .brand { color:var(--rose); text-shadow:none; background:var(--cream); padding:8px 0 8px; top:0; left:0; right:0; transform:none; text-align:center; box-shadow:0 6px 18px rgba(46,37,34,.06); }
   body.past .brand small { color:var(--sage); }
   body.past .bsd { color:var(--rose); text-shadow:none; z-index:21; }
-  #scrolly { position:relative; height:520vh; }
+  #scrolly { position:relative; height:620vh; }
   .stage { position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; }
   video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 32%, rgba(0,0,0,0) 62%, rgba(0,0,0,.55) 100%); }
@@ -305,9 +305,10 @@
   /* נקודות על המוצרים בתוך החנות.
      המיקומים במידות הסרטון (720x1280) לפי הזמן בסרטון, כדי שהנקודה "תיצמד" לפרחים בזמן הגלילה. */
   const SPOTS = [
-    { cat: 'ורדים אדומים', from: 1.9, to: 3.2, k: [[1.9, 150, 505], [2.4, 135, 500], [3.0, 105, 482], [3.2, 95, 486]] },
-    { cat: 'זר כלה',       from: 2.0, to: 2.75, k: [[2.0, 600, 590], [2.4, 595, 600], [2.75, 610, 640]] },
-    { cat: 'זר שבת',       from: 4.0, to: 6.3, k: [[4.0, 392, 500], [4.2, 390, 490], [4.8, 370, 440], [5.5, 380, 470], [6.3, 360, 620]] },
+    /* החנות הגדולה (22.11): השולחן העגול, הוורדים האדומים ליד הדלפק, והזר בתקריב בסוף */
+    { cat: 'זר שבת',       from: 2.8, to: 6.0,  k: [[2.8, 300, 650], [3.5, 288, 625], [4.0, 270, 615], [4.5, 240, 640], [5.0, 225, 625], [5.5, 165, 625], [6.0, 150, 680]] },
+    { cat: 'ורדים אדומים', from: 6.8, to: 7.8,  k: [[6.8, 140, 625], [7.0, 120, 630], [7.5, 80, 640], [7.8, 55, 645]] },
+    { cat: 'מתנה עם שוקולד', from: 10.8, to: 12.1, k: [[10.8, 500, 600], [11.0, 480, 625], [11.5, 450, 655], [12.0, 430, 660]] },
   ];
   const hsWrap = $('hotspots');
   SPOTS.forEach((s, n) => {
