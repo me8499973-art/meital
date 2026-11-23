@@ -147,10 +147,16 @@ const S = [
   ['סרטים עם דמות', 'דמויות קבועות בתלת-ממד, עם הומור ורגש, שחוזרות מסרטון לסרטון ובונות קהל.', [
     ['k100','יוסף בחופשה','סרט קצר עם דמות קבועה','סיפור'],
     ['k97','תכירו','שלוש דמויות, סרטון היכרות','סיפור'],
-    ['k86','צמר גפן מתוק','סרט אנימציה לילדים','אנימציה'],
     ['k102','חדר ההמתנה של המשימות','קונספט מצחיק לבעלי עסקים','קונספט'],
     ['k96','ששש כאן עובדים','סיפור קולנועי קצר','קונספט'],
   ]],
+  ['לילדים ולשמחות', 'דמויות חמודות, סיפורים קצרים ומוזיקה מקורית. לגנים, לחנויות ולמשפחות.', [
+    ['k86','צמר גפן מתוק','סרט אנימציה לילדים','ילדים'],
+    ['k85','היום הסיפורים מתעוררים','דובי וארנב, סדרת סיפורים','ילדים'],
+    ['k25','מרשמלו מטייל','דמות מונפשת בין קינוחים אמיתיים','ילדים'],
+    ['k101','שירה בהצגה','סיפור מרגש עם דמות קבועה','סיפור'],
+    ['k47','הזמנות מונפשות','לכל שמחה, בהתאמה אישית','שמחות'],
+  ], 'kids'],
   ['מוצר בעולם קסום', 'המוצר האמיתי של העסק נכנס לעולם מדומיין, ונשאר נאמן למקור.', [
     ['k91','צונאמי איפור','גל של צבע במדבר, פרסומת למותג יופי','מוצר'],
     ['k106b','המוצר האמיתי בעולם קסום','פרסומת מוצר','מוצר'],
@@ -166,8 +172,8 @@ const S = [
   ]],
 ];
 const secs = document.getElementById('secs'), modal = document.getElementById('modal'), player = document.getElementById('player'), heroV = document.getElementById('heroV');
-S.forEach(([h, sub, items]) => {
-  const s = document.createElement('section'); s.className = 'sec';
+S.forEach(([h, sub, items, id]) => {
+  const s = document.createElement('section'); s.className = 'sec'; if (id) s.id = id;
   s.innerHTML = `<h2>${h}</h2><p class="sub">${sub}</p><div class="grid"></div>`;
   const g = s.querySelector('.grid');
   items.forEach(([k, t, d, tag]) => {
@@ -182,6 +188,7 @@ const close = () => { player.pause(); player.removeAttribute('src'); player.load
 document.getElementById('x').onclick = close;
 modal.onclick = e => { if (e.target === modal) close(); };
 document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+if (location.hash) { const t = document.querySelector(location.hash); if (t) setTimeout(() => t.scrollIntoView({ behavior: 'smooth' }), 300); }
 document.getElementById('snd').onclick = e => { heroV.muted = !heroV.muted; e.target.textContent = heroV.muted ? '🔊 עם סאונד' : '🔇 בלי סאונד'; heroV.play(); };
 </script>
 </body>
