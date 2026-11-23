@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>חוות עשב בר · אתר לדוגמה</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--green:#3F5B3A;--green2:#5C7A4E;--ink:#26302A;--soft:#66705F;--bg:#F7F5EE;--line:#E2DFD2}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Heebo,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.demo-bar{background:#1F1A14;color:#E6C87A;text-align:center;font-size:13px;padding:7px 12px}
+.demo-bar a{text-decoration:underline}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{max-width:1100px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:"Frank Ruhl Libre",serif;font-weight:700;font-size:24px;color:var(--green)}
+.logo small{display:block;font-family:Heebo;font-weight:400;font-size:11px;color:var(--soft);letter-spacing:2px}
+.links{display:flex;gap:22px;font-size:15px;font-weight:600}
+@media (max-width:720px){.links{display:none}}
+.cart{background:var(--green);color:#fff;border-radius:999px;padding:9px 18px;font-weight:600;font-size:14px}
+.hero{position:relative;height:min(78vh,620px);overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.hero .t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,.1),rgba(0,0,0,.5));padding:0 16px}
+.hero h1{font-family:"Frank Ruhl Libre",serif;font-size:clamp(38px,7vw,68px);margin:0 0 10px}
+.hero p{font-size:19px;font-weight:300;margin:0 0 22px}
+.hero .b{background:#fff;color:var(--green);border-radius:999px;padding:13px 30px;font-weight:800}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+h2{font-family:"Frank Ruhl Libre",serif;font-size:34px;color:var(--green);text-align:center;margin:54px 0 24px}
+.prods{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:720px){.prods{grid-template-columns:1fr 1fr;gap:12px}}
+.p{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.p img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.p div{padding:12px 14px 16px}
+.p b{display:block;font-size:17px}
+.p span{color:var(--green2);font-weight:800}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;margin-top:10px}
+@media (max-width:720px){.story{grid-template-columns:1fr}}
+.story img{width:100%;border-radius:18px;aspect-ratio:4/5;object-fit:cover}
+.story p{font-size:17px;line-height:1.8;color:var(--soft)}
+footer{margin-top:60px;background:var(--green);color:#EEF2E8;text-align:center;padding:26px 16px;font-size:14px}
+.how{max-width:760px;margin:60px auto 0;background:#1F1A14;color:#F8F2E7;border-radius:22px;padding:26px 24px;border:1px solid #B8913A}
+.how h3{font-family:"Frank Ruhl Libre",serif;color:#E6C87A;font-size:26px;margin:0 0 8px}
+.how p{color:#D9C9A8;line-height:1.7;margin:0 0 14px}
+.how code{display:block;direction:ltr;text-align:left;background:#000;color:#E6C87A;border-radius:12px;padding:12px 14px;font-size:12.5px;overflow-x:auto;white-space:nowrap}
+.how button{margin-top:16px;border:0;border-radius:999px;padding:12px 24px;font:800 16px Heebo;color:#1F1A14;background:linear-gradient(100deg,#8C6A22,#E6C87A 50%,#B8913A);cursor:pointer}
+</style>
+</head>
+<body>
+<div class="demo-bar">אתר לדוגמה של מותג בדוי, כדי להראות את מסך הפתיחה · <a href="https://me8499973-art.github.io/meital/boutique">סדר בעסק</a></div>
+<header><div class="nav">
+  <div class="logo">חוות עשב בר<small>קוסמטיקה טבעית מהחווה</small></div>
+  <nav class="links"><a href="#">ראשי</a><a href="#prods">המוצרים</a><a href="#story">הסיפור שלנו</a><a href="#">צור קשר</a></nav>
+  <a class="cart" href="#prods">לחנות</a>
+</div></header>
+
+<section class="hero"><img src="hero.jpg" alt="">
+  <div class="t"><h1>חוות עשב בר</h1><p>סבונים, קרמים ושמנים, מצמחי המרפא שגדלים אצלנו בחווה</p><a class="b" href="#prods">לחנות</a></div>
+</section>
+
+<main class="wrap">
+  <h2 id="prods">המוצרים שלנו</h2>
+  <div class="prods">
+    <div class="p"><img src="soap.jpg" alt=""><div><b>סבון לבנדר בעבודת יד</b><span>38 ₪</span></div></div>
+    <div class="p"><img src="cream.jpg" alt=""><div><b>קרם קלנדולה לעור רגיש</b><span>89 ₪</span></div></div>
+    <div class="p"><img src="shop.jpg" alt=""><div><b>מארז מתנה מהחווה</b><span>190 ₪</span></div></div>
+  </div>
+
+  <h2 id="story">הסיפור שלנו</h2>
+  <div class="story">
+    <img src="workshop.jpg" alt="">
+    <p>הכל מתחיל בשדה: לבנדר, קלנדולה וקמומיל שאנחנו מגדלים בעצמנו. מהם אנחנו מכינים, בכמויות קטנות ובעבודת יד, סבונים, קרמים ושמנים. בלי חומרים מיותרים, ועם המון סבלנות.</p>
+  </div>
+
+  <div class="how">
+    <h3>איך זה עובד?</h3>
+    <p>כשנכנסתם לאתר הזה, נפתח קודם סיור קצר בחווה: השדה, הכנת הסבון, הקרמים והחנות. זה מסך הפתיחה. האתר עצמו לא השתנה בכלל: מוסיפים רק שורת קוד אחת בהגדרות האתר.</p>
+    <code>&lt;script src="https://me8499973-art.github.io/meital/petach/tour.js" data-tour="כתובת הסיור" data-name="שם העסק"&gt;&lt;/script&gt;</code>
+    <p style="margin-top:14px">עובד בוויקס, בשופיפיי, בוורדפרס ובכל אתר אחר. מי שכבר ראה את הסיור לא יראה אותו שוב בכל כניסה, והלקוחות הקבועים ממשיכים ישר לקנות.</p>
+    <button type="button" id="again">לראות שוב את מסך הפתיחה</button>
+  </div>
+</main>
+<footer>חוות עשב בר · מותג בדוי לצורך הדגמה · דף הדגמה של סדר בעסק · 054-8499973</footer>
+
+<script src="../tour.js" data-tour="../../chava/" data-name="החווה"></script>
+<script>
+document.getElementById('again').onclick = function () {
+  try { Object.keys(localStorage).forEach(function (k) { if (k.indexOf('seder-tour-seen:') === 0) localStorage.removeItem(k); }); } catch (e) {}
+  location.href = location.pathname + '?tour=1';
+};
+</script>
+</body>
+</html>
