@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>יקב כרמי האבן · סיור קניות</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova:wght@400;700&family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* חנות פרחים בוטיק: שמנת, ורוד עמוק, ירוק מרווה. כותרות בכתב קליגרפי עדין, טקסט נקי */
+  :root {
+    --cream:#FBF6F1; --paper:#FFFDFB; --rose:#8E2F52; --rose-soft:#F4E3E8; --sage:#6F8B6E; --ink:#2E2522; --muted:#7D6B66; --gold:#C9A45C;
+    --display:'Bona Nova', 'Frank Ruhl Libre', serif; --body:'Assistant', 'Heebo', sans-serif;
+  }
+  * { box-sizing:border-box; margin:0; padding:0; font-variant-numeric:lining-nums; font-feature-settings:"lnum" 1; }
+  body { background:#120E0B; color:var(--ink); font-family:var(--body); }
+  .bsd { position:fixed; top:14px; right:18px; z-index:20; font-family:var(--body); font-weight:600; font-size:14px; color:#F3E2B8; text-shadow:0 1px 6px rgba(0,0,0,.6); }
+  .brand { position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:20; font-family:var(--display); font-size:28px; color:#fff; text-shadow:0 2px 12px rgba(0,0,0,.65); letter-spacing:.5px; white-space:nowrap; }
+  .brand small { display:block; text-align:center; font-family:var(--body); font-weight:300; font-size:11px; letter-spacing:3px; color:#F3E2B8; }
+
+  /* ארבעה עיצובים שבעל העסק בוחר בדף הניהול */
+  body[data-theme="ירוק טבעי"] { --cream:#F5F6EF; --paper:#FFFFFF; --rose:#2F5D46; --rose-soft:#E4ECE4; --sage:#B08D57; --ink:#23302A; --muted:#6C7A70; --gold:#B08D57; }
+  body[data-theme="שחור וזהב"] { --cream:#15110E; --paper:#211B16; --rose:#D8B46A; --rose-soft:#2A231C; --sage:#C9A45C; --ink:#F3E9DA; --muted:#B9AA97; --gold:#D8B46A; }
+  body[data-theme="שחור וזהב"] .live { background:#211B16; border-color:#3A3027; }
+  body[data-theme="שחור וזהב"] .card .tag { color:#15110E; }
+  body[data-theme="שחור וזהב"] .btn { color:#15110E; }
+  body[data-theme="לבן נקי"] { --cream:#FFFFFF; --paper:#FAFAFA; --rose:#1F1F1F; --rose-soft:#EFEFEF; --sage:#8A8A8A; --ink:#1F1F1F; --muted:#777777; --gold:#BFA36A; }
+  body[data-theme="לבן נקי"] .card { box-shadow:0 0 0 1px #E6E6E6; }
+  .order, .card, .live { transition:background .5s, color .5s; }
+  .brand, .brand small, .bsd { transition:color .4s, text-shadow .4s, background .4s; }
+  body.past .brand { color:var(--rose); text-shadow:none; background:var(--cream); padding:8px 0 8px; top:0; left:0; right:0; transform:none; text-align:center; box-shadow:0 6px 18px rgba(46,37,34,.06); }
+  body.past .brand small { color:var(--sage); }
+  body.past .bsd { color:var(--rose); text-shadow:none; z-index:21; }
+  #scrolly { position:relative; height:860vh; }
+  .stage { position:sticky; top:0; height:100vh; height:100svh; overflow:hidden; }
+  video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .shade { position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 32%, rgba(0,0,0,0) 62%, rgba(0,0,0,.55) 100%); }
+  .line { position:absolute; left:0; right:0; top:19%; text-align:center; padding:0 22px; opacity:0; transform:translateY(18px); transition:opacity .6s, transform .6s; pointer-events:none; }
+  .line.on { opacity:1; transform:none; }
+  .line h2 { font-family:var(--display); font-weight:400; font-size:clamp(40px, 10vw, 80px); line-height:1.08; color:#fff; text-shadow:0 4px 26px rgba(0,0,0,.7); }
+  .line p { margin-top:12px; font-weight:300; font-size:clamp(17px, 4.3vw, 26px); color:#FBEFE3; letter-spacing:.3px; text-shadow:0 2px 12px rgba(0,0,0,.8); }
+  .line .rule { width:60px; height:1px; background:var(--gold); margin:14px auto 0; }
+  .hint { position:absolute; bottom:28px; left:0; right:0; text-align:center; font-size:15px; color:#fff; animation:bob 1.8s ease-in-out infinite; text-shadow:0 2px 8px rgba(0,0,0,.7); }
+  @keyframes bob { 50% { transform:translateY(8px); } }
+  .bar { position:absolute; bottom:0; right:0; height:3px; background:linear-gradient(90deg, var(--rose), var(--gold)); width:0; }
+  .loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#120E0B; color:#F3E2B8; font-family:var(--display); font-size:22px; transition:opacity .6s; z-index:5; }
+
+  .order { background:var(--cream); padding:76px max(16px, env(safe-area-inset-right, 0px)) 90px max(16px, env(safe-area-inset-left, 0px)); text-align:center; }
+  .eyebrow { font-weight:600; font-size:13px; letter-spacing:4px; color:var(--sage); }
+  .order h3 { margin-top:8px; font-family:var(--display); font-weight:400; font-size:clamp(40px, 8vw, 60px); color:var(--rose); line-height:1.1; }
+  .order .sub { margin-top:8px; color:var(--muted); font-size:18px; font-weight:300; }
+  .live { display:inline-flex; align-items:center; gap:8px; margin-top:16px; background:var(--paper); border:1px solid #EADBD3; border-radius:30px; padding:6px 16px; font-size:14px; color:var(--muted); }
+  .live i { width:8px; height:8px; border-radius:50%; background:#3FA35B; box-shadow:0 0 0 0 rgba(63,163,91,.6); animation:pulse 1.8s infinite; }
+  @keyframes pulse { 70% { box-shadow:0 0 0 9px rgba(63,163,91,0); } 100% { box-shadow:0 0 0 0 rgba(63,163,91,0); } }
+
+  .cards { margin:36px auto 0; max-width:980px; display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:22px; text-align:right; }
+  .card { background:var(--paper); border-radius:20px; overflow:hidden; box-shadow:0 14px 34px rgba(46,37,34,.08); transition:transform .3s; position:relative; }
+  .card:hover { transform:translateY(-4px); }
+  .card .ph { aspect-ratio:1/1; overflow:hidden; background:var(--rose-soft); }
+  .card .ph img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s; }
+  .card:hover .ph img { transform:scale(1.04); }
+  .card .tx { padding:18px 20px 22px; }
+  .card h4 { font-family:var(--display); font-weight:700; font-size:26px; color:var(--ink); }
+  .card .ds { margin-top:4px; font-size:15px; color:var(--muted); min-height:22px; }
+  .card .pr { margin-top:12px; display:flex; align-items:baseline; gap:10px; }
+  .card .now { font-family:var(--display); font-weight:700; font-size:30px; color:var(--rose); }
+  .card .was { font-size:16px; color:#A8958F; text-decoration:line-through; }
+  .card .tag { position:absolute; top:14px; right:14px; background:var(--rose); color:#fff; font-size:13px; font-weight:600; padding:4px 12px; border-radius:20px; }
+  .card.flash { animation:flash 1.6s ease; }
+  @keyframes flash { 0% { box-shadow:0 0 0 0 rgba(201,164,92,.0); } 25% { box-shadow:0 0 0 6px rgba(201,164,92,.75); } 100% { box-shadow:0 14px 34px rgba(46,37,34,.08); } }
+  .card .upd { position:absolute; top:14px; left:14px; background:var(--gold); color:#fff; font-size:12px; font-weight:700; padding:4px 10px; border-radius:20px; opacity:0; transition:opacity .4s; }
+  .card.flash .upd { opacity:1; }
+
+  .btn { display:inline-block; margin-top:40px; background:var(--rose); color:#fff; font-weight:700; font-size:19px; text-decoration:none; padding:16px 40px; border-radius:40px; box-shadow:0 10px 24px rgba(142,47,82,.3); }
+  .demo { margin-top:40px; font-size:13px; color:#A8958F; }
+  .demo a { color:inherit; }
+  @media (prefers-reduced-motion: reduce) { .hint, .live i, .hs .dot::after { animation:none; } }
+
+  /* --- מסך רחב: הסרטון האנכי במרכז, כמו חלון ראווה --- */
+  @media (min-aspect-ratio: 4/5) {
+    .stage { background:radial-gradient(ellipse at 50% 40%, #2A211A 0%, #120E0B 75%); }
+    video { object-fit:contain; }
+  }
+  /* מסך מחשב: הכותרות בצד, ליד חלון הראווה, כדי לא להסתיר את המוצרים */
+  @media (min-aspect-ratio: 4/3) {
+    .line { top:38%; left:auto; right:4vw; width:calc(50vw - 28vh - 6vw); text-align:right; padding:0; }
+    .line h2 { font-size:clamp(34px, 3.6vw, 64px); }
+    .line .rule { margin:14px 0 0 auto; }
+    .shade { background:none; }
+  }
+
+  /* --- נקודות זהב על המוצרים בתוך החנות --- */
+  .hs { position:absolute; z-index:6; transform:translate(-50%, -50%); opacity:0; transition:opacity .35s; pointer-events:none; }
+  .hs.on { opacity:1; pointer-events:auto; }
+  .hs button { all:unset; cursor:pointer; display:flex; align-items:center; gap:10px; }
+  .hs .dot { width:26px; height:26px; border-radius:50%; background:#fff; border:5px solid var(--gold); box-shadow:0 4px 14px rgba(0,0,0,.4); position:relative; flex:none; }
+  .hs .dot::after { content:""; position:absolute; inset:-11px; border-radius:50%; border:2px solid #F3E2B8; animation:ring 1.6s ease-out infinite; }
+  @keyframes ring { from { transform:scale(.5); opacity:1; } to { transform:scale(1.5); opacity:0; } }
+  .hs .lbl { direction:rtl; unicode-bidi:isolate; background:rgba(255,253,251,.96); color:#2E2522; border-radius:22px; padding:8px 14px; font-weight:700; font-size:15px; white-space:nowrap; box-shadow:0 8px 22px rgba(0,0,0,.25); }
+  .hs .lbl b { color:#8E2F52; font-family:var(--display); font-size:17px; margin-right:4px; }
+  .hs.flip button { flex-direction:row-reverse; }
+  .tapnote { position:absolute; bottom:64px; left:0; right:0; text-align:center; z-index:6; opacity:0; transition:opacity .4s; pointer-events:none; }
+  .tapnote span { background:rgba(18,14,11,.72); color:#F3E2B8; font-size:14px; padding:7px 16px; border-radius:20px; }
+  .tapnote.on { opacity:1; }
+
+  /* --- חלון מוצר --- */
+  .veil { position:fixed; inset:0; background:rgba(18,14,11,.55); z-index:40; opacity:0; pointer-events:none; transition:opacity .3s; }
+  .veil.on { opacity:1; pointer-events:auto; }
+  .sheet { position:fixed; left:0; right:0; bottom:0; z-index:41; max-width:560px; margin:0 auto; background:#FFFDFB; color:#2E2522; border-radius:26px 26px 0 0; transform:translateY(105%); transition:transform .38s cubic-bezier(.22,1,.36,1); max-height:92vh; overflow:auto; padding-bottom:env(safe-area-inset-bottom, 0px); }
+  .sheet.on { transform:none; }
+  .sheet .grab { width:44px; height:5px; border-radius:3px; background:#E3D5CC; margin:10px auto 0; }
+  .sheet .x { position:absolute; top:14px; left:16px; width:38px; height:38px; border-radius:50%; border:none; background:rgba(255,255,255,.92); font-size:20px; cursor:pointer; box-shadow:0 2px 8px rgba(0,0,0,.15); z-index:2; }
+  .sheet .pimg { width:100%; aspect-ratio:4/3; object-fit:cover; display:block; margin-top:10px; }
+  .sheet .pb { padding:18px 22px 24px; }
+  .sheet h4 { font-family:var(--display); font-size:30px; }
+  .sheet .pd { color:#7D6B66; margin-top:4px; }
+  .sheet .pp { margin-top:12px; display:flex; align-items:baseline; gap:12px; }
+  .sheet .pp .now { font-family:var(--display); font-weight:700; font-size:34px; color:#8E2F52; }
+  .sheet .pp .was { color:#A8958F; text-decoration:line-through; }
+  .qty { display:inline-flex; align-items:center; border:1.5px solid #EADBD3; border-radius:30px; margin-top:16px; }
+  .qty button { width:44px; height:44px; border:none; background:none; font-size:22px; cursor:pointer; color:#8E2F52; }
+  .qty span { min-width:34px; text-align:center; font-weight:700; font-size:18px; }
+  .acts { display:flex; gap:10px; margin-top:18px; }
+  .acts button { flex:1; border:none; border-radius:30px; padding:15px; font:inherit; font-weight:700; font-size:17px; cursor:pointer; }
+  .b-add { background:#8E2F52; color:#fff; }
+  .b-now { background:#fff; color:#8E2F52; border:1.5px solid #8E2F52 !important; }
+
+  /* --- סל קניות --- */
+  .cartbtn { position:fixed; left:max(16px, env(safe-area-inset-left, 0px)); bottom:calc(18px + env(safe-area-inset-bottom, 0px)); z-index:30; width:60px; height:60px; border-radius:50%; border:none; background:#8E2F52; color:#fff; font-size:26px; cursor:pointer; box-shadow:0 10px 26px rgba(0,0,0,.3); transform:scale(0); transition:transform .35s cubic-bezier(.34,1.56,.64,1); }
+  .cartbtn.on { transform:scale(1); }
+  .cartbtn i { position:absolute; top:-4px; right:-4px; min-width:24px; height:24px; border-radius:12px; background:var(--gold); color:#fff; font-style:normal; font-size:13px; font-weight:800; display:flex; align-items:center; justify-content:center; padding:0 6px; }
+  .cartbtn.bump { animation:bump .5s; }
+  @keyframes bump { 40% { transform:scale(1.25); } }
+  .cart h4 { font-family:var(--display); font-size:28px; margin-bottom:8px; }
+  .ci { display:flex; align-items:center; gap:12px; padding:12px 0; border-bottom:1px solid #F0E5DE; }
+  .ci img { width:58px; height:58px; border-radius:12px; object-fit:cover; }
+  .ci .n { flex:1; font-weight:700; }
+  .ci .n small { display:block; color:#7D6B66; font-weight:400; }
+  .ci .qty { margin-top:0; }
+  .ci .qty button { width:34px; height:34px; font-size:18px; }
+  .total { display:flex; justify-content:space-between; font-weight:800; font-size:20px; margin-top:14px; }
+  .total b { font-family:var(--display); color:#8E2F52; font-size:26px; }
+  .empty { color:#7D6B66; padding:20px 0; text-align:center; }
+  .card .addc { margin-top:14px; width:100%; border:none; border-radius:24px; padding:12px; background:var(--rose-soft); color:var(--rose); font:inherit; font-weight:700; font-size:16px; cursor:pointer; }
+  .card { cursor:pointer; }
+
+  /* --- מוזיקה --- */
+  .music { position:fixed; top:calc(12px + env(safe-area-inset-top, 0px)); left:max(14px, env(safe-area-inset-left, 0px)); z-index:22; border:none; border-radius:22px; padding:8px 14px; background:rgba(18,14,11,.6); color:#F3E2B8; font:inherit; font-size:14px; font-weight:600; cursor:pointer; backdrop-filter:blur(4px); }
+  body.past .music { background:var(--rose); color:#fff; }
+  .toast { position:fixed; left:50%; bottom:96px; transform:translateX(-50%) translateY(20px); z-index:50; background:#2E2522; color:#fff; padding:11px 20px; border-radius:24px; font-weight:600; opacity:0; transition:all .35s; pointer-events:none; white-space:nowrap; }
+  .toast.on { opacity:1; transform:translateX(-50%); }
+  .card .served { margin-top:12px; display:inline-block; font-weight:700; font-size:15px; color:var(--rose); border:1px solid var(--rose); border-radius:20px; padding:6px 16px; }
+  .sheet .served-note { margin-top:16px; text-align:center; font-weight:700; color:var(--rose); font-size:17px; }
+  .sheet.food .qty, .sheet.food .acts { display:none; }
+</style>
+</head>
+<body data-theme="שחור וזהב">
+  <div class="bsd">בס״ד</div>
+  <div class="brand"><span id="bizName">יקב כרמי האבן</span><small>יקב בוטיק · מרכז מבקרים</small></div>
+
+  <section id="scrolly">
+    <div class="stage">
+      <video id="v" src="shop.mp4" muted playsinline preload="auto"></video>
+      <div class="shade"></div>
+      <div class="loading" id="loading">יקב כרמי האבן</div>
+      <div class="line" data-from="0" data-to="0.06"><h2>ברוכים הבאים ליקב</h2><p>גללו למטה, ונכנסים פנימה</p><div class="rule"></div></div>
+      <div class="line" data-from="0.2" data-to="0.36"><h2>אולם החביות</h2><p>כאן היין מתיישן, בשקט</p><div class="rule"></div></div>
+      <div class="line" data-from="0.42" data-to="0.62"><h2>בר הטעימות</h2><p>טועמים, ובוחרים את היין שלכם</p><div class="rule"></div></div>
+      <div class="line" data-from="0.97" data-to="1.01"><h2>מוכנים להזמין?</h2><p>עוד קצת למטה</p><div class="rule"></div></div>
+      <div id="hotspots"></div>
+      <div class="tapnote" id="tapnote"><span>✨ לחצו על הנקודה כדי לראות מה יש</span></div>
+      <div class="hint" id="hint">⬇ גללו כדי להיכנס</div>
+      <div class="bar" id="bar"></div>
+    </div>
+  </section>
+
+  <section class="order">
+    <div class="eyebrow">החנות של היקב</div>
+    <h3 id="siteTitle">יינות ומארזים</h3>
+    <div class="sub" id="siteSub">יין ומארזי מתנה עד הבית, הזמנה בוואטסאפ · ומה מוגש אצלנו במרכז המבקרים</div>
+    <div class="live"><i></i><span id="liveTxt">המחירים מתעדכנים ישירות מהיקב</span></div>
+    <div class="cards" id="cards"></div>
+    <a class="btn" id="waBtn" href="https://wa.me/972500000000?text=%D7%94%D7%99%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%A1%D7%99%D7%95%D7%A8%20%D7%94%D7%A7%D7%A0%D7%99%D7%95%D7%AA%20%D7%91%D7%99%D7%A7%D7%91%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%94%D7%96%D7%9E%D7%99%D7%9F" target="_blank" rel="noopener">הזמנה בוואטסאפ</a>
+    <div class="demo">יקב בדוי לצורך הדגמה · דף הדגמה של <a href="https://me8499973-art.github.io/meital/boutique">סדר בעסק</a> · עסק לדוגמה</div>
+  </section>
+
+  <!-- מוזיקה, חלון מוצר וסל -->
+  <button class="music" id="musicBtn" type="button">🎵 מוזיקה</button>
+  <audio id="music" src="music.mp4" loop preload="none"></audio>
+  <button class="cartbtn" id="cartBtn" type="button" aria-label="הסל שלי">🛍️<i id="cartCount">0</i></button>
+  <div class="veil" id="veil"></div>
+  <div class="sheet" id="product" role="dialog" aria-label="פרטי המוצר">
+    <div class="grab"></div><button class="x" type="button" data-close>✕</button>
+    <img class="pimg" id="pImg" alt="">
+    <div class="pb">
+      <h4 id="pName"></h4><div class="pd" id="pDesc"></div>
+      <div class="pp"><span class="now" id="pNow"></span><span class="was" id="pWas"></span></div>
+      <div class="qty"><button type="button" id="pPlus">+</button><span id="pQty">1</span><button type="button" id="pMinus">−</button></div>
+      <div class="acts"><button class="b-add" type="button" id="pAdd">הוספה לסל</button><button class="b-now" type="button" id="pNowBtn">הזמנה בוואטסאפ</button></div>
+    </div>
+  </div>
+  <div class="sheet cart" id="cart" role="dialog" aria-label="הסל שלי">
+    <div class="grab"></div><button class="x" type="button" data-close>✕</button>
+    <div class="pb"><h4>הסל שלי</h4><div id="cartList"></div>
+      <div class="total"><span>סה״כ</span><b id="cartTotal">0 ₪</b></div>
+      <div class="acts"><button class="b-add" type="button" id="sendOrder">שליחת ההזמנה בוואטסאפ</button></div>
+      <div class="pd" style="margin-top:10px;font-size:14px;text-align:center">ההזמנה נשלחת ליקב בוואטסאפ, והיקב חוזר אליכם לתיאום משלוח ותשלום.</div>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+
+<script>
+(() => {
+  /* --- הגלילה שמכניסה לחנות --- */
+  const v = document.getElementById('v'), sec = document.getElementById('scrolly');
+  const lines = [...document.querySelectorAll('.line')], bar = document.getElementById('bar'), hint = document.getElementById('hint'), loading = document.getElementById('loading');
+  let shown = 0, ready = false;
+  fetch('shop.mp4').then(r => r.blob()).then(b => { v.src = URL.createObjectURL(b); }).catch(() => {});
+  v.addEventListener('loadeddata', () => { ready = true; loading.style.opacity = 0; setTimeout(() => loading.remove(), 700); });
+  const progress = () => { const r = sec.getBoundingClientRect(); return Math.min(1, Math.max(0, -r.top / (sec.offsetHeight - innerHeight))); };
+  (function tick() {
+    shown += (progress() - shown) * 0.12;
+    if (ready && v.duration) { const t = shown * (v.duration - 0.05); if (Math.abs(v.currentTime - t) > 0.01) v.currentTime = t; }
+    bar.style.width = (shown * 100) + '%';
+    document.body.classList.toggle('past', sec.getBoundingClientRect().bottom < 70);
+    hint.style.opacity = shown < 0.03 ? 0.9 : 0;
+    lines.forEach(l => l.classList.toggle('on', shown >= +l.dataset.from && shown < +l.dataset.to));
+    requestAnimationFrame(tick);
+  })();
+
+  /* --- הזרים של השבוע: נקראים מטבלת גוגל שבעלת החנות מעדכנת --- */
+  const SHEET = 'https://docs.google.com/spreadsheets/d/1eNNKwQgYWB6NJIIXvA1tOgOU14A2sQzSooth2tmKNFk/gviz/tq?tqx=out:csv&sheet=' + encodeURIComponent('זרים');
+  const IMG = { 'פיצה':'pizza', 'סלט':'salad', 'פוקאצה':'focaccia', 'יין אדום':'redwine', 'מארז חנוכה':'giftbox' };
+  const FOOD = { 'פיצה':1, 'סלט':1, 'פוקאצה':1 };
+  const FALLBACK = [
+    ['מארז חנוכה','מארז חנוכה','260','299','יין אדום וכוס קריסטל, באריזת מתנה'],
+    ['יין אדום','יין אדום יבש · בציר 2023','120','140','קברנה סוביניון מהכרם שלנו'],
+    ['פיצה','פיצה מהטאבון','68','','עגבניות, מוצרלה ובזיליקום'],
+    ['סלט','סלט ירקות וגבינות','58','','ירקות מהשוק וגבינות בוטיק'],
+    ['פוקאצה',"פוקאצ'ה מהתנור",'32','','חמה, עם רוזמרין ושמן זית מהיקב'] ];
+  const cardsEl = document.getElementById('cards'), liveTxt = document.getElementById('liveTxt');
+  let last = {};
+  function parseCSV(t) {
+    const rows = []; let row = [], cur = '', q = false;
+    for (let i = 0; i < t.length; i++) { const c = t[i];
+      if (q) { if (c === '"' && t[i+1] === '"') { cur += '"'; i++; } else if (c === '"') q = false; else cur += c; }
+      else if (c === '"') q = true; else if (c === ',') { row.push(cur); cur = ''; } else if (c === '\n') { row.push(cur); rows.push(row); row = []; cur = ''; } else if (c !== '\r') cur += c; }
+    if (cur || row.length) { row.push(cur); rows.push(row); }
+    return rows;
+  }
+  const esc = s => String(s || '').replace(/[&<>"]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[m]));
+  let PRODUCTS = [];   // המוצרים מהטבלה, לשימוש הנקודות בחנות ולסל
+  let PHONE = '972500000000';      // הטלפון של העסק לוואטסאפ
+  function render(rows, first) {
+    const html = []; const now = {};
+    PRODUCTS = [];
+    rows.filter(r => r[1] && r[2]).slice(0, 9).forEach((r, i) => {
+      const [img, name, price, was, desc, photo] = r.map(x => (x || '').trim());
+      const own = /^https:\/\/(lh3\.googleusercontent\.com|drive\.google\.com)\//.test(photo || '');
+      const src = own ? photo : `img/${IMG[img] || 'redwine'}.jpg`;
+      PRODUCTS.push({ i, cat: img, name, price, was, desc, src });
+      const key = 'c' + i, sig = [img, name, price, was, desc, photo].join('|');
+      now[key] = sig;
+      const changed = !first && last[key] !== undefined && last[key] !== sig;
+      html.push(`<div class="card${changed ? ' flash' : ''}" data-p="${i}">
+        ${was ? '<span class="tag">מבצע</span>' : ''}<span class="upd">עודכן עכשיו</span>
+        <div class="ph"><img src="${esc(src)}" alt="${esc(name)}" loading="lazy" referrerpolicy="no-referrer"></div>
+        <div class="tx"><h4>${esc(name)}</h4><div class="ds">${esc(desc)}</div>
+        <div class="pr"><span class="now">${esc(price)} ₪</span>${was ? `<span class="was">${esc(was)} ₪</span>` : ''}</div>
+        ${FOOD[img] ? '<span class="served">מוגש ביקב</span>' : `<button class="addc" type="button" data-add="${i}">הוספה לסל</button>`}</div></div>`);
+    });
+    if (window.__shopRefresh) window.__shopRefresh();
+    if (first || Object.keys(now).some(k => now[k] !== last[k]) || Object.keys(now).length !== Object.keys(last).length) cardsEl.innerHTML = html.join('');
+    last = now;
+  }
+  /* הגדרות: עיצוב, שם העסק, כותרת, טלפון. נקראות מהלשונית "עיצוב" */
+  const SETTINGS = 'https://docs.google.com/spreadsheets/d/1eNNKwQgYWB6NJIIXvA1tOgOU14A2sQzSooth2tmKNFk/gviz/tq?tqx=out:csv&sheet=' + encodeURIComponent('עיצוב');
+  async function loadSettings() { return;
+    try {
+      const t = await fetch(SETTINGS + '&t=' + Date.now(), { cache: 'no-store' }).then(r => r.text());
+      const s = {}; parseCSV(t).forEach(r => { if (r[0]) s[r[0].trim()] = (r[1] || '').trim(); });
+      if (s['ערכת עיצוב']) document.body.dataset.theme = s['ערכת עיצוב'];
+      if (s['שם העסק']) { document.getElementById('bizName').textContent = s['שם העסק']; document.title = s['שם העסק']; }
+      if (s['כותרת']) document.getElementById('siteTitle').textContent = s['כותרת'];
+      if (s['שורת משנה']) document.getElementById('siteSub').textContent = s['שורת משנה'];
+      const ph = (s['טלפון לוואטסאפ'] || '').replace(/\D/g, '');
+      PHONE = ph.length >= 9 ? '972' + ph.replace(/^0/, '') : '';
+      const wa = document.getElementById('waBtn');
+      if (ph.length >= 9) { wa.href = 'https://wa.me/972' + ph.replace(/^0/, '') + '?text=' + encodeURIComponent('היי, ראיתי באתר ואשמח להזמין'); wa.onclick = null; }
+      else { wa.href = '#'; wa.onclick = () => false; }
+    } catch (e) {}
+  }
+  async function load(first) { if (first) render(FALLBACK, true); }
+  /* ===================== חוויית הקנייה ===================== */
+  const $ = (id) => document.getElementById(id);
+  const num = (s) => parseFloat(String(s || '').replace(/[^\d.]/g, '')) || 0;
+  const money = (n) => (Math.round(n * 100) / 100).toLocaleString('he-IL') + ' ₪';
+  const toast = (t) => { const el = $('toast'); el.textContent = t; el.classList.add('on'); clearTimeout(toast.t); toast.t = setTimeout(() => el.classList.remove('on'), 2200); };
+
+  /* נקודות על המוצרים בתוך החנות.
+     המיקומים במידות הסרטון (720x1280) לפי הזמן בסרטון, כדי שהנקודה "תיצמד" לפרחים בזמן הגלילה. */
+  const SPOTS = [
+    { cat: 'פיצה',       from: 1.3,  to: 2.6,  k: [[1.3, 280, 810], [1.5, 280, 830], [2.0, 300, 905], [2.5, 300, 1040], [2.6, 300, 1065]] },
+    { cat: 'סלט',        from: 1.6,  to: 3.1,  k: [[1.6, 430, 690], [2.0, 420, 715], [2.5, 415, 775], [3.0, 540, 900], [3.1, 555, 920]] },
+    { cat: 'יין אדום',   from: 13.6, to: 15.2, k: [[13.6, 520, 420], [14.0, 540, 390], [14.5, 560, 340], [15.0, 585, 300], [15.2, 595, 280]] },
+    { cat: 'מארז חנוכה', from: 14.8, to: 17.6, k: [[14.8, 560, 720], [15.0, 555, 715], [16.0, 520, 715], [16.5, 480, 700], [17.0, 500, 700], [17.5, 495, 700]] },
+  ];
+  const hsWrap = $('hotspots');
+  SPOTS.forEach((s, n) => {
+    const d = document.createElement('div'); d.className = 'hs'; d.innerHTML = `<button type="button"><span class="dot"></span><span class="lbl"></span></button>`;
+    d.querySelector('button').addEventListener('click', () => { const p = PRODUCTS.find((x) => x.cat === s.cat); if (p) openProduct(p.i); });
+    hsWrap.appendChild(d); s.el = d;
+  });
+  function lerp(k, t) {
+    if (t <= k[0][0]) return [k[0][1], k[0][2]];
+    for (let i = 1; i < k.length; i++) if (t <= k[i][0]) { const a = k[i - 1], b = k[i], r = (t - a[0]) / (b[0] - a[0]); return [a[1] + (b[1] - a[1]) * r, a[2] + (b[2] - a[2]) * r]; }
+    const z = k[k.length - 1]; return [z[1], z[2]];
+  }
+  function placeSpots() {
+    const vw = v.videoWidth || 720, vh = v.videoHeight || 1280, R = v.getBoundingClientRect(), stage = v.parentElement.getBoundingClientRect();
+    const contain = getComputedStyle(v).objectFit === 'contain';
+    const s = contain ? Math.min(R.width / vw, R.height / vh) : Math.max(R.width / vw, R.height / vh);
+    const ox = R.left - stage.left + (R.width - vw * s) / 2, oy = R.top - stage.top + (R.height - vh * s) / 2;
+    const t = v.currentTime || 0; let any = false;
+    SPOTS.forEach((sp) => {
+      const p = PRODUCTS.find((x) => x.cat === sp.cat);
+      const on = ready && p && t >= sp.from && t <= sp.to;
+      sp.el.classList.toggle('on', !!on);
+      if (!on) return;
+      any = true;
+      const [x, y] = lerp(sp.k, t); const X = ox + x * s, Y = oy + y * s;
+      const left = x < vw / 2;
+      sp.el.querySelector('.lbl').innerHTML = `${esc(p.name)} · <b>${esc(p.price)} ₪</b>`;
+      const btn = sp.el.querySelector('button'); btn.style.direction = 'ltr'; btn.style.flexDirection = left ? 'row' : 'row-reverse';
+      sp.el.style.left = X + 'px'; sp.el.style.top = Y + 'px';
+      sp.el.style.transform = left ? 'translate(-13px, -50%)' : 'translate(calc(-100% + 13px), -50%)';
+    });
+    $('tapnote').classList.toggle('on', any);
+  }
+  (function spotLoop() { placeSpots(); requestAnimationFrame(spotLoop); })();
+
+  /* חלון מוצר */
+  let cur = null, qty = 1;
+  function openSheet(id) { $('veil').classList.add('on'); $(id).classList.add('on'); }
+  function closeSheets() { $('veil').classList.remove('on'); $('product').classList.remove('on'); $('cart').classList.remove('on'); }
+  $('veil').addEventListener('click', closeSheets);
+  document.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', closeSheets));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSheets(); });
+  function openProduct(i) {
+    const p = PRODUCTS.find((x) => x.i === i); if (!p) return;
+    cur = p; qty = 1;
+    $('product').classList.toggle('food', !!FOOD[p.cat]);
+    let sn = $('product').querySelector('.served-note');
+    if (!sn) { sn = document.createElement('div'); sn.className = 'served-note'; $('product').querySelector('.pb').appendChild(sn); }
+    sn.textContent = FOOD[p.cat] ? 'מוגש במרכז המבקרים של היקב · מגיעים ונהנים' : '';
+    $('pImg').src = p.src; $('pImg').alt = p.name; $('pName').textContent = p.name; $('pDesc').textContent = p.desc;
+    $('pNow').textContent = p.price + ' ₪'; $('pWas').textContent = p.was ? p.was + ' ₪' : ''; $('pQty').textContent = qty;
+    openSheet('product');
+  }
+  $('pPlus').onclick = () => { qty = Math.min(20, qty + 1); $('pQty').textContent = qty; };
+  $('pMinus').onclick = () => { qty = Math.max(1, qty - 1); $('pQty').textContent = qty; };
+  $('pAdd').onclick = () => { if (!cur) return; addToCart(cur, qty); closeSheets(); };
+  $('pNowBtn').onclick = () => { if (!cur) return; sendWhatsApp([{ name: cur.name, price: num(cur.price), qty }]); };
+  cardsEl.addEventListener('click', (e) => {
+    const add = e.target.closest('[data-add]'); if (add) { e.stopPropagation(); const p = PRODUCTS.find((x) => x.i === +add.dataset.add); if (p) addToCart(p, 1); return; }
+    const card = e.target.closest('.card'); if (card) openProduct(+card.dataset.p);
+  });
+
+  /* סל קניות (נשמר בדפדפן של הלקוח) */
+  let CART = [];
+  try { CART = JSON.parse(localStorage.getItem('cart-yekev') || '[]'); } catch (e) { CART = []; }
+  const saveCart = () => { try { localStorage.setItem('cart-yekev', JSON.stringify(CART)); } catch (e) {} };
+  function addToCart(p, q) {
+    const it = CART.find((x) => x.name === p.name);
+    if (it) { it.qty += q; it.price = num(p.price); it.src = p.src; } else CART.push({ name: p.name, price: num(p.price), src: p.src, qty: q });
+    saveCart(); drawCart(); toast('נוסף לסל ✓');
+    const b = $('cartBtn'); b.classList.remove('bump'); void b.offsetWidth; b.classList.add('bump');
+  }
+  function drawCart() {
+    const count = CART.reduce((a, x) => a + x.qty, 0);
+    $('cartCount').textContent = count; $('cartBtn').classList.toggle('on', count > 0);
+    $('cartList').innerHTML = CART.length ? CART.map((x, i) => `<div class="ci"><img src="${esc(x.src)}" alt="" referrerpolicy="no-referrer"><div class="n">${esc(x.name)}<small>${money(x.price)} ליחידה</small></div>
+      <div class="qty"><button type="button" data-cq="${i}" data-d="1">+</button><span>${x.qty}</span><button type="button" data-cq="${i}" data-d="-1">−</button></div></div>`).join('') : '<div class="empty">הסל ריק כרגע</div>';
+    $('cartTotal').textContent = money(CART.reduce((a, x) => a + x.price * x.qty, 0));
+  }
+  $('cartList').addEventListener('click', (e) => { const b = e.target.closest('[data-cq]'); if (!b) return; const it = CART[+b.dataset.cq]; it.qty += +b.dataset.d; if (it.qty <= 0) CART.splice(+b.dataset.cq, 1); saveCart(); drawCart(); });
+  $('cartBtn').onclick = () => { drawCart(); openSheet('cart'); };
+  $('sendOrder').onclick = () => { if (!CART.length) { toast('הסל ריק'); return; } sendWhatsApp(CART); };
+  function sendWhatsApp(items) {
+    const lines = items.map((x) => `${x.qty} × ${x.name} · ${money(x.price * x.qty)}`);
+    const total = items.reduce((a, x) => a + x.price * x.qty, 0);
+    const text = `היי ${document.getElementById('bizName').textContent}, אשמח להזמין:\n${lines.join('\n')}\nסה״כ: ${money(total)}`;
+    if (!PHONE) { toast('עוד לא הוגדר מספר וואטסאפ לחנות'); return; }
+    window.open('https://wa.me/' + PHONE + '?text=' + encodeURIComponent(text), '_blank', 'noopener');
+  }
+  // כשהמחירים מתעדכנים מהטבלה, הסל מתעדכן למחיר החדש
+  window.__shopRefresh = () => { CART.forEach((x) => { const p = PRODUCTS.find((q) => q.name === x.name); if (p) { x.price = num(p.price); x.src = p.src; } }); saveCart(); drawCart(); };
+  drawCart();
+
+  /* מוזיקה רגועה (מנגינה מקורית). דפדפנים מאפשרים מוזיקה רק אחרי לחיצה, ולכן יש כפתור */
+  const music = $('music'); music.volume = 0.35;
+  $('musicBtn').onclick = () => {
+    if (music.paused) { music.play().then(() => { $('musicBtn').textContent = '🎵 מוזיקה פועלת'; }).catch(() => toast('לא הצלחנו להפעיל מוזיקה')); }
+    else { music.pause(); $('musicBtn').textContent = '🔇 מוזיקה'; }
+  };
+
+  load(true);
+  setInterval(() => load(false), 15000);
+})();
+</script>
+<script data-goatcounter="https://sederbaesek.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
+</html>
