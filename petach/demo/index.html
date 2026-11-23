@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>יקב כרמי האבן · אתר לדוגמה</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700&family=Heebo:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#6B1F2E;--wine2:#8E2C3F;--ink:#2B2320;--soft:#6E625D;--bg:#FBF8F5;--line:#E8DED6}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Heebo,Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+.demo-bar{background:#1F1A14;color:#E6C87A;text-align:center;font-size:13px;padding:7px 12px}
+.demo-bar a{text-decoration:underline}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+.nav{max-width:1100px;margin:0 auto;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.logo{font-family:"Frank Ruhl Libre",serif;font-weight:700;font-size:24px;color:var(--wine)}
+.logo small{display:block;font-family:Heebo;font-weight:400;font-size:11px;color:var(--soft);letter-spacing:2px}
+.links{display:flex;gap:22px;font-size:15px;font-weight:600}
+@media (max-width:720px){.links{display:none}}
+.cart{background:var(--wine);color:#fff;border-radius:999px;padding:9px 18px;font-weight:600;font-size:14px}
+.hero{position:relative;height:min(78vh,620px);overflow:hidden}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.hero .t{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;background:linear-gradient(180deg,rgba(0,0,0,.15),rgba(0,0,0,.55));padding:0 16px}
+.hero h1{font-family:"Frank Ruhl Libre",serif;font-size:clamp(38px,7vw,68px);margin:0 0 10px}
+.hero p{font-size:19px;font-weight:300;margin:0 0 22px}
+.hero .b{background:#fff;color:var(--wine);border-radius:999px;padding:13px 30px;font-weight:800}
+.wrap{max-width:1100px;margin:0 auto;padding:0 16px}
+h2{font-family:"Frank Ruhl Libre",serif;font-size:34px;color:var(--wine);text-align:center;margin:54px 0 24px}
+.wines{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media (max-width:720px){.wines{grid-template-columns:1fr 1fr;gap:12px}}
+.w{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}
+.w img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.w div{padding:12px 14px 16px}
+.w b{display:block;font-size:17px}
+.w span{color:var(--wine2);font-weight:800}
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:center;margin-top:10px}
+@media (max-width:720px){.visit{grid-template-columns:1fr}}
+.visit img{width:100%;border-radius:18px;aspect-ratio:4/5;object-fit:cover}
+.visit p{font-size:17px;line-height:1.8;color:var(--soft)}
+footer{margin-top:60px;background:var(--wine);color:#F3E6E8;text-align:center;padding:26px 16px;font-size:14px}
+.how{max-width:760px;margin:60px auto 0;background:#1F1A14;color:#F8F2E7;border-radius:22px;padding:26px 24px;border:1px solid #B8913A}
+.how h3{font-family:"Frank Ruhl Libre",serif;color:#E6C87A;font-size:26px;margin:0 0 8px}
+.how p{color:#D9C9A8;line-height:1.7;margin:0 0 14px}
+.how code{display:block;direction:ltr;text-align:left;background:#000;color:#E6C87A;border-radius:12px;padding:12px 14px;font-size:12.5px;overflow-x:auto;white-space:nowrap}
+.how button{margin-top:16px;border:0;border-radius:999px;padding:12px 24px;font:800 16px Heebo;color:#1F1A14;background:linear-gradient(100deg,#8C6A22,#E6C87A 50%,#B8913A);cursor:pointer}
+</style>
+</head>
+<body>
+<div class="demo-bar">אתר לדוגמה של יקב בדוי, כדי להראות את מסך הפתיחה · <a href="https://me8499973-art.github.io/meital/boutique">סדר בעסק</a></div>
+<header><div class="nav">
+  <div class="logo">כרמי האבן<small>יקב בוטיק</small></div>
+  <nav class="links"><a href="#">ראשי</a><a href="#wines">היינות שלנו</a><a href="#visit">ביקור ביקב</a><a href="#">צור קשר</a></nav>
+  <a class="cart" href="#wines">לחנות</a>
+</div></header>
+
+<section class="hero"><img src="hero.jpg" alt="">
+  <div class="t"><h1>יקב כרמי האבן</h1><p>יינות בוטיק מהכרם שלנו, ומרכז מבקרים פתוח לטעימות</p><a class="b" href="#wines">לחנות היינות</a></div>
+</section>
+
+<main class="wrap">
+  <h2 id="wines">היינות שלנו</h2>
+  <div class="wines">
+    <div class="w"><img src="../../yekev/img/redwine.jpg" alt=""><div><b>אדום יבש · בציר 2023</b><span>120 ₪</span></div></div>
+    <div class="w"><img src="../../yekev/img/giftbox.jpg" alt=""><div><b>מארז מתנה לחג</b><span>260 ₪</span></div></div>
+    <div class="w"><img src="../../yekev/img/focaccia.jpg" alt=""><div><b>ארוחת טעימות במרכז המבקרים</b><span>95 ₪</span></div></div>
+  </div>
+
+  <h2 id="visit">ביקור ביקב</h2>
+  <div class="visit">
+    <img src="barrels.jpg" alt="">
+    <p>בואו לטעום אצלנו: סיור באולם החביות, טעימות בבר היין, וארוחה קלה מול הנוף. פתוח בימים א' עד ה', ובשישי עד הצהריים. מומלץ לתאם מראש.</p>
+  </div>
+
+  <div class="how">
+    <h3>איך זה עובד?</h3>
+    <p>כשנכנסתם לאתר הזה, נפתח קודם סיור ביקב. זה מסך הפתיחה. האתר עצמו לא השתנה בכלל: מוסיפים רק שורת קוד אחת בהגדרות האתר.</p>
+    <code>&lt;script src="https://me8499973-art.github.io/meital/petach/tour.js" data-tour="כתובת הסיור" data-name="שם העסק"&gt;&lt;/script&gt;</code>
+    <p style="margin-top:14px">עובד בוויקס, בשופיפיי, בוורדפרס ובכל אתר אחר. מי שכבר ראה את הסיור לא יראה אותו שוב בכל כניסה.</p>
+    <button type="button" id="again">לראות שוב את מסך הפתיחה</button>
+  </div>
+</main>
+<footer>יקב כרמי האבן · יקב בדוי לצורך הדגמה · דף הדגמה של סדר בעסק · 054-8499973</footer>
+
+<script src="../tour.js" data-tour="../../yekev/" data-name="היקב"></script>
+<script>
+document.getElementById('again').onclick = function () {
+  try { Object.keys(localStorage).forEach(function (k) { if (k.indexOf('seder-tour-seen:') === 0) localStorage.removeItem(k); }); } catch (e) {}
+  location.href = location.pathname + '?tour=1';
+};
+</script>
+</body>
+</html>

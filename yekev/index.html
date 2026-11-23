@@ -408,6 +408,24 @@
   setInterval(() => load(false), 15000);
 })();
 </script>
+<script>
+/* מצב "מסך פתיחה" (?intro): הסיור בלבד, בלי חנות, מחירים וסל. בסוף הגלילה מודיעים לאתר המארח. */
+(() => {
+  if (!/[?&]intro\b/.test(location.search)) return;
+  const st = document.createElement('style');
+  st.textContent = '.order,.cartbtn,#hotspots,.tapnote,.veil,.sheet{display:none!important}';
+  document.head.appendChild(st);
+  const last = document.querySelector('.line[data-from="0.97"]');
+  if (last) last.innerHTML = '<h2>ברוכים הבאים</h2><p>עוד רגע נכנסים לאתר</p><div class="rule"></div>';
+  const sec = document.getElementById('scrolly');
+  let sent = false;
+  (function watch() {
+    const r = sec.getBoundingClientRect(), p = -r.top / (sec.offsetHeight - innerHeight);
+    if (!sent && p > 0.96) { sent = true; try { parent.postMessage('seder-tour-done', '*'); } catch (e) {} }
+    requestAnimationFrame(watch);
+  })();
+})();
+</script>
 <script data-goatcounter="https://sederbaesek.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
