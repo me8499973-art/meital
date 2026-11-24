@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>העוגות של נועה · מחירון והזמנות</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Gveret+Levin&family=Heebo:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#F8E6E8;--card:#fff;--ink:#4A2E2B;--soft:#75594F;--rose:#B05563;--rose2:#E9B7BC;--rosebg:#FCEBEE;--line:#F0D9DB;--gold:#8C6A22;--ok:#2F6B45;--wa:#0B7A5A;--err:#A83226}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Heebo,Arial,sans-serif;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--rose2);color:var(--ink)}
+:focus-visible{outline:2.5px solid var(--rose);outline-offset:2px}
+a{color:inherit}
+.ic{width:18px;height:18px;flex:none;vertical-align:-3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.demo{background:#2B2017;color:#E6C87A;font-size:12px;text-align:center;padding:6px 12px;line-height:1.5}
+.demo a{color:#F8F2E7}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 120px}
+header{text-align:center;padding:18px 0 6px}
+.logo{width:72px;height:72px;margin:0 auto 2px;display:block}
+.kos{display:flex;gap:6px;margin-top:6px}
+.kos button{min-height:34px;border:1px dashed var(--rose2);background:rgba(255,255,255,.55);font:inherit;font-size:13.5px;color:var(--soft);padding:0 13px;border-radius:17px;cursor:pointer}
+.kos button.on{background:#fff;color:var(--ink);font-weight:700;border:1.5px solid var(--rose)}
+.pick{margin-top:12px;background:#fff;border-radius:12px;padding:9px 12px;font-size:14px;line-height:1.5}
+.pick b{color:var(--rose)}
+.empty .btn{display:inline-block;margin:10px 4px 0;min-height:44px;padding:0 16px;border-radius:14px;border:0;background:var(--rose);color:#fff;font:inherit;font-weight:700;cursor:pointer;text-decoration:none}
+.empty .btn.alt{background:#fff;color:var(--wa);border:1px solid var(--line)}
+h1{font-family:"Gveret Levin",cursive;font-weight:400;font-size:44px;margin:0;line-height:1;color:var(--rose)}
+.tag{color:var(--soft);font-size:14px;margin-top:6px}
+.trust{display:flex;flex-wrap:wrap;justify-content:center;gap:5px;margin-top:8px}
+.trust span{background:#fff;border:1px solid var(--line);border-radius:20px;padding:3px 9px;font-size:12.5px;white-space:nowrap;font-weight:500;display:inline-flex;align-items:center;gap:5px}
+.trust svg{width:14px;height:14px;color:var(--ok)}
+.notice{margin:12px 0 2px;background:#fff;border:1.5px dashed var(--rose2);border-radius:14px;padding:9px 12px;font-size:13.5px;line-height:1.55;display:flex;gap:10px;align-items:center}
+.notice .ic{width:26px;height:26px;color:var(--rose)}
+.notice b{color:var(--rose)}
+.filters{position:sticky;top:0;z-index:4;background:var(--bg);margin:0 -16px;padding:8px 16px 6px}
+.chips{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex:none;min-height:40px;border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:20px;padding:0 15px;font:inherit;font-size:14px;cursor:pointer}
+.chips button.on{background:var(--rose);color:#fff;border-color:var(--rose)}
+.chips .sep{flex:none;width:1px;align-self:stretch;margin:6px 3px;background:var(--rose2)}
+.chips button.kb{color:var(--soft);background:rgba(255,255,255,.55);border-style:dashed}
+.chips button.kb.on{background:#fff;color:var(--ink);font-weight:700;border:1.5px solid var(--rose)}
+.k{align-self:flex-start;font-size:11.5px;font-weight:700;border-radius:10px;padding:1px 8px;margin-bottom:2px}
+.k-m{background:#E8F0F8;color:#2D5B86}
+.k-p{background:#EEF4EA;color:#3F6B32}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.c{background:var(--card);border-radius:18px;overflow:hidden;box-shadow:0 4px 14px rgba(74,46,43,.07);display:flex;flex-direction:column;position:relative}
+.c img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.c .b{padding:9px 11px 12px;display:flex;flex-direction:column;gap:3px;flex:1}
+.c h3{margin:0;font-size:15.5px;font-weight:700;line-height:1.25}
+.c p{margin:0;font-size:12.5px;color:var(--soft);line-height:1.35;flex:1}
+.c .lead{font-size:12px;color:var(--soft)}
+.c .pr{font-weight:800;font-size:16px;color:var(--rose);margin-top:4px}
+.c .pr small{font-weight:400;font-size:12px;color:var(--soft)}
+.c button{margin-top:6px;min-height:44px;border:0;border-radius:12px;background:var(--rose);color:#fff;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.c.out img{filter:grayscale(.7) opacity(.7)}
+.c.out button{background:#EADFE0;color:var(--soft);cursor:default}
+.badge{position:absolute;top:10px;right:10px;background:var(--ink);color:#fff;font-size:12px;font-weight:700;border-radius:20px;padding:3px 10px}
+.badge.new{background:var(--gold)}
+.empty{grid-column:1/-1;text-align:center;color:var(--soft);padding:26px 0;font-size:14px}
+.empty button{border:0;background:none;color:var(--wa);font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;min-height:44px}
+.info{margin-top:22px;background:#fff;border-radius:18px;padding:14px 16px;font-size:14px;line-height:1.7;box-shadow:0 4px 14px rgba(74,46,43,.05)}
+.info h2{font-family:"Gveret Levin",cursive;font-weight:400;font-size:28px;color:var(--rose);margin:0 0 4px}
+.info ol{margin:0 0 6px;padding-inline-start:20px}
+.ask{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--wa);font-weight:700;text-decoration:none}
+/* cart bar */
+.bar{position:fixed;bottom:0;left:0;right:0;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(248,230,232,.96);border-top:1px solid var(--line);display:none;z-index:5}
+.bar.show{display:block}
+.bar button{width:100%;max-width:528px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;border:0;border-radius:16px;background:var(--ink);color:#fff;font:inherit;font-weight:700;font-size:16px;padding:14px 18px;cursor:pointer}
+.bar button span{display:inline-flex;align-items:center;gap:7px}
+/* sheet */
+.veil{position:fixed;inset:0;background:rgba(43,32,23,.45);display:none;z-index:9}
+.veil.show{display:block}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:var(--bg);border-radius:22px 22px 0 0;z-index:10;transform:translateY(105%);visibility:hidden;transition:transform .32s cubic-bezier(.2,.8,.2,1),visibility 0s .32s}
+.sheet.show{transform:none;visibility:visible;transition:transform .32s cubic-bezier(.2,.8,.2,1)}
+.sh{position:sticky;top:0;background:var(--bg);padding:12px 16px 10px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);z-index:2}
+.sh b{font-size:18px}
+.x{border:0;background:#fff;border-radius:50%;width:44px;height:44px;cursor:pointer;color:var(--ink);display:grid;place-items:center}
+.in{max-width:560px;margin:0 auto;padding:12px 16px calc(16px + env(safe-area-inset-bottom))}
+.item{display:flex;gap:10px;align-items:flex-start;background:#fff;border-radius:14px;padding:9px;margin-bottom:8px}
+.item img{width:60px;height:60px;border-radius:10px;object-fit:cover}
+.item .t{flex:1;font-size:14px;line-height:1.35;min-width:0}
+.item .t small{display:block;color:var(--soft);font-size:12.5px}
+.item .p{font-weight:800;color:var(--rose);white-space:nowrap;padding-top:2px}
+.qty{display:flex;align-items:center;gap:4px;margin-top:6px;flex-wrap:nowrap}
+.qty .q{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--bg);font:inherit;font-size:19px;line-height:1;cursor:pointer;color:var(--ink)}
+.qty span{min-width:22px;text-align:center;font-weight:700}
+.lnk{border:0;background:none;color:var(--soft);font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;min-height:40px;padding:0 3px;white-space:nowrap}
+.sec{font-size:15px;font-weight:700;margin:16px 0 4px}
+.hint{font-size:12.5px;color:var(--soft);margin:-2px 0 6px}
+label{display:block;font-size:13px;font-weight:500;color:var(--soft);margin:10px 0 4px}
+input,select,textarea{width:100%;font:inherit;font-size:16px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;color:var(--ink);min-height:46px}
+input::placeholder,textarea::placeholder{color:#94797A}
+input.bad{border-color:var(--err);background:#FFF6F4}
+.err{color:var(--err);font-size:13px;margin-top:4px;display:none}
+.err.show{display:block}
+.seg{display:flex;gap:6px;flex-wrap:wrap}
+.seg label{margin:0;flex:1 1 0;min-width:0}
+.seg.w label{flex:1 1 calc(50% - 6px)}
+.seg input{position:absolute;opacity:0;pointer-events:none;min-height:0}
+.seg span{display:flex;align-items:center;justify-content:center;flex-direction:column;min-height:46px;text-align:center;border:1px solid var(--line);background:#fff;border-radius:12px;padding:7px 6px;font-size:14px;color:var(--ink);cursor:pointer;line-height:1.3}
+.seg input:checked+span{background:var(--rose);border-color:var(--rose);color:#fff}
+.seg input:focus-visible+span{outline:2.5px solid var(--rose);outline-offset:2px}
+.check span{flex-direction:row;gap:8px}
+.check span::before{content:"";width:20px;height:20px;border-radius:6px;border:1.5px solid var(--rose);background:#fff;flex:none}
+.check input:checked+span{background:var(--rosebg);color:var(--ink);border-color:var(--rose)}
+.check input:checked+span::before{background:var(--rose) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/15px no-repeat}
+#otherDate{margin-top:8px}
+.sugg{margin-top:6px;border:1px solid var(--rose);background:#fff;color:var(--rose);border-radius:12px;min-height:40px;padding:0 12px;font:inherit;font-weight:700;font-size:14px;cursor:pointer}
+.re{margin-top:8px;width:100%;display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid var(--rose2);border-radius:14px;padding:5px 10px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer;text-align:right;min-height:48px}
+.re b{color:var(--rose)}
+.re small{display:block;color:var(--soft);font-size:12.5px}
+.lines{margin:14px 0 6px;padding-top:10px;border-top:1px dashed var(--rose2);font-size:14px}
+.lines div{display:flex;justify-content:space-between;padding:2px 0}
+.lines .tot{font-weight:800;font-size:17px;padding-top:6px}
+.lines .dep{color:var(--soft);font-size:13.5px}
+.rules{background:#fff;border-radius:12px;padding:8px 12px;font-size:12.5px;color:var(--soft);line-height:1.6;margin-top:8px}
+.send{width:100%;min-height:54px;border:0;border-radius:16px;background:var(--wa);color:#fff;font:inherit;font-weight:800;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;margin-top:10px}
+.send .ic{width:22px;height:22px}
+.small{font-size:12.5px;color:var(--soft);text-align:center;margin-top:8px;line-height:1.5}
+.done{text-align:center;padding:22px 8px 6px}
+.done .ok{width:68px;height:68px;border-radius:50%;background:#E7F2EB;color:var(--ok);display:grid;place-items:center;margin:0 auto 10px}
+.done h3{font-family:"Gveret Levin",cursive;font-weight:400;font-size:34px;color:var(--rose);margin:0 0 6px}
+.done p{margin:0 0 6px;line-height:1.6}
+.ghost{width:100%;min-height:50px;margin-top:10px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+/* option sheet */
+.opt h3{margin:0 0 2px;font-size:19px}
+.opt .ds{color:var(--soft);font-size:13.5px}
+.opt .pic{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:16px;margin-bottom:10px;display:block}
+.cnt{font-size:12px;color:var(--soft);text-align:left;margin-top:3px}
+.addbar{position:sticky;bottom:0;background:linear-gradient(rgba(248,230,232,0),var(--bg) 30%);padding:18px 0 calc(6px + env(safe-area-inset-bottom));margin-top:4px}
+.add{width:100%;min-height:52px;border:0;border-radius:16px;background:var(--rose);color:#fff;font:inherit;font-weight:800;font-size:16px;cursor:pointer;box-shadow:0 6px 16px rgba(176,85,99,.28)}
+body.sheet-open .toast{bottom:calc(24px + env(safe-area-inset-bottom))}
+.toast{position:fixed;bottom:86px;left:50%;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;border-radius:22px;padding:8px 16px;min-height:44px;font-size:14px;z-index:11;transition:transform .3s,opacity .3s;display:flex;gap:14px;align-items:center;white-space:nowrap}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1;pointer-events:auto}
+.toast button{border:0;background:none;color:#F5CFD3;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;min-height:36px;padding:0 4px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15" r="1.6" fill="currentColor"/></symbol>
+ <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 10V7a3 3 0 0 1 6 0v3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
+ <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 19.5l1.3-3.6A8 8 0 1 1 8.4 19z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z" fill="currentColor"/></symbol>
+ <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+ <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+</svg>
+<div class="demo">דף לדוגמה · נבנה ב<a href="https://me8499973-art.github.io/meital/boutique">סדר בעסק</a> · ההזמנות מגיעות למיטל</div>
+<div class="wrap">
+  <header>
+    <svg class="logo" viewBox="0 0 120 120" role="img" aria-label="העוגות של נועה">
+      <circle cx="60" cy="60" r="56" fill="#fff"/>
+      <circle cx="60" cy="60" r="56" fill="none" stroke="#E9B7BC" stroke-width="2"/>
+      <circle cx="60" cy="60" r="50" fill="#FCEBEE"/>
+      <ellipse cx="60" cy="90" rx="34" ry="5" fill="#E9B7BC"/>
+      <path d="M58 92h4v-6h-4z" fill="#C9A24E"/>
+      <rect x="30" y="62" width="60" height="26" rx="7" fill="#FFF8F2" stroke="#B05563" stroke-width="2.2"/>
+      <path d="M30.5 70c4 0 4 6 8 6s4-6 8-6 4 7 8 7 4-7 8-7 4 6 8 6 4-6 8-6 4 5 8 5" fill="none" stroke="#E9B7BC" stroke-width="5" stroke-linecap="round"/>
+      <rect x="40" y="42" width="40" height="22" rx="6" fill="#FFF8F2" stroke="#B05563" stroke-width="2.2"/>
+      <path d="M40.5 49c3 0 3 5 6.5 5s3-5 6.5-5 3 6 6.5 6 3-6 6.5-6 3 5 6.5 5 3-5 6.5-5" fill="none" stroke="#B05563" stroke-width="4.2" stroke-linecap="round"/>
+      <path d="M60 33c-1-5 2-8 6-9" fill="none" stroke="#3F6B32" stroke-width="2" stroke-linecap="round"/>
+      <circle cx="60" cy="36" r="6" fill="#B05563"/>
+      <circle cx="58" cy="34" r="1.8" fill="#fff" opacity=".7"/>
+      <g fill="#C9A24E"><circle cx="38" cy="81" r="1.6"/><circle cx="50" cy="83" r="1.6"/><circle cx="70" cy="82" r="1.6"/><circle cx="82" cy="80" r="1.6"/><circle cx="52" cy="59" r="1.4"/><circle cx="68" cy="58" r="1.4"/></g>
+      <path d="M92 30c2-4 7-3 7 1 0 3-4 6-7 8-3-2-7-5-7-8 0-4 5-5 7-1z" fill="#E9B7BC"/>
+      <path d="M25 38l1.5 3.5L30 43l-3.5 1.5L25 48l-1.5-3.5L20 43l3.5-1.5z" fill="#C9A24E"/>
+    </svg>
+    <h1>העוגות של נועה</h1>
+    <div class="tag">עוגות בהזמנה אישית · אפייה ביתית באהבה · עמנואל</div>
+    <div class="trust">
+      <span><svg><use href="#i-check"/></svg>בהשגחה · חלב ישראל</span>
+      <span><svg><use href="#i-check"/></svg>חלבי ופרווה</span>
+      <span><svg><use href="#i-check"/></svg>בלי גלוטן</span>
+    </div>
+  </header>
+  <div class="notice"><svg class="ic"><use href="#i-cal"/></svg><div>הזמנות לשבת נסגרות <b>ביום רביעי בערב</b><br>איסוף בשישי: 9:00 עד 12:00<br>בימי חול: 10:00 עד 12:00 או 16:00 עד 20:00</div></div>
+  <div id="reorder"></div>
+  <h2 class="sr">העוגות</h2>
+  <div class="filters"><div class="chips" id="chips" role="group" aria-label="סוג עוגה"></div><div class="kos" id="kos" role="group" aria-label="חלבי או פרווה"></div></div>
+  <div class="grid" id="grid"></div>
+  <div class="info">
+    <h2>איך מזמינים?</h2>
+    <ol><li>בוחרים עוגה, גודל וטעם</li><li>כותבים מה לכתוב על העוגה</li><li>בוחרים יום ושעה ושולחים. ההזמנה מגיעה אליי מסודרת לוואטסאפ</li></ol>
+    עוגות מעוצבות: לפחות 5 ימים מראש · עוגות קרם: 3 ימים · בחושות וקינוחים: יומיים<br>
+    מקדמה של 50% לשריון התאריך. ביטול עד 3 ימים לפני: המקדמה חוזרת במלואה<br>
+    בלי גלוטן בתוספת 30 ₪ · תעודת הכשרות נשלחת בוואטסאפ לכל מי שמבקשת<br>
+    <a class="ask" id="ask" target="_blank" rel="noopener"><svg class="ic"><use href="#i-chat"/></svg>יש שאלה? כתבו לי בוואטסאפ</a>
+  </div>
+</div>
+
+<div class="bar" id="bar"><button type="button" id="openCart"><span><svg class="ic"><use href="#i-bag"/></svg>ההזמנה שלי · <b id="cnt">0</b></span><span id="tot">0 ₪</span></button></div>
+<div class="veil" id="veil"></div>
+
+<div class="sheet opt" id="optSheet" role="dialog" aria-modal="true" aria-labelledby="oTitle">
+  <div class="sh"><b id="oTitle">בחירת עוגה</b><button class="x" type="button" data-close aria-label="סגירה"><svg class="ic"><use href="#i-x"/></svg></button></div>
+  <div class="in" id="optBody"></div>
+</div>
+
+<div class="sheet" id="cartSheet" role="dialog" aria-modal="true" aria-labelledby="cTitle">
+  <div class="sh"><b id="cTitle">ההזמנה שלי</b><button class="x" type="button" data-close aria-label="סגירה"><svg class="ic"><use href="#i-x"/></svg></button></div>
+  <div class="in">
+    <div id="items"></div>
+    <div id="form">
+      <div class="sec">לאיזה יום?</div>
+      <div class="hint" id="leadHint"></div>
+      <div class="seg w" id="days"></div>
+      <input type="date" id="otherDate" hidden aria-label="תאריך אחר">
+      <div class="err" id="eDay"></div>
+      <div class="sec">באיזו שעה?</div>
+      <div class="seg w" id="hours"></div>
+      <div class="sec">איסוף או משלוח</div>
+      <div class="seg"><label><input type="radio" name="how" value="איסוף" checked><span>איסוף מעמנואל</span></label><label><input type="radio" name="how" value="משלוח"><span>משלוח (+25&nbsp;₪)</span></label></div>
+      <div id="addrBox" hidden><label for="fAddr">כתובת למשלוח</label><input id="fAddr" autocomplete="street-address" placeholder="רחוב, מספר ויישוב"><div class="err" id="eAddr">כתבו כתובת כדי שנדע לאן לשלוח</div></div>
+      <label for="fName">שם</label><input id="fName" autocomplete="name" placeholder="למשל: רחל"><div class="err" id="eName">כתבו שם, כדי שנועה תדע של מי ההזמנה</div>
+      <label for="fNote">הערות (לא חובה)</label><textarea id="fNote" rows="2" placeholder="אלרגיות, צבעים, כל דבר שחשוב לך"></textarea>
+      <div class="pick" id="pick" aria-live="polite"></div>
+      <div class="lines" id="lines"></div>
+      <div class="rules">המקדמה (50%) משריינת את התאריך. נועה שולחת את פרטי התשלום אחרי שהיא מאשרת. ביטול עד 3 ימים לפני: המקדמה חוזרת במלואה</div>
+      <button class="send" type="button" id="send"><svg class="ic"><use href="#i-chat"/></svg>שליחת ההזמנה בוואטסאפ</button>
+      <div class="small">ההודעה נפתחת מוכנה בוואטסאפ, ורק לוחצים שליחה</div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"><span id="tMsg"></span><button type="button" id="tUndo" hidden>ביטול</button></div>
+
+<script>
+const PHONE='972548499973';
+const P=[
+ {id:'c1',cat:'עוגות מעוצבות',k:'חלבי',lead:5,name:'עוגת פרחים, שתי קומות',d:'קרם וניל, פרחים טבעיים ועלי זהב',img:'img/c1.jpg',sizes:[['20 סועדים',380],['35 סועדים',520]],badge:'הכי מוזמנת'},
+ {id:'c3',cat:'עוגות מעוצבות',k:'חלבי',lead:5,name:'עוגת יום הולדת ורודה',d:'קרם חמאה, סוכריות ומקרונים',img:'img/c3.jpg',sizes:[['קוטר 20',260],['קוטר 24',310]],badge:'חדש',bnew:true},
+ {id:'c2',cat:'עוגות קרם',k:'פרווה',lead:3,name:'עוגת שוקולד נוטפת',d:'גנאש שוקולד, תותים ושברי שוקולד',img:'img/c2.jpg',sizes:[['קוטר 20',220],['שתי קומות',340]],out:true},
+ {id:'c4',cat:'עוגות קרם',k:'חלבי',lead:3,name:'עוגת גבינה פירות יער',d:'בסיס פריך, רוטב פירות יער טרי',img:'img/c4.jpg',sizes:[['קוטר 22',170],['קוטר 26',210]]},
+ {id:'c6',cat:'עוגות בחושות',k:'פרווה',lead:2,name:'בבקה שוקולד',d:'בצק שמרים עשיר ושוקולד בלגי',img:'img/c6.jpg',sizes:[['יחידה',65],['זוג',120]],simple:true},
+ {id:'c5',cat:'קינוחים',k:'חלבי',lead:2,name:'מארז 12 קינוחים קטנים',d:'טארטים, אקלרים ומקרונים',img:'img/c5.jpg',sizes:[['12 יחידות',140],['24 יחידות',260]],simple:true}
+];
+const CATS=['הכל','עוגות מעוצבות','עוגות קרם','עוגות בחושות','קינוחים'];
+const FLAV=['וניל','שוקולד','לוטוס','פיסטוק'];
+const DAYN=['ראשון','שני','שלישי','רביעי','חמישי','שישי','שבת'];
+const HOURS_FRI=['9:00 עד 10:00','10:00 עד 11:00','11:00 עד 12:00'];
+const HOURS_WEEK=['10:00 עד 12:00','16:00 עד 18:00','18:00 עד 20:00'];
+const SHIP=25;
+const $=id=>document.getElementById(id);
+let cat='הכל',kosher='הכל',cart=[],lastRemoved=null,tTimer,editIdx=-1,sent=null;
+try{cart=JSON.parse(localStorage.getItem('ugot-cart')||'[]').filter(c=>c&&c.id).map(c=>({qty:1,lead:2,...c}))}catch(e){}
+const save=()=>{try{localStorage.setItem('ugot-cart',JSON.stringify(cart))}catch(e){}};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ico=n=>`<svg class="ic"><use href="#i-${n}"/></svg>`;
+$('ask').href='https://wa.me/'+PHONE+'?text='+encodeURIComponent('היי נועה, יש לי שאלה על עוגה 🙂');
+
+/* תאריכים: אף פעם לא שבת; כל עוגה עם זמן הכנה משלה; שישי רק אם עוד לא עבר רביעי בערב */
+const key=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+const label=d=>`${DAYN[d.getDay()]} ${d.getDate()}.${d.getMonth()+1}`;
+const lead=()=>Math.max(2,...cart.map(c=>c.lead||2));
+function okDate(d){const now=new Date(),min=new Date(now.getFullYear(),now.getMonth(),now.getDate()+lead());
+ if(d<min)return 'צריך לפחות '+lead()+' ימים מראש לעוגות שבחרת';
+ if(d.getDay()===6)return 'בשבת לא מקבלים הזמנות';
+ if(d.getDay()===5&&now>new Date(d.getFullYear(),d.getMonth(),d.getDate()-2,22,0))return 'ההזמנות ליום שישי הזה כבר נסגרו';
+ return ''}
+function quickDays(){const out=[],now=new Date();for(let i=lead();out.length<3&&i<30;i++){const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i);if(!okDate(d))out.push(d)}return out}
+let pickedDay=null,otherMode=false;
+function fridayNote(){const now=new Date();for(let i=1;i<8;i++){const d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i);if(d.getDay()===5){const r=okDate(d);return !r?'':r.startsWith('ההזמנות')?`ההזמנות לשישי ${d.getDate()}.${d.getMonth()+1} כבר נסגרו (ביום רביעי בערב)`:`שישי ${d.getDate()}.${d.getMonth()+1} קרוב מדי לעוגה שבחרת`}}return ''}
+function renderDays(){const q=quickDays(),L=lead();
+ const notes=[L>2?`בגלל ${cart.find(c=>c.lead===L)?.name.split(' (')[0]||'העוגה'} צריך להזמין לפחות ${L} ימים מראש`:'',fridayNote()].filter(Boolean);
+ $('leadHint').textContent=notes.join(' · ');
+ if(!otherMode&&(!pickedDay||okDate(pickedDay)))pickedDay=q.find(d=>d.getDay()===5)||q[0]||null;
+ if(otherMode&&pickedDay&&okDate(pickedDay))pickedDay=null;
+ const isQ=!otherMode&&pickedDay&&q.some(d=>key(d)===key(pickedDay));
+ $('days').innerHTML=q.map(d=>`<label><input type="radio" name="day" value="${key(d)}" ${isQ&&key(d)===key(pickedDay)?'checked':''}><span>${label(d)}</span></label>`).join('')+`<label><input type="radio" name="day" value="other" ${otherMode?'checked':''}><span>תאריך אחר</span></label>`;
+ const now=new Date();$('otherDate').min=key(new Date(now.getFullYear(),now.getMonth(),now.getDate()+L));
+ $('otherDate').hidden=!otherMode;
+ if(otherMode&&$('otherDate').value){const [y,m,d]=$('otherDate').value.split('-').map(Number),dt=new Date(y,m-1,d),bad=okDate(dt);dateErr(bad,dt);pickedDay=bad?null:dt}
+ else{$('eDay').classList.remove('show');$('otherDate').classList.remove('bad')}renderHours()}
+function renderHours(){const prev=document.querySelector('input[name=hour]:checked')?.value,hs=pickedDay&&pickedDay.getDay()===5?HOURS_FRI:HOURS_WEEK;
+ $('hours').innerHTML=hs.map((h,i)=>`<label><input type="radio" name="hour" value="${h}" ${(prev?h===prev:!i)?'checked':''}><span>${h}</span></label>`).join('');
+ if(!document.querySelector('input[name=hour]:checked'))document.querySelector('input[name=hour]').checked=true;showPick()}
+function showPick(){const h=document.querySelector('input[name=hour]:checked')?.value,w=document.querySelector('input[name=how]:checked')?.value;
+ $('pick').innerHTML=pickedDay?`נבחר: <b>יום ${label(pickedDay)}</b>, בשעות ${h} · ${w==='משלוח'?'משלוח':'איסוף מעמנואל'}`:'<b>עוד לא נבחר יום</b>'}
+$('hours').onchange=showPick;
+$('days').onchange=e=>{const v=e.target.value;otherMode=v==='other';if(otherMode){$('otherDate').hidden=false;pickedDay=null;$('otherDate').focus();if($('otherDate').showPicker)try{$('otherDate').showPicker()}catch(_){};renderHours();return}
+ const [y,m,d]=v.split('-').map(Number);pickedDay=new Date(y,m-1,d);$('otherDate').hidden=true;$('eDay').classList.remove('show');renderHours()};
+function nextValid(from){for(let i=0;i<40;i++){const d=new Date(from.getFullYear(),from.getMonth(),from.getDate()+i);if(!okDate(d))return d}return null}
+function dateErr(bad,dt){$('otherDate').classList.toggle('bad',!!bad);if(!bad){$('eDay').classList.remove('show');return}
+ const s=nextValid(dt>new Date()?dt:new Date());$('eDay').innerHTML=esc(bad)+(s?`<br><button type="button" class="sugg" data-s="${key(s)}">לבחור את ${label(s)}?</button>`:'');$('eDay').classList.add('show')}
+$('eDay').onclick=e=>{const b=e.target.closest('[data-s]');if(!b)return;$('otherDate').value=b.dataset.s;$('otherDate').onchange()};
+$('otherDate').onchange=()=>{const v=$('otherDate').value;if(!v){pickedDay=null;return}const [y,m,d]=v.split('-').map(Number),dt=new Date(y,m-1,d),bad=okDate(dt);
+ dateErr(bad,dt);pickedDay=bad?null:dt;renderHours()};
+
+function chips(){$('chips').innerHTML=CATS.map(c=>`<button type="button" class="${c===cat?'on':''}" data-c="${c}" aria-pressed="${c===cat}">${c}</button>`).join('');
+ $('kos').innerHTML=['חלבי','פרווה'].map(k=>`<button type="button" class="${k===kosher?'on':''}" data-k="${k}" aria-pressed="${k===kosher}">${k===kosher?'✓ ':''}רק ${k}</button>`).join('')}
+$('kos').onclick=e=>{const k=e.target.closest('[data-k]');if(!k)return;kosher=kosher===k.dataset.k?'הכל':k.dataset.k;chips();grid()};
+function grid(){const list=P.filter(p=>(cat==='הכל'||p.cat===cat)&&(kosher==='הכל'||p.k===kosher));
+ if(!list.length){$('grid').innerHTML=`<div class="empty">אין כרגע ${kosher==='הכל'?'':kosher+' '}בקטגוריה הזו.<br><button type="button" class="btn" id="showAll">להציג את כל ה${cat==='הכל'?'עוגות':cat}</button><button type="button" class="btn alt" id="askCat">לשאול את נועה</button></div>`;$('showAll').onclick=()=>{kosher='הכל';chips();grid()};$('askCat').onclick=()=>window.open($('ask').href,'_blank');return}
+ $('grid').innerHTML=list.map(p=>`<article class="c${p.out?' out':''}">${p.out?'<span class="badge">אזל השבוע</span>':p.badge?`<span class="badge${p.bnew?' new':''}">${p.badge}</span>`:''}
+<img src="${p.img}" alt="${esc(p.name)}" loading="lazy"><div class="b"><span class="k k-${p.k==='חלבי'?'m':'p'}">${p.k}</span><h3>${p.name}</h3><p>${p.d}</p><div class="lead">להזמין ${p.lead===2?'יומיים':p.lead+' ימים'} מראש</div><div class="pr"><small>מ-</small>${nf(p.sizes[0][1])}</div>
+<button type="button" data-o="${p.id}" ${p.out?'disabled':''}>${p.out?'יחזור בשבוע הבא':'להזמנה'}</button></div></article>`).join('')}
+let lastFocus=null;
+const bg=on=>{document.body.classList.toggle('sheet-open',on);document.querySelectorAll('.wrap,.bar,.demo').forEach(el=>on?el.setAttribute('inert',''):el.removeAttribute('inert'))};
+function openSheet(id){if(!document.body.classList.contains('sheet-open'))lastFocus=document.activeElement;$('toast').classList.remove('show');['optSheet','cartSheet'].forEach(s=>$(s).classList.toggle('show',s===id));$('veil').classList.add('show');bg(true);$(id).scrollTop=0;setTimeout(()=>$(id).querySelector('.x').focus({preventScroll:true}),60)}
+function closeSheet(){if(editIdx>=0&&$('optSheet').classList.contains('show')){editIdx=-1;cartView();openSheet('cartSheet');return}
+ editIdx=-1;['optSheet','cartSheet'].forEach(s=>$(s).classList.remove('show'));$('veil').classList.remove('show');bg(false);if(lastFocus&&document.contains(lastFocus))lastFocus.focus({preventScroll:true})}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet()});
+
+function opt(id,ei=-1){const p=P.find(x=>x.id===id),pre=ei>=0?cart[ei]:null;editIdx=ei;$('oTitle').textContent=pre?'עריכת עוגה':'בחירת עוגה';
+ const si=pre?Math.max(0,p.sizes.findIndex(s=>s[0]===pre.size)):0;
+ $('optBody').innerHTML=`<img class="pic" src="${p.img}" alt=""><span class="k k-${p.k==='חלבי'?'m':'p'}">${p.k}</span><h3>${p.name}</h3><div class="ds">${p.d} · להזמין ${p.lead===2?'יומיים':p.lead+' ימים'} מראש</div>
+ <label>גודל</label><div class="seg">${p.sizes.map((s,i)=>`<label><input type="radio" name="sz" value="${i}" ${i===si?'checked':''}><span>${s[0]}<b>${nf(s[1])}</b></span></label>`).join('')}</div>
+ ${p.simple?'':`<label>טעם הקרם</label><div class="seg w">${FLAV.map((f,i)=>`<label><input type="radio" name="fl" value="${f}" ${(pre?pre.flav===f:!i)?'checked':''}><span>${f}</span></label>`).join('')}</div>`}
+ <label class="seg check" style="margin-top:12px"><input type="checkbox" id="oGf" ${pre&&pre.gf?'checked':''}><span>בלי גלוטן (+30&nbsp;₪)</span></label>
+ ${p.simple?'':`<label for="oTxt">מה לכתוב על העוגה? (לא חובה)</label><input id="oTxt" maxlength="40" placeholder="למשל: מזל טוב שירה בת 6" value="${pre?esc(pre.txt):''}"><div class="cnt" id="oCnt">${pre?pre.txt.length:0}/40</div>`}
+ <label>כמות</label><div class="qty"><button class="q" type="button" id="oPlus" aria-label="עוד אחד">+</button><span id="oQty" aria-live="polite">1</span><button class="q" type="button" id="oMinus" aria-label="אחד פחות">−</button></div>
+ <div class="addbar"><button type="button" class="add" id="addBtn"></button></div>`;
+ let oq=pre?pre.qty:1;
+ const price=()=>p.sizes[+document.querySelector('input[name=sz]:checked').value][1]+($('oGf').checked?30:0);
+ const upd=()=>{$('oQty').textContent=oq;$('addBtn').textContent=`${pre?'שמירת השינוי':'הוספה להזמנה'} · ${oq>1?oq+' × ':''}${nf(price())}`};upd();
+ $('oPlus').onclick=()=>{oq=Math.min(20,oq+1);upd()};$('oMinus').onclick=()=>{oq=Math.max(1,oq-1);upd()};
+ $('optBody').onchange=upd;
+ if($('oTxt'))$('oTxt').oninput=()=>{$('oCnt').textContent=$('oTxt').value.length+'/40'};
+ $('addBtn').onclick=()=>{const s=+document.querySelector('input[name=sz]:checked').value,gf=$('oGf').checked;
+  const it={id:p.id,k:p.k,lead:p.lead,name:p.name+' ('+p.k+')',img:p.img,size:p.sizes[s][0],price:price(),flav:p.simple?'':document.querySelector('input[name=fl]:checked').value,txt:p.simple?'':$('oTxt').value.trim(),gf,qty:oq};
+  if(pre){cart[editIdx]=it;editIdx=-1;save();bar();cartView();openSheet('cartSheet');toast('השינוי נשמר ✓');return}
+  const same=cart.find(c=>c.id===it.id&&c.size===it.size&&c.flav===it.flav&&c.txt===it.txt&&c.gf===it.gf);
+  if(same)same.qty+=oq;else cart.push(it);save();bar();closeSheet();toast(oq>1?`נוספו ${oq} להזמנה ✓`:'נוסף להזמנה ✓');if(location.hash)history.replaceState(null,'',location.pathname+location.search)};
+ openSheet('optSheet')}
+function toast(msg,undo){const t=$('toast');$('tMsg').textContent=msg;$('tUndo').hidden=!undo;t.classList.add('show');clearTimeout(tTimer);tTimer=setTimeout(()=>t.classList.remove('show'),undo?4500:1600)}
+$('tUndo').onclick=()=>{if(!lastRemoved)return;cart.splice(lastRemoved.i,0,lastRemoved.it);lastRemoved=null;save();bar();cartView();$('toast').classList.remove('show')};
+
+const how=()=>document.querySelector('input[name=how]:checked').value;
+const sub=()=>cart.reduce((a,c)=>a+c.price*c.qty,0);
+const total=()=>sub()+(how()==='משלוח'?SHIP:0);
+const count=()=>cart.reduce((a,c)=>a+c.qty,0);
+const nf=n=>Number(n).toLocaleString('he-IL')+' ₪';
+function bar(){$('bar').classList.toggle('show',cart.length>0);$('cnt').textContent=count();$('tot').textContent=nf(total())}
+function cartView(){if(sent)return;const empty=!cart.length;$('form').hidden=empty;
+ $('items').innerHTML=empty?'<div class="small" style="padding:24px 0">ההזמנה ריקה. בחרו עוגה מהמחירון</div>':cart.map((c,i)=>`<div class="item"><img src="${c.img}" alt=""><div class="t"><b>${esc(c.name)}</b><small>${esc(c.size)}${c.flav?' · '+esc(c.flav):''}${c.gf?' · בלי גלוטן':''}${c.txt?' · "'+esc(c.txt)+'"':''}</small>
+ <div class="qty"><button class="q" type="button" data-q="${i}" data-d="1" aria-label="עוד אחד">+</button><span aria-live="polite">${c.qty}</span><button class="q" type="button" data-q="${i}" data-d="-1" aria-label="אחד פחות">−</button><button class="lnk" type="button" data-ed="${i}">עריכה</button><button class="lnk" type="button" data-rm="${i}">הסרה</button></div></div><span class="p">${nf(c.price*c.qty)}</span></div>`).join('');
+ if(empty)return;
+ const t=total();
+ $('lines').innerHTML=`<div><span>עוגות</span><span>${nf(sub())}</span></div>${how()==='משלוח'?`<div><span>משלוח</span><span>${nf(SHIP)}</span></div>`:''}<div class="tot"><span>סה"כ</span><span>${nf(t)}</span></div><div class="dep"><span>מקדמה לשריון (50%)</span><span>${nf(Math.ceil(t/2))}</span></div>`;
+ $('addrBox').hidden=how()!=='משלוח';renderDays()}
+function removeAt(i){lastRemoved={i,it:cart[i]};cart.splice(i,1);save();cartView();bar();toast('הוסר מההזמנה','undo')}
+$('items').onclick=e=>{const r=e.target.closest('[data-rm]');if(r){removeAt(+r.dataset.rm);return}
+ const ed=e.target.closest('[data-ed]');if(ed){const i=+ed.dataset.ed;opt(cart[i].id,i);return}
+ const q=e.target.closest('[data-q]');if(!q)return;const c=cart[+q.dataset.q];c.qty+=+q.dataset.d;if(c.qty<1){c.qty=1;removeAt(+q.dataset.q);return}save();cartView();bar()};
+document.querySelectorAll('input[name=how]').forEach(r=>r.onchange=()=>{$('lines').innerHTML='';cartView();bar()});
+['fName','fAddr'].forEach(f=>$(f).oninput=()=>{$(f).classList.remove('bad');$(f==='fName'?'eName':'eAddr').classList.remove('show')});
+
+$('chips').onclick=e=>{const k=e.target.closest('[data-k]');if(k){kosher=kosher===k.dataset.k?'הכל':k.dataset.k;chips();grid();return}
+ const b=e.target.closest('[data-c]');if(!b)return;cat=b.dataset.c;chips();grid()};
+$('grid').onclick=e=>{const b=e.target.closest('[data-o]');if(b&&!b.disabled)opt(b.dataset.o)};
+$('openCart').onclick=()=>{sent=null;cartView();openSheet('cartSheet')};
+$('veil').onclick=closeSheet;document.querySelectorAll('[data-close]').forEach(b=>b.onclick=closeSheet);
+
+$('send').onclick=()=>{if(!cart.length)return;
+ const name=$('fName').value.trim(),addr=$('fAddr').value.trim(),h=how();let bad=null;
+ if(!pickedDay||okDate(pickedDay)){$('eDay').textContent=pickedDay?okDate(pickedDay):'בחרו יום';$('eDay').classList.add('show');bad=$('days')}
+ if(h==='משלוח'&&!addr){$('fAddr').classList.add('bad');$('eAddr').classList.add('show');bad=bad||$('fAddr')}
+ if(!name){$('fName').classList.add('bad');$('eName').classList.add('show');bad=bad||$('fName')}
+ if(bad){bad.scrollIntoView({block:'center',behavior:'smooth'});if(bad.focus&&bad.tagName==='INPUT')bad.focus({preventScroll:true});return}
+ const hr=document.querySelector('input[name=hour]:checked').value,t=total();
+ const lines=['היי נועה 🎂 אשמח להזמין:',...cart.map((c,i)=>`${i+1}. ${c.name} · ${c.size}${c.flav?' · '+c.flav:''}${c.gf?' · בלי גלוטן':''}${c.txt?` · לכתוב: "${c.txt}"`:''}${c.qty>1?` · ${c.qty} יחידות`:''} · ${nf(c.price*c.qty)}`),'',
+  `📅 ליום ${label(pickedDay)}, בשעות ${hr}`,`🚗 ${h==='משלוח'?'משלוח לכתובת: '+addr+` (+${SHIP} ₪)`:'איסוף מעמנואל'}`,`💰 סה"כ: ${nf(t)} · מקדמה: ${nf(Math.ceil(t/2))}`,`שם: ${name}`];
+ if($('fNote').value.trim())lines.push(`הערות: ${$('fNote').value.trim()}`);
+ const url='https://wa.me/'+PHONE+'?text='+encodeURIComponent(lines.join('\n'));
+ window.open(url,'_blank');
+ sent={url,cart:cart.slice(),name,dep:Math.ceil(t/2)};cart=[];save();bar();
+ $('form').hidden=true;$('items').innerHTML=`<div class="done"><div class="ok">${ico('check').replace('class="ic"','class="ic" style="width:32px;height:32px"')}</div><h3>תודה ${esc(name)}!</h3><p>ההזמנה נפתחה בוואטסאפ, מוכנה ומסודרת.<br><b>נשאר רק ללחוץ שם על "שליחה".</b></p><p class="small">נועה תאשר ותשלח פרטים לתשלום המקדמה (${nf(sent.dep)}).</p><button type="button" class="add" id="finish">סיום</button><button type="button" class="ghost" id="back">רגע, אני רוצה לשנות משהו</button><button type="button" class="lnk" id="again" style="margin-top:6px">לא נפתח וואטסאפ? לנסות שוב</button></div>`;
+ try{localStorage.setItem('ugot-last',JSON.stringify({cart:sent.cart,name,how:h,addr}))}catch(e){}
+ $('again').onclick=()=>window.open(sent.url,'_blank');
+ $('back').onclick=()=>{cart=sent.cart;sent=null;save();bar();cartView()};
+ $('finish').onclick=()=>{closeSheet();setTimeout(()=>{sent=null;cartView();reorder()},350)}};
+function reorder(){let last=null;try{last=JSON.parse(localStorage.getItem('ugot-last')||'null')}catch(e){}
+ if(!last||!last.cart||!last.cart.length||cart.length){$('reorder').innerHTML='';return}
+ if(last.name&&!$('fName').value)$('fName').value=last.name;
+ if(last.addr&&!$('fAddr').value)$('fAddr').value=last.addr;
+ if(last.how)document.querySelector(`input[name=how][value="${last.how}"]`).checked=true;
+ const c=last.cart[0],more=last.cart.length>1?` ועוד ${last.cart.length-1}`:'',sum=last.cart.reduce((a,x)=>a+x.price*(x.qty||1),0)+(last.how==='משלוח'?SHIP:0);
+ $('reorder').innerHTML=`<button type="button" class="re" id="reBtn"><img src="${c.img}" alt="" style="width:36px;height:36px;border-radius:8px;object-fit:cover"><span style="flex:1"><b>להזמין שוב כמו בפעם הקודמת</b><small>${esc(c.name.split(' (')[0])}${(c.qty||1)>1?' ×'+c.qty:''}${more} · סה"כ ${nf(sum)}${last.how==='משלוח'?' כולל&nbsp;משלוח':''}</small></span></button>`;
+ $('reBtn').onclick=()=>{const ok=last.cart.filter(x=>{const p=P.find(q=>q.id===x.id);return p&&!p.out});if(!ok.length){toast('העוגות האלה אזלו השבוע');return}cart=ok.map(x=>({...x}));save();bar();reorder();cartView();openSheet('cartSheet')}}
+/* קישור ישיר לעוגה: ...ugot/#c1 פותח את עוגת הפרחים */
+function fromHash(){const id=decodeURIComponent(location.hash.slice(1)),p=P.find(x=>x.id===id);if(!p)return;if(p.out){toast('העוגה הזו אזלה השבוע');return}opt(p.id)}
+window.addEventListener('hashchange',fromHash);
+chips();grid();bar();reorder();fromHash();
+</script>
+</body>
+</html>
