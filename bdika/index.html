@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>בדיקת סדר לעסק · סדר בעסק</title>
+<meta name="description" content="10 שאלות, 2 דקות. מקבלים ציון סדר, רמזור לכל תחום במשרד ו-3 דברים לתקן קודם. חינם.">
+<meta property="og:title" content="בדיקת סדר לעסק, ב-2 דקות">
+<meta property="og:description" content="ציון, רמזור לכל תחום ו-3 דברים לתקן קודם. חינם, ושום דבר לא נשמר.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bellefair&family=Heebo:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#F8F2E7;--cream2:#F1E7D5;--paper:#FFFDF8;--gold:#B8913A;--gold-d:#7A5C1C;--gold-l:#E6C87A;--brown:#3E2C1C;--muted:#6E5840;--line:rgba(184,145,58,.35);--green:#2F6B45;--amber:#9A6A10;--red:#A83226}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--cream);color:var(--brown);font-family:Heebo,system-ui,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+::selection{background:var(--gold-l);color:var(--brown)}
+:focus-visible{outline:2.5px solid var(--gold-d);outline-offset:3px}
+.bsd{position:absolute;top:10px;right:14px;font-size:12.5px;color:var(--gold-d)}
+.wrap{max-width:560px;margin:0 auto;padding:34px 18px 40px;min-height:100vh;display:flex;flex-direction:column}
+header{text-align:center}
+.seal{width:64px;height:64px;border-radius:50%;display:block;margin:0 auto 8px}
+h1{font-family:Bellefair,serif;font-weight:400;font-size:38px;line-height:1.1;margin:0;color:var(--brown)}
+.sub{color:var(--muted);font-size:16px;line-height:1.6;margin:10px auto 0;max-width:420px}
+.me{margin-top:8px;font-size:14px;color:var(--gold-d);font-weight:500}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px 18px;margin-top:22px;box-shadow:0 14px 34px rgba(62,44,28,.07)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;min-height:54px;border:0;border-radius:16px;font:inherit;font-weight:700;font-size:17px;cursor:pointer;text-decoration:none}
+.btn.gold{color:#fff;background:linear-gradient(120deg,#6E5216,var(--gold-d) 55%,#8F6D24);box-shadow:0 10px 24px rgba(140,106,34,.28)}
+.btn.wa{color:#fff;background:#0B7A5A;box-shadow:0 10px 24px rgba(11,122,90,.22)}
+.btn.ghost{background:transparent;color:var(--muted);border:1px solid var(--line);font-weight:500;font-size:15px;min-height:46px}
+.facts{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:16px 0 18px}
+.facts span{font-size:13.5px;background:var(--cream);border:1px solid var(--line);border-radius:20px;padding:4px 12px}
+.areas{list-style:none;padding:0;margin:0 0 18px;display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:14px;color:var(--muted)}
+.areas li{display:flex;align-items:center;gap:8px}
+.areas svg{width:18px;height:18px;color:var(--gold);flex:none}
+.note{font-size:12.5px;color:var(--muted);text-align:center;margin-top:10px;line-height:1.5}
+/* quiz */
+.top{display:flex;align-items:center;justify-content:space-between;font-size:13.5px;color:var(--muted)}
+.back{border:0;background:none;color:var(--muted);font:inherit;font-size:14px;cursor:pointer;min-height:40px;padding:0 4px;text-decoration:underline}
+.back[disabled]{visibility:hidden}
+.prog{height:6px;background:var(--cream2);border-radius:6px;margin:8px 0 20px;overflow:hidden}
+.prog i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-d),var(--gold-l));border-radius:6px;transition:width .35s cubic-bezier(.2,.8,.2,1)}
+.area{font-size:13px;font-weight:700;color:var(--gold-d);letter-spacing:.02em}
+.q{font-size:21px;font-weight:500;line-height:1.45;margin:6px 0 4px}
+.why{font-size:14px;color:var(--muted);margin:0 0 18px;line-height:1.55}
+.ans{display:grid;gap:10px}
+.ans button{min-height:56px;border:1.5px solid var(--line);background:#fff;border-radius:16px;font:inherit;font-size:17px;color:var(--brown);cursor:pointer;display:flex;align-items:center;gap:12px;padding:0 16px;text-align:right;transition:border-color .2s,background .2s}
+.ans button .dot{width:14px;height:14px;border-radius:50%;flex:none}
+.ans button.sel{border-color:var(--gold);background:#FBF5E8;font-weight:700}
+@media (hover:hover){.ans button:hover{border-color:var(--gold)}}
+.fade{animation:in .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.fade{animation:none}.prog i{transition:none}}
+/* result */
+.score{display:flex;align-items:center;gap:16px}
+.ring{width:112px;height:112px;flex:none;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:Bellefair,serif;font-size:40px;font-weight:400}
+.ring b small{display:block;font-family:Heebo;font-size:12px;color:var(--muted);margin-top:-30px}
+.verdict h2{font-family:Bellefair,serif;font-weight:400;font-size:28px;margin:0;line-height:1.15}
+.verdict p{margin:6px 0 0;color:var(--muted);font-size:15px;line-height:1.55}
+.lights{margin:20px 0 4px;display:grid;gap:8px}
+.light{display:flex;align-items:center;gap:10px;background:var(--cream);border-radius:12px;padding:10px 12px;font-size:15px}
+.light .dot{width:14px;height:14px;border-radius:50%;flex:none}
+.light .lv{margin-inline-start:auto;font-size:13px;font-weight:700}
+.g .dot{background:var(--green)}.g .lv{color:var(--green)}
+.y .dot{background:#D9A21B}.y .lv{color:var(--amber)}
+.r .dot{background:var(--red)}.r .lv{color:var(--red)}
+h3{font-size:17px;margin:22px 0 8px}
+.fix{display:flex;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.fix:first-of-type{border-top:0}
+.fix .n{width:28px;height:28px;border-radius:50%;background:var(--brown);color:var(--gold-l);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+.fix b{display:block;font-size:15.5px}
+.fix span{display:block;color:var(--muted);font-size:14.5px;line-height:1.55;margin-top:2px}
+.offer{margin-top:18px;background:var(--brown);color:#F3EADA;border-radius:18px;padding:18px}
+.offer h3{color:var(--gold-l);margin:0 0 6px;font-family:Bellefair,serif;font-weight:400;font-size:24px}
+.offer p{margin:0 0 14px;font-size:15px;line-height:1.6;color:#E9DCC4}
+.offer label{display:block;font-size:13px;color:var(--gold-l);margin:0 0 4px}
+.offer input{width:100%;min-height:46px;border-radius:12px;border:1px solid rgba(230,200,122,.4);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:16px;padding:0 12px;margin-bottom:12px}
+.offer input::placeholder{color:#B9A88C}
+.offer .note{color:#CDBDA2}
+.all{margin-top:12px}
+.all summary{cursor:pointer;color:var(--gold-d);font-weight:500;font-size:14.5px;min-height:40px;display:flex;align-items:center}
+.all ul{margin:4px 0 0;padding-inline-start:18px;font-size:14px;color:var(--muted);line-height:1.7}
+footer{margin-top:auto;padding-top:26px;text-align:center;font-size:12.5px;color:var(--muted)}
+footer a{color:var(--gold-d)}
+[hidden]{display:none!important}
+p,.q,.sub{text-wrap:pretty}
+</style>
+</head>
+<body>
+<div class="bsd">בס"ד</div>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+ <symbol id="i-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M14.5 9.2c-.5-.8-1.4-1.2-2.5-1.2-1.5 0-2.5.8-2.5 1.9 0 2.7 5.2 1.4 5.2 4.2 0 1.1-1.1 1.9-2.7 1.9-1.2 0-2.2-.5-2.7-1.3M12 6.5v1.5M12 16v1.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-people" viewBox="0 0 24 24"><circle cx="9" cy="9" r="3.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 19c.6-3 2.8-4.6 5.5-4.6s4.9 1.6 5.5 4.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="16.5" cy="8" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16.5 13c2.2 0 3.7 1.3 4.2 3.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></symbol>
+ <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+ <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3.5 7.5a2 2 0 0 1 2-2h4l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-13a2 2 0 0 1-2-2z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></symbol>
+ <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 4l2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></symbol>
+ <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 19.5l1.3-3.6A8 8 0 1 1 8.4 19z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.5-2-1-1 .8a4 4 0 0 1-1.8-1.8l.8-1-1-2z" fill="currentColor"/></symbol>
+</svg>
+<main class="wrap">
+  <header>
+    <img class="seal" src="seal.png" alt="סדר בעסק">
+    <h1>בדיקת סדר לעסק</h1>
+    <p class="sub">10 שאלות קצרות על המשרד של העסק. בסוף מקבלים ציון, רמזור לכל תחום ו-3 דברים לתקן קודם.</p>
+    <div class="me">כאן מיטל עסיסי · סדר בעסק</div>
+  </header>
+
+  <section class="card fade" id="intro">
+    <div class="facts"><span>2 דקות</span><span>חינם</span><span>שום דבר לא נשמר</span></div>
+    <ul class="areas">
+      <li><svg><use href="#i-coin"/></svg>כסף וגבייה</li>
+      <li><svg><use href="#i-people"/></svg>לקוחות ולידים</li>
+      <li><svg><use href="#i-cal"/></svg>יומן וזמן</li>
+      <li><svg><use href="#i-folder"/></svg>סגירת חודש</li>
+      <li><svg><use href="#i-star"/></svg>נוכחות ושיווק</li>
+    </ul>
+    <button class="btn gold" type="button" id="start">מתחילים את הבדיקה</button>
+    <p class="note">עונים בכנות, אף אחד לא רואה. התשובות נשארות רק אצלך בטלפון.</p>
+  </section>
+
+  <section class="card" id="quiz" hidden aria-live="polite">
+    <div class="top"><span id="count"></span><button class="back" type="button" id="back">חזרה</button></div>
+    <div class="prog" aria-hidden="true"><i id="bar"></i></div>
+    <div id="qbox"></div>
+  </section>
+
+  <section id="result" hidden></section>
+
+  <footer>סדר בעסק · משרד אנושי, מערכת חכמה · <a href="https://me8499973-art.github.io/meital/boutique">לאתר</a></footer>
+</main>
+
+<script data-goatcounter="https://sederbaesek.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script>
+function track(n){try{window.goatcounter&&window.goatcounter.count&&window.goatcounter.count({path:n,title:n,event:true})}catch(e){}}
+const PHONE='972548499973';
+const AREAS={money:'כסף וגבייה',leads:'לקוחות ולידים',time:'יומן וזמן',close:'סגירת חודש',reach:'נוכחות ושיווק'};
+const Q=[
+ {a:'money',q:'יודעים בכל רגע כמה כסף לקוחות חייבים לכם?',why:'בלי רשימה אחת, חובות קטנים נשכחים ומצטברים.',fix:'רשימת חובות פתוחים אחת',tip:'דף אחד עם שם, סכום ותאריך. מעדכנים פעם בשבוע, ותמיד יודעים כמה כסף מחכה בחוץ.'},
+ {a:'money',q:'תזכורת תשלום יוצאת בזמן קבוע, בלי שתצטרכו לזכור?',why:'רוב החובות נסגרים כבר בתזכורת השנייה.',fix:'מסלול תזכורות קבוע',tip:'שלוש הודעות מוכנות: 3 ימים לפני, ביום עצמו ושבוע אחרי. רק מעתיקים ושולחים, בלי להתבייש.'},
+ {a:'leads',q:'כל פנייה חדשה מקבלת תשובה באותו יום?',why:'מי שעונה ראשון בדרך כלל סוגר.',fix:'תשובה לכל ליד באותו יום',tip:'הודעת פתיחה מוכנה, ושעה קבועה ביום (למשל 13:00) שבה עוברים על כל הפניות.'},
+ {a:'leads',q:'יש מקום אחד שבו רואים כל פנייה ובאיזה שלב היא?',why:'כשהלידים מפוזרים בין וואטסאפ, מייל ופתקים, חלק נופלים בין הכיסאות.',fix:'רשימת לידים אחת',tip:'טבלה פשוטה: מי פנה, מתי, מה רצה ומה הצעד הבא. גם 5 עמודות מספיקות.'},
+ {a:'time',q:'התורים והפגישות ביומן אחד, והלקוח מקבל תזכורת?',why:'תזכורת יום לפני מורידה הרבה ביטולים ושכחות.',fix:'יומן אחד עם תזכורות',tip:'מעבירים הכל ליומן אחד, ומוסיפים תזכורת קבועה ללקוח יום לפני.'},
+ {a:'time',q:'העבודה המשרדית נגמרת בשעות העבודה, ולא בלילה?',why:'אם המשרד גולש לערב, משהו בשגרה לא מסודר.',fix:'שעת סגירת משרד',tip:'חצי שעה קבועה ביום לסגירת משרד. מה שלא נגמר עובר לרשימה של מחר, ולא נשאר בראש.'},
+ {a:'close',q:'בסוף החודש החומר לרואה החשבון מוכן בפחות משעה?',why:'חיפוש קבלות בסוף החודש הוא הזמן הכי יקר בעסק.',fix:'תיקייה אחת לכל חודש',tip:'כל קבלה וחשבונית נכנסת לתיקייה של החודש ביום שקיבלתם אותה, גם כצילום מהטלפון.'},
+ {a:'close',q:'יודעים בסוף כל חודש אם הרווחתם, ובכמה?',why:'בלי מספר אחד ברור קשה להחליט על מחירים והוצאות.',fix:'סיכום חודשי של שורה אחת',tip:'בסוף החודש: כמה נכנס, כמה יצא, כמה נשאר. שלושה מספרים, ומשווים לחודש הקודם.'},
+ {a:'reach',q:'כשמחפשים את העסק בגוגל מפות, השעות והטלפון נכונים ויש ביקורות?',why:'זה הדבר הראשון שלקוח חדש בודק.',fix:'פרופיל העסק בגוגל',tip:'נכנסים לפרופיל העסק, מעדכנים שעות וטלפון, ומבקשים ביקורת מ-3 לקוחות מרוצים השבוע.'},
+ {a:'reach',q:'יש קישור אחד שאפשר לשלוח ללקוח עם השירותים והמחירים?',why:'במקום להקליד את אותו הסבר שוב ושוב בוואטסאפ.',fix:'קישור אחד לשירותים ומחירים',tip:'דף אחד מסודר עם מה שאתם מציעים. שולחים קישור במקום עשר הודעות.'}
+];
+const OPTS=[{v:2,t:'כן',c:'#2F6B45'},{v:1,t:'בערך',c:'#D9A21B'},{v:0,t:'לא',c:'#A83226'}];
+const $=id=>document.getElementById(id);
+let i=0,ans=Array(Q.length).fill(null);
+$('start').onclick=()=>{track('bdika-start');$('intro').hidden=true;$('quiz').hidden=false;show()};
+$('back').onclick=()=>{if(i>0){i--;show()}};
+function show(){const q=Q[i];
+ $('count').textContent=`שאלה ${i+1} מתוך ${Q.length}`;$('bar').style.width=((i)/Q.length*100)+'%';$('back').disabled=i===0;
+ $('qbox').innerHTML=`<div class="fade"><div class="area">${AREAS[q.a]}</div><div class="q" id="qt">${q.q}</div><p class="why">${q.why}</p>
+ <div class="ans" role="group" aria-labelledby="qt">${OPTS.map(o=>`<button type="button" data-v="${o.v}" class="${ans[i]===o.v?'sel':''}"><span class="dot" style="background:${o.c}"></span>${o.t}</button>`).join('')}</div></div>`;
+ const first=$('qbox').querySelector('button');if(first&&document.activeElement&&document.activeElement.closest('#quiz'))first.focus({preventScroll:true})}
+$('qbox').onclick=e=>{const b=e.target.closest('[data-v]');if(!b)return;ans[i]=+b.dataset.v;
+ $('qbox').querySelectorAll('button').forEach(x=>x.classList.toggle('sel',x===b));
+ setTimeout(()=>{if(i<Q.length-1){i++;show()}else result()},220)};
+
+function result(){track('bdika-done');
+ $('bar').style.width='100%';
+ const total=Math.round(ans.reduce((a,v)=>a+v,0)/(Q.length*2)*100);
+ const per=Object.keys(AREAS).map(k=>{const idx=Q.map((q,n)=>q.a===k?n:-1).filter(n=>n>=0);const s=idx.reduce((a,n)=>a+ans[n],0)/(idx.length*2);return{k,name:AREAS[k],s,cls:s>=.75?'g':s>=.4?'y':'r',lv:s>=.75?'מסודר':s>=.4?'כדאי לחזק':'דורש טיפול'}});
+ const v=total>=85?['משרד מסודר 👏','העסק שלכם עובד בשקט. נשארו רק ליטושים קטנים.']:total>=65?['כמעט שם','הבסיס טוב. כמה הרגלים קטנים יחסכו לכם שעות כל שבוע.']:total>=40?['יש מה לסדר','יש כאן כסף וזמן שהולכים לאיבוד. החדשות הטובות: זה מתקן מהר.']:['המשרד מנהל אתכם','הגיע הזמן לשקט. מתחילים מהדבר הראשון ברשימה, ולא מכל דבר בבת אחת.'];
+ const fixes=Q.map((q,n)=>({...q,v:ans[n]})).filter(x=>x.v<2).sort((a,b)=>a.v-b.v).slice(0,3);
+ const C=2*Math.PI*48,col=total>=85?'#2F6B45':total>=65?'#B8913A':total>=40?'#D9A21B':'#A83226';
+ $('quiz').hidden=true;const r=$('result');r.hidden=false;
+ r.innerHTML=`<div class="card fade">
+  <div class="score"><div class="ring" role="img" aria-label="ציון ${total} מתוך 100"><svg viewBox="0 0 112 112"><circle cx="56" cy="56" r="48" fill="none" stroke="#F1E7D5" stroke-width="10"/><circle id="arc" cx="56" cy="56" r="48" fill="none" stroke="${col}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C}" style="transition:stroke-dashoffset 1s cubic-bezier(.2,.8,.2,1)"/></svg><b>${total}</b></div>
+  <div class="verdict"><h2>${v[0]}</h2><p>${v[1]}</p></div></div>
+  <div class="lights">${per.map(p=>`<div class="light ${p.cls}"><span class="dot"></span>${p.name}<span class="lv">${p.lv}</span></div>`).join('')}</div>
+  ${fixes.length?`<h3>3 דברים לתקן קודם</h3>${fixes.map((f,n)=>`<div class="fix"><span class="n">${n+1}</span><div><b>${f.fix}</b><span>${f.tip}</span></div></div>`).join('')}`:'<h3>אין מה לתקן כרגע 🎉</h3><p class="why">שמרו על השגרה הזו. אפשר לחזור לבדיקה בעוד חודש.</p>'}
+  <details class="all"><summary>כל התשובות שלי</summary><ul>${Q.map((q,n)=>`<li>${q.q} <b>${OPTS.find(o=>o.v===ans[n]).t}</b></li>`).join('')}</ul></details>
+ </div>
+ <div class="offer fade">
+  <h3>רוצים שאעשה את זה בשבילכם?</h3>
+  <p>אפשר לתקן לבד לפי הטיפים. ואם אין לכם זמן, אני מסדרת את זה: מזכירה מרחוק, מערכת שעושה את זה לבד, או גם וגם. לא חייבים לקחת הכל.</p>
+  <label for="nm">שם ותחום העסק (לא חובה)</label><input id="nm" placeholder="למשל: רחל, סטודיו לציפורניים">
+  <button class="btn wa" type="button" id="send"><svg width="20" height="20"><use href="#i-chat"/></svg>שליחת התוצאות למיטל בוואטסאפ</button>
+  <p class="note">התוצאות נשלחות רק אם לוחצים. שום דבר לא נשמר באתר.</p>
+ </div>
+ <button class="btn ghost" type="button" id="again" style="margin-top:14px">לעשות את הבדיקה מחדש</button>`;
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{const a=$('arc');if(a)a.style.strokeDashoffset=C*(1-total/100)}));
+ window.scrollTo({top:0,behavior:'smooth'});
+ $('send').onclick=()=>{track('bdika-send');const nm=$('nm').value.trim();
+  const lines=['היי מיטל 🙂 עשיתי את בדיקת הסדר',nm?`אני: ${nm}`:'',`הציון שלי: ${total} מתוך 100 (${v[0].replace(/ 👏/,'')})`,'',...per.map(p=>`${p.cls==='g'?'🟢':p.cls==='y'?'🟡':'🔴'} ${p.name}: ${p.lv}`),'',fixes.length?'מה הכי דחוף אצלי:':'',...fixes.map((f,n)=>`${n+1}. ${f.fix}`),'','אשמח לשמוע איך את יכולה לעזור'].filter((l,n,arr)=>l!==''||arr[n-1]!=='');
+  window.open('https://wa.me/'+PHONE+'?text='+encodeURIComponent(lines.join('\n')),'_blank')};
+ $('again').onclick=()=>{i=0;ans=Array(Q.length).fill(null);r.hidden=true;$('quiz').hidden=false;show();window.scrollTo({top:0})};
+}
+</script>
+</body>
+</html>
