@@ -283,7 +283,7 @@ $('days').onchange=e=>{const v=e.target.value;otherMode=v==='other';if(otherMode
  const [y,m,d]=v.split('-').map(Number);pickedDay=new Date(y,m-1,d);$('otherDate').hidden=true;$('eDay').classList.remove('show');renderHours()};
 function nextValid(from){for(let i=0;i<40;i++){const d=new Date(from.getFullYear(),from.getMonth(),from.getDate()+i);if(!okDate(d))return d}return null}
 function dateErr(bad,dt){$('otherDate').classList.toggle('bad',!!bad);if(!bad){$('eDay').classList.remove('show');return}
- const s=nextValid(dt>new Date()?dt:new Date());$('eDay').innerHTML=esc(bad)+(s?`<br><button type="button" class="sugg" data-s="${key(s)}">לבחור את ${label(s)}?</button>`:'');$('eDay').classList.add('show')}
+ const s=nextValid(dt>new Date()?dt:new Date());$('eDay').innerHTML=esc(bad)+(s?`<br><button type="button" class="sugg" data-s="${key(s)}">לבחור את ${label(s)} במקום</button>`:'');$('eDay').classList.add('show')}
 $('eDay').onclick=e=>{const b=e.target.closest('[data-s]');if(!b)return;$('otherDate').value=b.dataset.s;$('otherDate').onchange()};
 $('otherDate').onchange=()=>{const v=$('otherDate').value;if(!v){pickedDay=null;return}const [y,m,d]=v.split('-').map(Number),dt=new Date(y,m-1,d),bad=okDate(dt);
  dateErr(bad,dt);pickedDay=bad?null:dt;renderHours()};
